@@ -1,0 +1,32 @@
+<h1 class="page-title">Blog Posts</h1>
+
+
+<div class="container py-5">
+  <div class="row g-4"> <!-- Bootstrap grid with spacing -->
+    <% @files.each do |file| %>
+      <div class="col-md-4">
+        <div class="card p-4">
+          <h3 class="card-title"><%= file[:title] %></h3>
+          <p class="card-description">
+            <%= truncate(file[:content], length: 150, omission: '...') %>
+          </p>
+          <%= link_to 'Read More', post_path(file[:file_name]), class: 'card-link' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<!--div class="posts-list">
+	< @files.each do |file| %>
+		<div class="post-card">
+			<h2 class="post-card-title"><= file.capitalize %></h2>
+			<p class="post-card-description">
+				<= truncate(file["content"], length: 150, omission: '...') %>
+			</p>
+			<= link_to 'Read More', post_path(file), class: 'post-card-link' %>
+		</div>
+	< end %>
+</div-->

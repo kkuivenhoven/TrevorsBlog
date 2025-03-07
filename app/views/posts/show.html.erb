@@ -1,0 +1,12 @@
+
+<h1 class="post-title">
+	<%= @post["title"] %>
+</h1>
+
+<div class="post-content">
+	<%= @post["content"].html_safe %>
+</div>
+
+<center>
+	<%= link_to 'Back to All Posts', posts_index_path, class: "back-link" %>
+</center>

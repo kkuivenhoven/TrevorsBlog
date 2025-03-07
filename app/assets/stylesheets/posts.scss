@@ -1,0 +1,180 @@
+
+/* App/assets/stylesheets/application.css or custom.css */
+.post-title {
+  font-family: 'Roboto', sans-serif; /* Modern and clean font */
+  font-size: 3rem; /* Larger font size for the header */
+  font-weight: bold;
+  color: #333; /* Dark color for text */
+  text-align: center;
+  margin-bottom: 15px; /* Space below the title */
+  text-transform: uppercase; /* Makes the title stand out */
+  letter-spacing: 1px; /* Subtle spacing between letters */
+}
+
+.post-description {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300; /* Light weight for a more refined feel */
+  color: #555;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.post-content {
+  font-family: 'Georgia', serif; /* Serif font for readability */
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6; /* Spacing between lines for readability */
+  max-width: 900px; /* Limiting width for a clean layout */
+  margin: 0 auto; /* Centers the content */
+  padding: 20px;
+  background-color: #f4f4f4; /* Subtle light gray background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+.post-content p {
+  margin-bottom: 20px; /* Adds spacing between paragraphs */
+}
+
+.post-content a {
+  color: #007BFF; /* Stylish blue links */
+  text-decoration: none;
+}
+
+.post-content a:hover {
+  text-decoration: underline; /* Adds underline on hover */
+}
+
+/* Styling for links within the post content */
+.post-content a {
+  color: #1A73E8; /* A strong blue color for the links */
+  text-decoration: none; /* Removes the underline */
+  font-weight: 500; /* Slightly bold to make the link stand out */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition on hover */
+}
+
+.post-content a:hover {
+  color: #0056b3; /* Darker blue on hover for emphasis */
+  text-decoration: underline; /* Adds an underline on hover for interaction */
+}
+
+.post-content a:focus {
+  outline: none; /* Removes the default outline */
+  border-bottom: 2px solid #0056b3; /* Adds a bold border under the link when focused */
+}
+
+/* Styling for the 'Back to Posts' link */
+.back-link {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem; /* Slightly larger font for visibility */
+  color: #1A73E8; /* Masculine, strong blue color */
+  text-decoration: none; /* Removes underline */
+  font-weight: 500; /* Adds some weight to the text */
+  display: inline-block;
+  margin-top: 20px; /* Adds spacing above */
+  padding: 10px 15px; /* Padding for the button-like feel */
+  border: 2px solid #1A73E8; /* Adds a border around the link */
+  border-radius: 5px; /* Rounded corners for a modern look */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.back-link:hover {
+  color: #fff; /* Changes text color to white on hover */
+  background-color: #1A73E8; /* Background turns blue on hover */
+  text-decoration: none; /* Keeps the text without underline */
+  border-color: #1A73E8; /* Ensures the border matches the background */
+}
+
+.back-link:focus {
+  outline: none;
+  border-color: #0056b3; /* Focused state with darker border */
+  background-color: #0056b3; /* Darker background on focus */
+}
+
+
+
+/* INDEX PAGE STYLING */
+/* Page Title Styling */
+.page-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #f5f5f5;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Posts List Container */
+.posts-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+/* Card Styling */
+.card {
+    background-color: #2b2b2b; /* Dark grey for contrast */
+    border: 1px solid #555; /* Slightly lighter border */
+    border-radius: 12px; /* Softer edges */
+    color: #f5f5f5; /* Light text */
+    padding: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    max-width: 350px; /* Ensures consistency of card sizes */
+    box-sizing: border-box;
+}
+
+/* Hover effect for card */
+.card:hover {
+    transform: translateY(-5px); /* Slight hover lift */
+    box-shadow: 0 8px 16px rgba(255, 215, 0, 0.2); /* Subtle gold glow */
+}
+
+/* Card Title Styling */
+.card h3 {
+    color: #c7a008; /* Gold heading */
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/* Card Description (only showing first 150 chars) */
+.card-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 15px;
+    overflow: hidden; /* Hide extra text */
+    white-space: nowrap; /* Prevent wrapping */
+    text-overflow: ellipsis; /* Add ellipsis (...) when truncated */
+	word-wrap: break-word;
+}
+
+/* Read More Link Styling */
+.card-link {
+    font-size: 1.1rem;
+    color: #1A73E8; /* Blue color for the link */
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: 2px solid #1A73E8;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.card-link:hover {
+    color: #fff;
+    background-color: #1A73E8;
+    border-color: #1A73E8;
+}
+
+.card-link:focus {
+    outline: none;
+    border-color: #0056b3;
+    background-color: #0056b3;
+}
