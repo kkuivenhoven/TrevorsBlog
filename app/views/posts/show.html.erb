@@ -11,6 +11,39 @@
     max-width: 1300px; /* Allow it to be wider on larger screens */
     margin: 20px auto; /* Center it with space above and below */
   }
+
+  .post-image {
+    width: 50%; /* Make the image responsive and take up the full width of its container */
+    max-width: 100%; /* Ensures the image doesn't exceed its container's width */
+    height: auto; /* Maintain the image's aspect ratio */
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .back-link {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #1a73e8; /* Matching primary button color */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+	margin-bottom: 20px;
+	padding: 10px 20px;
+  }
+
+  .back-link:hover {
+    background-color: #155ab0; /* Slightly darker on hover */
+	text-decoration: none;
+  }
+
+  .back-link:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(26, 115, 232, 0.5); /* Subtle focus outline */
 </style>
 
 <header class="container text-center my-5">
@@ -20,9 +53,21 @@
 </header>
 
 <div class="post-content">
-	<%= @post["content"].html_safe %>
+	<% content = @post["content"] %>
+	<% images = @post["images"] %>
+	<% image_index = 0 %>
+
+  <% content.split("<br>").each_with_index do |segment, index| %>
+    <%# If the segment is "img-tag", insert an image %>
+    <% if segment.strip == "img-tag" && image_index < images.length %>
+      <img src="<%= asset_path('fraud_waves_and_seasons/' + images[image_index]) %>" alt="Fraud Image" class="post-image">
+      <% image_index += 1 %>
+    <% else %>
+      <p><%= segment.strip %></p> <%# Otherwise, treat as text %>
+    <% end %>
+  <% end %>
 </div>
 
 <center>
-	<%= link_to 'Back to All Posts', posts_index_path, class: "back-link" %>
+	<%= link_to 'Back to All Posts', posts_index_path, class: "back-link btn btn-primary" %>
 </center>

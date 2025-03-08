@@ -1,15 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+  <div class="container-fluid">
     <a class="navbar-brand" href="#">Trevor's Blog</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-		<%= link_to "Home", root_path, class: "nav-link" %>
-		<%= link_to "About", pages_about_path, class: "nav-link" %>
-		<%= link_to "Posts", posts_index_path, class: "nav-link" %>
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "About", pages_about_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Posts", posts_index_path, class: "nav-link" %>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+

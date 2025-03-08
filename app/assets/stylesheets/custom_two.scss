@@ -6,10 +6,17 @@ $link-color: #0077B6;
 $link-hover-color: lighten($link-color, 10%);
 $background-color: #121212;
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   background-color: $background-color;
   color: $text-color;
   font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -19,18 +26,43 @@ header {
   text-align: center;
 }
 
+  .navbar-nav .nav-item {
+    margin-right: 15px;  /* Adjust the space between links */
+  }
+
+  .nav-link, .navbar-nav, .navbar-brand {
+    color: white !important;  /* Ensure links are white */
+    font-weight: bold;
+	text-decoration: none !important; /* remove underline */
+  }
+
+  .nav-link:hover {
+    color: rgba(255, 255, 255, 0.75) !important;  /* Lighten on hover */
+  }
+
 h1 {
   color: white;
   font-size: 2rem;
 }
 
-h3 {
+h3, .card-title {
   color: $accent-color;
 }
 
 p {
   font-size: 1rem;
   line-height: 1.6;
+}
+
+.about-me {
+	text-indent: 30px;
+	line-height: 1.5;
+}
+
+.post-content, p {
+	text-indent: 1.5em; /* Indents first line like a paper */
+	margin-bottom: 1rem; /* Adds spacing between paragraphs */
+	line-height: 1.8; /* Improves readability */
 }
 
 a {
@@ -74,4 +106,47 @@ div {
     width: 100%; /* Full width */
     max-width: 1200px; /* Matches large screens */
     margin: 20px auto; /* Centering */
+}
+
+  .footer {
+    background-color: #333; /* Dark background for footer */
+    color: white;
+    padding: 20px 0;
+    font-size: 14px;
+    margin-top: auto; /* Pushes the footer to the bottom */
+  }
+
+  .footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer p {
+    margin: 0;
+  }
+
+  .footer-link {
+    color: #1a73e8; /* Link color */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0 8px;
+    transition: color 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: #155ab0; /* Slightly darker blue on hover */
+  }
+
+  .footer-link:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(26, 115, 232, 0.5); /* Focus outline for accessibility */
+  }
+
+.card-link {
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card-link:hover {
+	text-decoration: none;
+	color: #ADD8E6;
 }

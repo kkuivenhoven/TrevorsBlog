@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Trevors Blog 2 0" %></title>
+    <title><%= content_for(:title) || "Trevors Blog" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -23,8 +23,15 @@
   </head>
 
 
-  <body>
+  <body class="d-flex flex-column">
     <%= render 'shared/navbar' %>
     <%= yield %>
+
+    <footer class="footer">
+	  <div class="container text-center">
+        <p>&copy; <%= Time.now.year %> Trevor's Blog. All rights reserved.</p>
+	  </div>
+	</footer>
   </body>
+
 </html>

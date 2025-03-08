@@ -21,14 +21,3 @@
 
 
 
-<!--div class="posts-list">
-	< @files.each do |file| %>
-		<div class="post-card">
-			<h2 class="post-card-title"><= file.capitalize %></h2>
-			<p class="post-card-description">
-				<= truncate(file["content"], length: 150, omission: '...') %>
-			</p>
-			<= link_to 'Read More', post_path(file), class: 'post-card-link' %>
-		</div>
-	< end %>
-</div-->
