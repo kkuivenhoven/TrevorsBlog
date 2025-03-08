@@ -48,12 +48,12 @@
 
 .ordinal-suffix {
   font-size: 0.6em; /* Smaller font size */
-  vertical-align: super; /* Places it at the top */
-  line-height: 0; /* Remove extra line height */
   position: relative;
-  top: -0.1em; /* Slightly lift the suffix */
+  top: -0.05em; /* Move it slightly up, but less than before */
+  vertical-align: top; /* Align it towards the top */
 }
 </style>
+
 
 <header class="container text-center my-5">
 	<h1 class="post-title">
@@ -63,6 +63,9 @@
 		<% parsed_date = Date.parse(@post["date_published"]) %>
 	    <% formatted_date = parsed_date.strftime("%B #{parsed_date.day}#{ordinal_suffix(parsed_date.day)}, %Y") %>
 		<%= formatted_date.html_safe %>
+    </p>
+	<p class="lead" style="font-size: 12px; opacity: 0.75;">
+		<%= @post["excerpt"] %>
     </p>
 </header>
 
