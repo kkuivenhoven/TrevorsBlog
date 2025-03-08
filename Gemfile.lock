@@ -384,7 +384,8 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
-  net-pop (~> 0.1.2)
+  net-pop (= 0.1.2)
+  net-protocol (= 0.2.2)
   pg
   propshaft
   puma (>= 5.0)

@@ -43,7 +43,8 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 gem 'byebug'
-gem 'net-pop', '~> 0.1.2'
+gem 'net-pop', '0.1.2'
+gem 'net-protocol', '0.2.2'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
