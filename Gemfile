@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby '3.3.3'
+
 # change
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
@@ -41,7 +43,6 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 gem 'byebug'
-gem ruby '3.3.3'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
