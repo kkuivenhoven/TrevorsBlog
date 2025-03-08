@@ -1,0 +1,77 @@
+$primary-color: #0A192F;
+$secondary-color: #2E2E2E;
+$text-color: #D3D3D3;
+$accent-color: #D72638;
+$link-color: #0077B6;
+$link-hover-color: lighten($link-color, 10%);
+$background-color: #121212;
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  background: $primary-color;
+  color: $text-color;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  font-size: 2rem;
+}
+
+h3 {
+  color: $accent-color;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+div {
+  background: $secondary-color;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.link_to {
+  color: $link-color;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+.post-content {
+    background: #2E2E2E; /* Dark gray background */
+    color: #D3D3D3; /* Light gray text */
+    padding: 2rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Matches large screens */
+    margin: 20px auto; /* Centering */
+}
