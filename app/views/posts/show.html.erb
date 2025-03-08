@@ -44,12 +44,26 @@
   .back-link:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(26, 115, 232, 0.5); /* Subtle focus outline */
+}
+
+.ordinal-suffix {
+  font-size: 0.6em; /* Smaller font size */
+  vertical-align: super; /* Places it at the top */
+  line-height: 0; /* Remove extra line height */
+  position: relative;
+  top: -0.1em; /* Slightly lift the suffix */
+}
 </style>
 
 <header class="container text-center my-5">
 	<h1 class="post-title">
 		<%= @post["title"] %>
 	</h1>
+	<p class="lead">
+		<% parsed_date = Date.parse(@post["date_published"]) %>
+	    <% formatted_date = parsed_date.strftime("%B #{parsed_date.day}#{ordinal_suffix(parsed_date.day)}, %Y") %>
+		<%= formatted_date.html_safe %>
+    </p>
 </header>
 
 <div class="post-content">
