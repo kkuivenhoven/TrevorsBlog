@@ -7,7 +7,7 @@ module ApplicationHelper
 				 when 3 then 'RD'
 				 else 'TH'
 				end
-		"<span class='ordinal-suffix'>#{suffix}</span>".html_safe
+		"<span class='ordinal'>#{suffix}</span>".html_safe
 	end
 
 end

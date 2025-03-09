@@ -14,6 +14,14 @@ class PostsController < ApplicationController
 		file_name: File.basename(f, '.json') # Get the file name without the extension
 	  }
 	end
+
+	# If a search term is provided, filter the posts
+	if params[:search].present?
+		search_term = params[:search].downcase
+		@files = @files.select do |post|
+			post[:title].downcase.include?(search_term) || post[:content].downcase.include?(search_term)
+		end
+	end
   end
 
   def show

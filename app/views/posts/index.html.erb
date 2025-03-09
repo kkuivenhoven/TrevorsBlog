@@ -1,23 +1,126 @@
+<script>
+  document.getElementById("clear_button").addEventListener("click", function() {
+    // Clear the search input field
+    document.getElementById("search_input").value = "";
+    
+    // Submit the form to clear the search results
+    document.getElementById("search_form").submit();
+  });
+</script>
+
+<style>
+/* Search container styling */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between elements */
+  margin: 20px 0;
+}
+
+/* Label styling */
+.search-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input field styling */
+.search-input {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 250px; /* adjust as needed */
+  box-sizing: border-box;
+}
+
+/* Submit button styling */
+.search-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #4CAF50; /* green */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Clear button styling */
+.clear-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #f44336; /* red */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Button hover effects */
+.search-button:hover {
+  background-color: #45a049; /* dark green */
+}
+
+.clear-button:hover {
+  background-color: #e53935; /* dark red */
+}
+
+/* For responsiveness */
+@media (max-width: 600px) {
+  .search-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .search-button, .clear-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+</style>
+
 <header class="container text-center my-5">
 	<h1 class="page-title">Blog Posts</h1>
 </header>
 
+<%= form_with(url: posts_index_path, method: "get", local: true, id: 'search_form') do %>
+	<div class="search-container">
+		  <%= label_tag :search, "Search Posts", class: "search-label" %>
+		  <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "search-input", id: "search_input" %>
+		  <%= submit_tag "Search", class: "search-button" %>
+			
+		  <%= button_tag 'Clear', type: 'button', id: "clear_button", class: "clear-button" %>
+	</div>
+<% end %>
 
-<div class="container py-5">
-  <div class="row g-4"> <!-- Bootstrap grid with spacing -->
-    <% @files.each do |file| %>
+<ul>
+  <% @files.each do |post| %>
+    <li>
+      <strong><%= post[:title] %></strong><br>
+      <%= truncate(post[:content], length: 150) %> <!-- Truncate content for better display -->
+    </li>
+  <% end %>
+</ul>
+
+<!--div class="container py-5">
+  <div class="row g-4"> <-- Bootstrap grid with spacing >
+    < @files.each do |file| %>
       <div class="col-md-4">
         <div class="card p-4">
-          <h3 class="card-title"><%= file[:title] %></h3>
+          <h3 class="card-title"><= file[:title] %></h3>
           <p class="card-description">
-            <%= truncate(file[:content], length: 150, omission: '...') %>
+            <= truncate(file[:content], length: 150, omission: '...') %>
           </p>
-          <%= link_to 'Read More', post_path(file[:file_name]), class: 'card-link' %>
+          <= link_to 'Read More', post_path(file[:file_name]), class: 'card-link' %>
         </div>
       </div>
-    <% end %>
+    < end %>
   </div>
-</div>
+</div-->
 
 
 
