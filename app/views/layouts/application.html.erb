@@ -22,12 +22,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
+  <body data-controller="<%= params[:controller] %>" data-action="<%= params[:action] %>">
 
-  <body class="d-flex flex-column">
+  <!--body class="d-flex flex-column"-->
+  <body class="d-flex flex-column min-vh-100">
     <%= render 'shared/navbar' %>
     <%= yield %>
 
-    <footer class="footer">
+    <footer class="footer mt-auto">
 	  <div class="container text-center">
         <p>&copy; <%= Time.now.year %> Trevor's Blog. All rights reserved.</p>
 	  </div>

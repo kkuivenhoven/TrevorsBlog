@@ -1,61 +1,99 @@
 <style>
-  .post-content {
-    background: #2E2E2E; /* Dark gray background */
-    color: #D3D3D3; /* Light gray text */
-    padding: 1.5rem;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-    width: 100%; /* Make it take up more space */
-    max-width: 1300px; /* Allow it to be wider on larger screens */
-    margin: 20px auto; /* Center it with space above and below */
-  }
-
-  .post-image {
-    width: 50%; /* Make the image responsive and take up the full width of its container */
-    max-width: 100%; /* Ensures the image doesn't exceed its container's width */
-    height: auto; /* Maintain the image's aspect ratio */
-    display: block;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-  }
-
-  .back-link {
-    display: inline-block;
-    text-decoration: none;
-    background-color: #1a73e8; /* Matching primary button color */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s ease;
-	margin-bottom: 20px;
-	padding: 10px 20px;
-  }
-
-  .back-link:hover {
-    background-color: #155ab0; /* Slightly darker on hover */
-	text-decoration: none;
-  }
-
-  .back-link:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(26, 115, 232, 0.5); /* Subtle focus outline */
+/* Post Content */
+.post-content {
+  background: #2A2D43; /* Darkened Blue-Gray */
+  color: #E6E6FA; /* Soft Lavender */
+  padding: 1.5rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 1300px;
+  margin: 20px auto;
 }
 
+/* Post Images */
+.post-image {
+  width: 50%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Back Link */
+.back-link {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #B5838D; /* Warm Dusty Rose */
+  color: #1B1F3B;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.back-link:hover {
+  background-color: #6D6875; /* Deep Gray-Purple */
+  text-decoration: none;
+}
+
+.back-link:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(181, 131, 141, 0.5); /* Subtle focus outline */
+}
+
+/* Date Formatting */
 .ordinal-suffix {
-  font-size: 0.6em; /* Smaller font size */
+  font-size: 0.6em;
   position: relative;
-  top: -0.05em; /* Move it slightly up, but less than before */
-  vertical-align: top; /* Align it towards the top */
+  top: -0.15em; /* Subtle placement */
+  vertical-align: top;
+  opacity: 0.75; /* 75% opacity */
 }
 
 .ordinal {
-  font-size: 0.45em; /* Adjust size as needed */
-  vertical-align: super; /* Raises it slightly */
+  font-size: 0.45em;
+  vertical-align: super;
+}
+
+.blog-sources {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #2A2D43; /* Darkened Blue-Gray for depth */
+  border-left: 4px solid #B5838D; /* Warm Dusty Rose accent */
+  border-radius: 8px;
+}
+
+.blog-sources h3 {
+  color: #B5838D; /* Warm Dusty Rose */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.blog-sources ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.blog-sources li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-sources a {
+  color: #9A8C98; /* Muted Mauve */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.blog-sources a:hover {
+  color: #6D6875; /* Deep Gray-Purple */
+  text-decoration: underline;
 }
 </style>
 
@@ -69,7 +107,7 @@
 	    <% formatted_date = parsed_date.strftime("%B #{parsed_date.day}#{ordinal_suffix(parsed_date.day)}, %Y") %>
 		<%= formatted_date.html_safe %>
     </p>
-	<p class="lead" style="font-size: 12px; opacity: 0.75;">
+	<p class="lead" style="font-size: 14px; opacity: 0.75;">
 		<%= @post["excerpt"] %>
     </p>
 </header>
@@ -77,6 +115,7 @@
 <div class="post-content">
 	<% content = @post["content"] %>
 	<% images = @post["images"] %>
+	<% sources = @post["sources"] %>
 	<% image_index = 0 %>
 
   <% content.split("<br>").each_with_index do |segment, index| %>
@@ -85,9 +124,25 @@
       <img src="<%= asset_path(@post["file_name"] + "/" + images[image_index]) %>" alt="Fraud Image" class="post-image">
       <% image_index += 1 %>
     <% else %>
-      <p><%= segment.strip %></p> <%# Otherwise, treat as text %>
+      <p style="text-indent: 20px;">
+		<%= segment.strip %>
+	  </p> <%# Otherwise, treat as text %>
     <% end %>
   <% end %>
+
+<% if sources.present? %>
+  <div class="blog-sources">
+    <h3>Sources</h3>
+    <ul>
+      <% sources.each do |source| %>
+        <li>
+          <a href="<%= source %>" target="_blank" rel="noopener noreferrer"><%= source %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 </div>
 
 <center>

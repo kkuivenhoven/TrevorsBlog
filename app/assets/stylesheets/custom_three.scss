@@ -1,0 +1,107 @@
+/* General Styles */
+html, body {
+	height: 100%;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+body {
+  background-color: #1B1F3B; /* Deep Twilight Blue */
+  color: #E6E6FA; /* Soft Lavender */
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  background: #222547;
+  // color: $text-color;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 6px;
+ 
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navbar */
+.navbar {
+  // background-color: #2A2D43 !important; /* Darkened Blue-Gray */
+  background-color: #222547 !important; /* Darkened Blue-Gray */
+  border-bottom: 2px solid #6D6875; /* Deep Gray-Purple */
+}
+
+.navbar-brand, .nav-link {
+  color: #E6E6FA !important; /* Soft Lavender */
+  text-decoration: none;
+}
+
+.nav-link:hover, .navbar-brand:hover {
+  color: #9A8C98 !important; /* Muted Mauve */
+  transition: color 0.3s ease-in-out;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #B5838D !important; /* Warm Dusty Rose */
+  border-color: #B5838D !important;
+  color: #1B1F3B !important; /* Contrast against background */
+}
+
+.btn-primary:hover {
+  background-color: #6D6875 !important; /* Deep Gray-Purple */
+  border-color: #6D6875 !important;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Links */
+a {
+  color: #9A8C98; /* Muted Mauve */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #6D6875; /* Deep Gray-Purple */
+  transition: color 0.3s ease-in-out;
+}
+
+/* Cards */
+.card {
+  background-color: #2A2D43 !important; /* Darkened Blue-Gray */
+  color: #E6E6FA !important; /* Soft Lavender */
+  border: 1px solid #6D6875; /* Deep Gray-Purple */
+}
+
+.card-link {
+  color: #9A8C98; /* Muted Mauve */
+}
+
+.card-link:hover {
+  color: #6D6875; /* Deep Gray-Purple */
+  transition: color 0.3s ease-in-out;
+}
+
+/* Footer */
+.footer {
+  // background-color: #2A2D43; /* Darkened Blue-Gray */
+  background-color: #222547; /* Darkened Blue-Gray */
+  color: #E6E6FA;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* Paragraph Indentation */
+.about-me {
+  text-indent: 30px; /* Indent for a professional look */
+}
+
+/* Date Formatting */
+.ordinal-suffix {
+  font-size: 0.6em;
+  position: relative;
+  top: -0.2em; /* Adjusted to be slightly raised */
+  vertical-align: top;
+  opacity: 0.75; /* 75% opacity */
+}

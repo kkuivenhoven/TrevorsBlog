@@ -1,14 +1,25 @@
 <script>
-  document.getElementById("clear_button").addEventListener("click", function() {
-    // Clear the search input field
-    document.getElementById("search_input").value = "";
-    
-    // Submit the form to clear the search results
-    document.getElementById("search_form").submit();
+	document.addEventListener("domContentLoaded", function() {
+	  const controller = document.body.getAttribute("data-controller");
+      const action = document.body.getAttribute("data-action");
+
+      if (controller === "posts" && action === "index") {
+		  console.log("This is the Posts Index Page!");
+		  document.getElementById("clear_button").addEventListener("click", function() {
+			  // Clear the search input field
+			  document.getElementById("search_input").value = "";
+			  // Submit the form to clear the search results
+			  document.getElementById("search_form").submit();
+	      });
+	  }
   });
 </script>
 
 <style>
+
+.card-title {
+  color: #B5838D; /* Warm Dusty Rose */
+}
 
 #search_form {
   background-color: #0A192F !important;
@@ -17,9 +28,9 @@
   justify-content: center;
   width: 60%;
   margin: 0 auto;
-  border: none; /* Flat design - no border */
-  box-shadow: none; /* Remove any shadow for flat look */
-  /* Removed border-radius for flat corners */
+  border: none;
+  box-shadow: none;
+  border-radius: 15px;
 }
 
 .search-container {
@@ -32,23 +43,23 @@
 .search-label {
   font-size: 18px;
   color: white;
+  border-radius: 15px;
 }
 
 .search-input {
-  flex-grow: 2; /* Makes the input twice as wide as buttons */
+  flex-grow: 2;
   padding: 8px;
-  border-radius: 8px; /* Rounded corners for the input field */
+  border-radius: 8px;
   border: none;
 }
 
 .search-button,
 .clear-button {
-  flex-grow: 1; /* Makes buttons take equal space */
+  flex-grow: 1;
   padding: 8px 15px;
-  border-radius: 8px; /* Rounded corners for the buttons */
+  border-radius: 8px;
 }
 
-/* For responsiveness */
 @media (max-width: 600px) {
   .search-container {
     flex-direction: column;
@@ -64,6 +75,7 @@
     margin-top: 10px;
   }
 }
+
 </style>
 
 <header class="container text-center my-5">
@@ -90,7 +102,7 @@
     <% @files.each do |file| %>
       <div class="col-md-4">
         <div class="card p-4">
-          <h3 class="card-title"><%= file[:title] %></h3>
+          <h3 class="card-title"><b><%= file[:title] %></b></h3>
           <p class="card-description">
             <%= truncate(file[:content], length: 150, omission: '...') %>
           </p>
