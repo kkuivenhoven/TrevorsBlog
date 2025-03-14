@@ -1,3 +1,5 @@
+@use './colors' as colors;
+
 /* General Styles */
 html, body {
 	height: 100%;
@@ -7,13 +9,13 @@ html, body {
 }
 
 body {
-  background-color: #1B1F3B; /* Deep Twilight Blue */
+  background-color: colors.$body-background-color; /* Deep Twilight Blue */
   color: #E6E6FA; /* Soft Lavender */
   font-family: 'Arial', sans-serif;
 }
 
 header {
-  background: #222547;
+  background: colors.$header-background-color;
   padding: 1.5rem;
   text-align: center;
   border-radius: 6px;
@@ -27,24 +29,24 @@ header {
 
 /* Navbar */
 .navbar {
-  background-color: #222547 !important; /* Darkened Blue-Gray */
-  border-bottom: 2px solid #6D6875; /* Deep Gray-Purple */
+  background-color: colors.$header-background-color !important; /* Darkened Blue-Gray */
+  border-bottom: 2px solid colors.$link-hover-color; /* Deep Gray-Purple */
 }
 
 .navbar-brand, .nav-link {
-  color: #E6E6FA !important; /* Soft Lavender */
+  color: colors.$text-color !important; /* Soft Lavender */
   text-decoration: none;
 }
 
 .nav-link:hover, .navbar-brand:hover {
-  color: #9A8C98 !important; /* Muted Mauve */
+  color: colors.$link-color !important; /* Muted Mauve */
   transition: color 0.3s ease-in-out;
 }
 
 /* Footer */
 .footer {
-  background-color: #222547; /* Darkened Blue-Gray */
-  color: #E6E6FA;
+  background-color: colors.$header-background-color; /* Darkened Blue-Gray */
+  color: colors.$text-color;
   padding: 20px 0;
   text-align: center;
 }

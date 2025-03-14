@@ -1,13 +1,15 @@
+@use './colors' as colors;
+
 /* Buttons */
 .btn-primary {
-  background-color: #B5838D !important; /* Warm Dusty Rose */
-  border-color: #B5838D !important;
-  color: #1B1F3B !important; /* Contrast against background */
+  background-color: colors.$primary-color !important; /* Warm Dusty Rose */
+  border-color: colors.$primary-color !important;
+  color: colors.$button-contrast-color !important; /* Contrast against background */
 }
 
 .btn-primary:hover {
-  background-color: #6D6875 !important; /* Deep Gray-Purple */
-  border-color: #6D6875 !important;
+  background-color: colors.$link-hover-color !important; /* Deep Gray-Purple */
+  border-color: colors.$link-hover-color !important;
   transition: background-color 0.3s ease-in-out;
 }
 

@@ -1,15 +1,17 @@
+@use './colors' as colors;
+
 /* Cards */
 .card {
-  background-color: #2A2D43 !important; /* Darkened Blue-Gray */
-  color: #E6E6FA !important; /* Soft Lavender */
-  border: 1px solid #6D6875; /* Deep Gray-Purple */
+  background-color: colors.$background-color !important; /* Darkened Blue-Gray */
+  color: colors.$text-color !important; /* Soft Lavender */
+  border: 1px solid colors.$link-hover-color; /* Deep Gray-Purple */
 }
 
 .card-link {
-  color: #9A8C98; /* Muted Mauve */
+  color: colors.$link-color; /* Muted Mauve */
 }
 
 .card-link:hover {
-  color: #6D6875; /* Deep Gray-Purple */
+  color: colors.$link-hover-color; /* Deep Gray-Purple */
   transition: color 0.3s ease-in-out;
 }

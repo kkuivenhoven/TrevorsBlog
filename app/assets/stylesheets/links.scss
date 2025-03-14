@@ -1,11 +1,14 @@
+@use './colors' as colors;
+
 /* Links */
 a {
-  color: #9A8C98; /* Muted Mauve */
+  color: colors.$link-color; /* Muted Mauve */
   text-decoration: none;
 }
 
 a:hover {
-  color: #6D6875; /* Deep Gray-Purple */
-  transition: color 0.3s ease-in-out;
+  color: colors.$link-hover-color; /* Deep Gray-Purple */
+  transition: color 0.3s ease;
+  text-decoration: none;
 }
 

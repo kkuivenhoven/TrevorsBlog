@@ -1,4 +1,3 @@
-// @import 'colors' as colors;
 @use '../colors' as colors;
 
 .post-title {
@@ -85,13 +84,14 @@
 .blog-sources {
   margin-top: 2rem;
   padding: 1rem;
-  background: colors.$background-color; /* Darkened Blue-Gray for depth */
-  border-left: 4px solid colors.$primary-color; /* Warm Dusty Rose accent */
+  background: colors.$background-color; 
+  border-left: 4px solid colors.$primary-color; 
   border-radius: 8px;
+  text-decoration: none;
 }
 
 .blog-sources h3 {
-  color: colors.$primary-color; /* Warm Dusty Rose */
+  color: colors.$primary-color; 
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
@@ -106,12 +106,11 @@
 }
 
 .blog-sources a { 
-  color: colors.$link-color; /* Muted Mauve */
+  color: colors.$link-color; 
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .blog-sources a:hover {
-  color: colors.$link-hover-color; /* Deep Gray-Purple */
-  text-decoration: underline;
+  color: colors.$link-hover-color; 
 }
