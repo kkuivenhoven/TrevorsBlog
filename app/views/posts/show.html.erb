@@ -1,13 +1,13 @@
 <header class="container text-center my-5">
 	<h1 class="post-title">
-		<%= @post["title"] %>
+		<b><%= @post["title"] %></b>
 	</h1>
 	<p class="lead">
 		<% parsed_date = Date.parse(@post["date_published"]) %>
-	    <% formatted_date = parsed_date.strftime("%B #{parsed_date.day}#{ordinal_suffix(parsed_date.day)}, %Y") %>
+	    <% formatted_date = parsed_date.strftime("%B #{parsed_date.day.ordinalize.sub(/(st|nd|rd|th)$/, ordinal_suffix(parsed_date.day))}, %Y") %>
 		<%= formatted_date.html_safe %>
     </p>
-	<p class="lead" style="font-size: 14px; opacity: 0.75;">
+	<p class="lead" style="font-size: 18px; opacity: 0.75;">
 		<%= @post["excerpt"] %>
     </p>
 </header>

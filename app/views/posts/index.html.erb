@@ -17,9 +17,7 @@
 
 <header class="container text-center my-5">
 	<h1 class="page-title">Blog Posts</h1>
-<!--/header-->
 
-<!--div class="container text-center"-->
 	<center>
 		<%= form_with(url: posts_index_path, method: "get", local: true, id: 'search_form') do %>
 			<div class="search-container">
@@ -31,7 +29,6 @@
 			</div>
 		<% end %>
 	</center>
-<!--/div-->
 </header>
 
 <div class="container py-5">

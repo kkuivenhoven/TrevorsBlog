@@ -1,11 +1,13 @@
 /* Styling pertaining to posts/index.html.erb */
+// @import 'colors' as colors;
+@use '../colors' as colors;
 
 .card-title {
-  color: #B5838D; /* Warm Dusty Rose */
+  color: colors.$primary-color; /* Warm Dusty Rose */
 }
 
 #search_form {
-  background-color: #0A192F !important;
+  background-color: colors.$form-background !important;
   padding: 20px;
   display: flex;
   justify-content: center;

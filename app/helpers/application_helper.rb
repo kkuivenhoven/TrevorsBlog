@@ -1,13 +1,10 @@
 module ApplicationHelper
 
+=begin
 	def ordinal_suffix(day)
-		suffix = case day % 10
-				 when 1 then 'ST'
-				 when 2 then 'ND'
-				 when 3 then 'RD'
-				 else 'TH'
-				end
-		"<span class='ordinal'>#{suffix}</span>".html_safe
+	  suffix = day.ordinalize[-2..-1] # Get the suffix (st, nd, rd, th)
+	  "<span class='ordinal'>#{suffix}</span>" # Wrap the suffix in a span with a class
 	end
+=end
 
 end

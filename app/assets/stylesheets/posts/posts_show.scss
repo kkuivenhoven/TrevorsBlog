@@ -1,7 +1,19 @@
+// @import 'colors' as colors;
+@use '../colors' as colors;
+
+.post-title {
+  font-family: 'Roboto', sans-serif; /* Modern and clean font */
+  font-size: 3rem; /* Larger font size for the header */
+  font-weight: bold;
+  color: colors.$primary-color; /* Dark color for text */
+  text-align: center;
+  margin-bottom: 15px; /* Space below the title */
+}
+
 /* Post Content */
 .post-content {
-  background: #2A2D43; /* Darkened Blue-Gray */
-  color: #E6E6FA; /* Soft Lavender */
+  background: colors.$background-color; /* Darkened Blue-Gray */
+  color: colors.$text-color; /* Soft Lavender */
   padding: 1.5rem;
   border-radius: 8px;
   font-size: 1.2rem;
@@ -27,7 +39,7 @@
 .back-link {
   display: inline-block;
   text-decoration: none;
-  background-color: #B5838D; /* Warm Dusty Rose */
+  background-color: colors.$primary-color; /* Warm Dusty Rose */
   color: #1B1F3B;
   padding: 10px 20px;
   border-radius: 5px;
@@ -38,7 +50,7 @@
 }
 
 .back-link:hover {
-  background-color: #6D6875; /* Deep Gray-Purple */
+  background-color: colors.$link-hover-color; /* Deep Gray-Purple */
   text-decoration: none;
 }
 
@@ -61,16 +73,25 @@
   vertical-align: super;
 }
 
+/* Date Formatting */
+.ordinal-suffix {
+  font-size: 0.6em;
+  position: relative;
+  top: -0.2em; /* Adjusted to be slightly raised */
+  vertical-align: top;
+  opacity: 0.75; /* 75% opacity */
+}
+
 .blog-sources {
   margin-top: 2rem;
   padding: 1rem;
-  background: #2A2D43; /* Darkened Blue-Gray for depth */
-  border-left: 4px solid #B5838D; /* Warm Dusty Rose accent */
+  background: colors.$background-color; /* Darkened Blue-Gray for depth */
+  border-left: 4px solid colors.$primary-color; /* Warm Dusty Rose accent */
   border-radius: 8px;
 }
 
 .blog-sources h3 {
-  color: #B5838D; /* Warm Dusty Rose */
+  color: colors.$primary-color; /* Warm Dusty Rose */
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
@@ -85,12 +106,12 @@
 }
 
 .blog-sources a { 
-  color: #9A8C98; /* Muted Mauve */
+  color: colors.$link-color; /* Muted Mauve */
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .blog-sources a:hover {
-  color: #6D6875; /* Deep Gray-Purple */
+  color: colors.$link-hover-color; /* Deep Gray-Purple */
   text-decoration: underline;
 }

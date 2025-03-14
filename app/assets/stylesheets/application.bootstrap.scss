@@ -1,6 +1,9 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
-@import 'custom_three';
+@import 'buttons';
+@import 'cards';
+@import 'layout';
+@import 'links';
+@import 'pages/about';
 @import 'posts/posts_index';
 @import 'posts/posts_show';
-@import 'pages/about';
