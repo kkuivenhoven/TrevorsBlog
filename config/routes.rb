@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'decision_tree/index', to: 'decision_tree#index'
+  post 'decision_tree/next_question', to: 'decision_tree#next_question', as: :decision_tree
+  get 'decision_tree/:id', to: 'decision_tree#show', as: :decision_tree_show
 
   get "posts/index"
   # get 'posts/:id', to: 'posts#show', as: 'post'

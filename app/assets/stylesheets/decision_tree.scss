@@ -1,0 +1,194 @@
+@use './colors' as colors;
+
+/* Container for the entire decision tree */
+.decision-tree-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: colors.$background-color;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Title styling */
+.decision-tree-title {
+  text-align: center;
+  color: colors.$text-color;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Style for the question card */
+.question-card {
+  background-color: colors.$form-background;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+/* Style for question text */
+.question-text {
+  font-size: 1.25rem;
+  color: colors.$primary-color;
+  margin-bottom: 15px;
+}
+
+/* Option cards */
+.option-card {
+  background-color: colors.$button-contrast-color;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.option-card:hover {
+  background-color: colors.$header-background-color;
+  transform: translateY(-5px);
+}
+
+/* Label for the option */
+.option-label {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   cursor: pointer;
+   font-size: 1rem;
+   color: colors.$text-color;
+}
+
+/* Radio button customization */
+.option-radio {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid colors.$link-color;
+  border-radius: 50%;
+  background-color: colors.$button-contrast-color;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Checked state */
+.option-radio:checked {
+  border-color: colors.$link-hover-color;
+}
+
+/* Hover effect */
+.option-radio:hover {
+  border-color: colors.$link-hover-color;
+  background-color: colors.$header-background-color;
+}
+
+/* Inner dot for selected state */
+.option-radio:checked::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: colors.$link-color;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Option explanation */
+.explanation {
+  font-size: 1rem;
+  font-weight: bold;
+  color: colors.$text-color;
+  padding: 10px;
+  border-left: 4px solid colors.$accent-color;
+  background: rgba(colors.$accent-color, 0.2);
+  border-radius: 8px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Submit button */
+.submit-btn {
+  background-color: colors.$link-color;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 20px auto;
+}
+
+.submit-btn:hover {
+  background-color: colors.$link-hover-color;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .decision-tree-container {
+    padding: 15px;
+  }
+
+  .question-text {
+    font-size: 1.1rem;
+  }
+
+  .option-card {
+    padding: 12px;
+  }
+
+  .submit-btn {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+.choices-container {
+    font-family: 'Arial', sans-serif;
+    background: colors.$background-color;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.choice-box {
+    background: colors.$form-background;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 5px solid colors.$accent-color;
+}
+
+.answer-question-text {
+    color: colors.$primary-color;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.answer-list {
+    list-style: none;
+    padding-left: 15px;
+}
+
+.choice-text {
+    color: colors.$link-color;
+    font-weight: bold;
+}
+
+.explanation-text {
+    color: colors.$text-color;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 10px;
+    border-left: 4px solid colors.$accent-color;
+    background: rgba(colors.$accent-color, 0.2);
+    border-radius: 8px;
+    margin-top: 5px;
+    display: block;
+}

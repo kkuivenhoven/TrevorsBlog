@@ -1,0 +1,96 @@
+[
+  { 
+	"decription": "In this case, you are a McDonalds employee who just received a very large promotion. You've been put in charge of the McDonald's monopoly for the region for McDonald's."
+  },
+  {
+    "id": 1,
+    "question": "You receive an email from a bank asking you to verify your account details. What do you do?",
+    "options": [
+      {
+        "text": "Click the link and enter my details.",
+        "next_id": 2,
+        "explanation": "Bad choice! This could be a phishing attempt."
+      },
+      {
+        "text": "Check the sender's email and call the bank directly.",
+        "next_id": 3,
+        "explanation": "Good choice! Verifying through official channels helps prevent fraud."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "The webpage looks exactly like your bank's site. What now?",
+    "options": [
+      {
+        "text": "Proceed with entering my details.",
+        "next_id": "end",
+        "explanation": "Oh no! You’ve fallen for a phishing scam.",
+		"end_id": "end_1"
+      },
+      {
+        "text": "Double-check the URL and see if it's HTTPS.",
+        "next_id": 4,
+        "explanation": "Smart move! Suspicious URLs often indicate fraud."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "The bank confirms they never sent the email. What's your next step?",
+    "options": [
+      {
+        "text": "Report it as phishing and warn others.",
+        "next_id": "end",
+        "explanation": "Well done! You've prevented potential fraud.",
+		"end_id": "end_2"
+      },
+      {
+        "text": "Delete the email and ignore it.",
+        "next_id": "end",
+        "explanation": "Be cautious! Even ignoring it may expose you to future risks.",
+		"end_id": "end_3"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "The URL is HTTPS, but something still feels off. What do you do?",
+    "options": [
+      {
+        "text": "Enter my information anyway. It's probably fine.",
+        "next_id": "end",
+        "explanation": "Bad choice! Fraudsters often use fake HTTPS sites.",
+		"end_id": "end_4"
+      },
+      {
+        "text": "Call the bank and verify the website before proceeding.",
+        "next_id": 5,
+        "explanation": "Good choice! Confirming the website’s legitimacy prevents fraud."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "The bank confirms the website is legitimate. Now, do you proceed with entering your details?",
+    "options": [
+      {
+        "text": "Proceed with caution, but enter my information.",
+        "next_id": "end",
+        "explanation": "Always be cautious! Fraudulent sites may look legitimate.",
+		"end_id": "end_5"
+      },
+      {
+        "text": "Decline and report the site to the bank.",
+        "next_id": "end",
+        "explanation": "Excellent choice! Reporting helps prevent fraud and protects others.",
+		"end_id": "end_6"
+      }
+    ]
+  },
+  {
+    "id": "end",
+    "question": "Scenario Completed!",
+    "options": []
+  }
+]
