@@ -17,6 +17,7 @@
 			</div>
 		  <% end %>
 
+		  <%= hidden_field_tag :file_name, File.basename(@file_name, ".json") %>
 		  <%= hidden_field_tag :current_id, @current_question["id"] %>
 		  <%= hidden_field_tag "choices_log[#{@current_question['question']}]", params[:selected_option] if params[:selected_option].present? %>
 		  <%= submit_tag "Next", class: "submit-btn" %>

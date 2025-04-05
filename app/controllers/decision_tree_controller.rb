@@ -1,17 +1,20 @@
 class DecisionTreeController < ApplicationController
-  before_action :setup_questions_from_json, only: [:index, :next_question]
+  before_action :setup_questions_from_json, only: [:show, :next_question]
 
   def index
-    # Start at the first question
-    @current_question = find_question_by_id(1)
 	session.delete(:choices_log)
 	session.delete(:choices)
+	
+	@json_files = Dir.glob(Rails.root.join('app/assets/data/*.json'))
   end
 
   def show
+    @current_question = find_question_by_id(1)
+    @file_name = params[:file_name] + '.json'
   end
 
   def next_question
+    @file_name = params[:file_name] + '.json'
 	selected_data = JSON.parse(params[:selected_option])
 	current_id = params[:current_id].to_i
 	if selected_data['next_id'].to_i != 0 
@@ -21,7 +24,7 @@ class DecisionTreeController < ApplicationController
 	end
 
 	# Check if it's the end of the decision tree
-	if !selected_next_id.is_a?(Integer)
+	if !selected_next_id.is_a?(Integer) || selected_next_id.is_a?(Float)
 		tmpArray = [current_id, selected_next_id]
 		session[:choices] << tmpArray
 		@result = "You've reached the end of the decision tree."
@@ -35,7 +38,7 @@ class DecisionTreeController < ApplicationController
 			@selectedQuestions << find_question_by_id(choice)
 			@tmpQuestion = find_question_by_id(choice[0])
 			@tmpAnswerSelection = find_option_by_next_id(@tmpQuestion, choice[1])
-			if !choice[1].is_a?(Integer) && choice[1].include?("end")
+			if !choice[1].is_a?(Integer) && !choice[1].is_a?(Float) && choice[1].include?("end")
 				@end_value = find_question_by_end_id(choice[1])
 			end
 			if @end_value.nil?
@@ -73,7 +76,8 @@ class DecisionTreeController < ApplicationController
 	  tmpArray = [current_id, selected_next_id.to_i]
 	  session[:choices] << tmpArray
 	end
-	render 'index'
+	# render 'index'
+	render 'show'
   end
 
   def end
@@ -82,10 +86,16 @@ class DecisionTreeController < ApplicationController
 
   private
 
+  # def setup_questions_from_json(file_name)
   def setup_questions_from_json
-    file_path = Rails.root.join('app/assets/data/fraud_scenarios.json')
-    file_content = File.read(file_path)
-    @questions = JSON.parse(file_content)
+    file_name = params[:file_name] + '.json'
+    file_path = Rails.root.join('app/assets/data', file_name)
+    if File.exist?(file_path)
+      file_content = File.read(file_path)
+      @questions = JSON.parse(file_content)
+    else
+      render plain: "File not found", status: :not_found
+    end
   end
 
   def find_question_by_id(id)

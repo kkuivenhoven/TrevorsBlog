@@ -1,0 +1,193 @@
+[
+  {
+    "id": 1,
+    "question": "Your name is Uncle Jerry, and you work for Simon Marketing. As Director of Security, you’re asked to oversee the distribution and security of McDonald’s Monopoly game pieces—prizes worth millions are in your hands. Do you take the job knowing the temptation ahead, or decline to avoid the risk?",
+    "options": [
+      {
+        "text": "Take the job.",
+        "next_id": 2,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, stepping into a role where the lure of million-dollar game pieces could test your honesty. The FBI isn’t watching yet, but any misstep could put you on their radar."
+      },
+      {
+        "text": "Decline the job.",
+        "next_id": "end",
+        "explanation": "Your name is Uncle Jerry, and you wisely declined the job at Simon Marketing, steering clear of the dangerous temptation those game pieces represent. The FBI has no reason to investigate you—staying out keeps you safe and free.",
+		"end_id": "end_1"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "A supplier accidentally sends you tamper-proof seals that could let you secretly steal game pieces. This is a chance to break the law—do you use them, or report the error to stay honest?",
+    "options": [
+      {
+        "text": "Use them to steal.",
+        "next_id": 3,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, then chose to use the seals to steal game pieces, starting down a criminal path. The FBI isn’t aware yet, but if those stolen pieces surface, they’ll start asking questions."
+      },
+      {
+        "text": "Report the error.",
+        "next_id": 3.1,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing but reported the seals, choosing integrity over greed. The FBI stays out of your life for now, but future choices could still draw their attention."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "You’re at an airport with an auditor nearby, delivering game pieces you’ve already tampered with. Stealing more would be reckless—do you sneak into the bathroom to swap winners, or keep them safe like you’re supposed to?",
+    "options": [
+      {
+        "text": "Swap winners in the bathroom.",
+        "next_id": 4,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, used the seals to steal, and swapped winners in an airport bathroom, risking everything. The FBI could catch on if a fake winner’s claim looks fishy—they’re always watching for patterns."
+      },
+      {
+        "text": "Keep them safe.",
+        "next_id": "end",
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, used the seals to steal, but kept the pieces safe at the airport, pulling back from more crime. The FBI could still investigate if those earlier stolen pieces surface—they’re relentless once they smell a scam.",
+		"end_id": "end_2"
+      }
+    ]
+  },
+  {
+    "id": 3.1,
+    "question": "You’re at an airport with an auditor nearby, delivering untampered game pieces after reporting the seals. Do you tamper with them now despite your earlier honesty, or keep doing your job properly?",
+    "options": [
+      {
+        "text": "Tamper with them now.",
+        "next_id": 4,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, reported the seals, but tampered with pieces at the airport, slipping into crime after a clean start. The FBI could spot this if a winner’s story doesn’t check out—they’re quick to notice inconsistencies."
+      },
+      {
+        "text": "Keep doing your job.",
+        "next_id": "end",
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, reported the seals, and kept doing your job at the airport, staying honest through and through. The FBI has no cause to look your way—you’ve dodged every trap and kept your freedom.",
+		"end_id": "end_3"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "You’ve stolen $1 million pieces, but claiming them yourself would get you caught. Do you rope in a mobster like Gennaro Colombo to distribute them, or hide them and stop now?",
+    "options": [
+      {
+        "text": "Recruit a mobster.",
+        "next_id": 5,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, and recruited a mobster like Colombo, digging deeper into crime. The FBI might trace mob connections—organized crime always draws their eye."
+      },
+      {
+        "text": "Hide them and stop.",
+        "next_id": "end",
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, but hid them and stopped, trying to avoid disaster. The FBI could still investigate if those pieces ever show up—they’re experts at finding hidden loot.",
+		"end_id": "end_4"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Your mobster’s cashing in millions illegally from your stolen pieces. Expanding with more recruiters could spiral out of control—do you grow the scheme, or pull back while you can?",
+    "options": [
+      {
+        "text": "Grow the scheme.",
+        "next_id": 6,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, and grew the scheme with more recruiters, making it harder to hide. The FBI notices clusters of winners—they’ll start digging soon."
+      },
+      {
+        "text": "Pull back.",
+        "next_id": "end",
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, but pulled back, limiting the damage. The FBI might suspect something if a winner talks, but a small operation stays quieter.",
+		"end_id": "end_5"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Your scheme’s stolen over $20 million by 2000—greed’s taking over from your early theft. Do you keep rigging the game, or mail a piece to a hospital to cover your tracks?",
+    "options": [
+      {
+        "text": "Keep rigging the game.",
+        "next_id": 7,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, grew the scheme, and kept rigging the game, piling up crimes. The FBI’s analyzing winner data—your luck’s running out."
+      },
+      {
+        "text": "Mail a piece to a hospital.",
+        "next_id": 6.1,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, grew the scheme, and mailed a piece to a hospital, trying to throw off suspicion. The FBI’s starting to look at odd wins—your cover’s shaky."
+      }
+    ]
+  },
+  {
+    "id": 6.1,
+    "question": "In 2001, the FBI poses as a film crew interviewing winners, including that hospital piece you mailed—you’re under surveillance. Do you keep selling pieces and risk it all, or shut it down now?",
+    "options": [
+      {
+        "text": "Keep selling pieces.",
+        "next_id": 8,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, grew the scheme, mailed a hospital piece, and kept selling despite the FBI’s sting. The FBI’s recording every move and probing the hospital oddity—they’re closing in fast."
+      },
+      {
+        "text": "Shut it down now.",
+        "next_id": "end",
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, grew the scheme, mailed a hospital piece, and shut it down when the FBI got close, hoping to escape. The FBI’s digging into the hospital win and past claims—your cover’s thin and they’re not fooled.",
+		"end_id": "end_6"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "In 2001, the FBI poses as a film crew interviewing winners from your scam—you’re under surveillance. Do you keep selling pieces and risk it all, or shut it down now?",
+    "options": [
+      {
+        "text": "Keep selling pieces.",
+        "next_id": 8,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, grew the scheme, kept rigging the game, and kept selling pieces despite the FBI’s sting. The FBI’s recording every move—they’re building a case fast."
+      },
+      {
+        "text": "Shut it down now.",
+        "next_id": "end",
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, grew the scheme, kept rigging the game, and shut it down when the FBI got close, hoping to escape. The FBI’s still probing past wins—stopping late might not save you.",
+		"end_id": "end_7"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "The FBI delays payouts from your stolen pieces, and your recruiters panic on tapped phones—your scheme’s unraveling. Do you destroy evidence to hide, or keep going despite the danger?",
+    "options": [
+      {
+        "text": "Destroy evidence.",
+        "next_id": "end",
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, grew the scheme, [kept rigging/mailed a piece], kept selling despite the FBI, and destroyed evidence, desperately trying to dodge justice. The FBI’s wiretaps and financial trails are airtight—destruction delays them, but you’re still cornered.",
+		"end_id": "end_8"
+      },
+      {
+        "text": "Keep going.",
+        "next_id": 9,
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, grew the scheme, [kept rigging/mailed a piece], kept selling despite the FBI, and kept going, blind to the trap. The FBI’s got recordings and witnesses—they’re ready to strike."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "The FBI has proof—$24 million stolen since 1989 from your thefts. Crime doesn’t pay—do you cooperate and face the music, or flee and become a fugitive?",
+    "options": [
+      {
+        "text": "Cooperate and face the music.",
+        "next_id": "end",
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, grew the scheme, [kept rigging/mailed a piece], kept selling despite the FBI, kept going, and cooperated when caught. The FBI uses your confession to dismantle the ring—you’re sentenced to 37 months and owe $12.5 million, a harsh lesson in justice.",
+		"end_id": "end_9"
+      },
+      {
+        "text": "Flee and become a fugitive.",
+        "next_id": "end",
+        "explanation": "Your name is Uncle Jerry, and you took the job at Simon Marketing, [used/reported] the seals, tampered with pieces, recruited a mobster, grew the scheme, [kept rigging/mailed a piece], kept selling despite the FBI, kept going, and fled the country, choosing a fugitive’s life. The FBI launches a global manhunt, freezing your $2 million stash through offshore accounts—freedom’s fleeting when they’re this close.",
+		"end_id": "end_10"
+      }
+    ]
+  },
+  {
+    "id": "end",
+    "question": "Scenario Completed!",
+    "options": []
+  }
+]

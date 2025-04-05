@@ -1,53 +1,18 @@
 <header class="container text-center my-5">
-	<h1>Fraud Investigation Decision Tree</h1>
+	<h1>Fraud Case Analysis: Select a Decision Tree</h1>
 </header>
 
-<% if !@current_question.nil? %>
-	<div class="decision-tree-container">
-	  <h1 class="decision-tree-title">Fraud Investigation Decision Tree</h1>
-	  <div class="question-card">
-		<p class="question-text"><%= @current_question['question'] %></p>
-		<%= form_with url: decision_tree_path, method: :post, local: true, data: { turbo: false } do %>
-		  <% @current_question['options'].each do |option| %>
-			<div class="option-card">
-			  <label class="option-label">
-				<%= radio_button_tag :selected_option, { next_id: option["next_id"], end_id: option["end_id"] }.to_json, class: "option-radio" %>
-				<span class="option-text"><%= option['text'] %></span>
-			  </label>
-			</div>
-		  <% end %>
-
-		  <%= hidden_field_tag :current_id, @current_question["id"] %>
-		  <%= hidden_field_tag "choices_log[#{@current_question['question']}]", params[:selected_option] if params[:selected_option].present? %>
-		  <%= submit_tag "Next", class: "submit-btn" %>
-		<% end %>
-	  </div>
-	</div>
-<% else %>
-<div class="container">
-  <div class="decision-tree-container">
-	  <div class="choices-box">
-		<h2>Your Choices</h2>
-
-		<% if @ordered_hash.any? %>
-			<div class="choices-container">
-				<% @ordered_hash.each do |question, answers| %>
-					<div class="choice-box">
-						<h4 class="final-question-text"><%= question %></h4>
-						<ul class="answer-list">
-							<% answers.each do |answer| %>
-								<li>
-								<p><strong>Choice:</strong> <span class="choice-text"><%= answer[0]['text'] %></span></p>
-								<p><strong>Explanation:</strong> <span class="explanation-text"><%= answer[0]['explanation'] %></span></p>
-								</li>
-							<% end %>
-						</ul>
-					</div>
-				<% end %>
-			</div>
-		<% end %>
-    </div>
+<div class="container py-5">
+  <div class="row g-4"> <!-- Bootstrap grid with spacing -->
+    <% @json_files.each do |file| %>
+      <div class="col-md-4">
+        <div class="card p-4">
+          <h3 class="card-title"><b><%= format_file_title(file) %></b></h3>
+          <p class="card-description">
+          </p>
+		  <%= link_to 'Read More', decision_tree_show_path(file_name: File.basename(file, ".json")) %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
-<% end %>
-
