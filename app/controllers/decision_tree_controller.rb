@@ -26,6 +26,16 @@ class DecisionTreeController < ApplicationController
 	# Check if it's the end of the decision tree
 	if !selected_next_id.is_a?(Integer) || selected_next_id.is_a?(Float)
 		tmpArray = [current_id, selected_next_id]
+		if session[:choices].nil?
+		  session[:choices] ||= []
+		  session[:choices_log] ||= []
+		  @current_question = find_root_node_by_end_id(selected_next_id)
+		  session[:choices_log] << { 
+			question: @current_question['question'],
+			selected_option: @current_question['text'],
+			explanation: @current_question['explanation']
+		  }
+		end
 		session[:choices] << tmpArray
 		@result = "You've reached the end of the decision tree."
 	    @current_question = nil
@@ -119,6 +129,18 @@ class DecisionTreeController < ApplicationController
 
   def find_option_by_next_id(tmp_question, target_next_id)
 	tmp_question['options'].find { |option| option['next_id'] == target_next_id }
+  end
+
+  def find_root_node_by_end_id(end_id)
+	node = @questions.find do |node|
+		node["options"].any? { |option| option["end_id"] == end_id }
+	end
+	if node
+		node_without_options = node.reject { |key, _| key == "options" }
+		node_without_options
+	else
+		nil
+	end
   end
 
 end
