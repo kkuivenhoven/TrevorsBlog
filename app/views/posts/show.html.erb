@@ -1,3 +1,8 @@
+<style>
+	h5 {
+		font-weight: bold;
+	}
+</style>
 <header class="container text-center my-5">
 	<h1 class="post-title">
 		<b><%= @post["title"] %></b>
@@ -24,9 +29,16 @@
       <img src="<%= asset_path(@post["file_name"] + "/" + images[image_index]) %>" alt="Fraud Image" class="post-image">
       <% image_index += 1 %>
     <% else %>
-      <p style="text-indent: 20px;">
-		<%= segment.strip %>
-	  </p> <%# Otherwise, treat as text %>
+	  <% clean_segment = segment.gsub(/<br\s*\/?>/, '') %>
+	  <% if clean_segment.include?("<ul>") %>
+		<%= raw(clean_segment) %>
+	  <% elsif clean_segment.include?("<h5>") %>
+		<%= raw(clean_segment) %>
+	  <% else %>
+        <p style="text-indent: 20px;">
+		  <%= raw(clean_segment) %>
+	    </p> <%# Otherwise, treat as text %>
+	  <% end %>
     <% end %>
   <% end %>
 
