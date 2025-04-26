@@ -1,10 +1,10 @@
 <header class="container text-center my-5">
-	<h1>Fraud Investigation Decision Tree</h1>
+	<h1><%= format_file_title(@file_name) %></h1>
 </header>
 
 <% if !@current_question.nil? %>
 	<div class="decision-tree-container">
-	  <h1 class="decision-tree-title">Fraud Investigation Decision Tree</h1>
+	  <h1 class="decision-tree-title">Fraud Simulator</h1>
 	  <div class="question-card">
 		<p class="question-text"><%= @current_question['question'] %></p>
 		<%= form_with url: decision_tree_path, method: :post, local: true, data: { turbo: false } do %>
@@ -28,7 +28,7 @@
 <div class="container">
   <div class="decision-tree-container">
 	  <div class="choices-box">
-		<h2>Your Choices</h2>
+		<h2>Your Fraud Simulator Choices</h2>
 
 		<% if @ordered_hash.any? %>
 			<div class="choices-container">
