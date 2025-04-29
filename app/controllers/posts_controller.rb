@@ -11,9 +11,12 @@ class PostsController < ApplicationController
 	  {
 		title: json_data['title'],
 		content: json_data['content'],
+		date: Date.parse(json_data['date_published']),
 		file_name: File.basename(f, '.json') # Get the file name without the extension
 	  }
 	end
+
+	@files = @files.sort_by { |post| post[:date] }.reverse
 
 	# If a search term is provided, filter the posts
 	if params[:search].present?
