@@ -1,0 +1,11 @@
+hospital:
+  name: "Hospital Fraud"
+  prompt: "You are a healthcare fraud detection expert. Identify any fraud in the following scenario."
+
+phishing:
+  name: "Phishing Fraud"
+  prompt: "You are a cybersecurity expert who specializes in phishing scams. Evaluate the scenario for red flags."
+
+financial:
+  name: "Financial Fraud"
+  prompt: "You are a financial fraud analyst. Review this situation and look for potential fraudulent behavior."

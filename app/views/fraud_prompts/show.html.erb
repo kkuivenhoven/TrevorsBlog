@@ -1,0 +1,28 @@
+<header class="container text-center my-5">
+	<h1 class="post-title">Fraud Report</h1>
+	<p class="lead">Category: <%= @fraud_prompt.category.titleize %></p>
+	<p class="lead" style="font-size: 18px; opacity: 0.75;">Detailed breakdown and AI analysis of the scenario.</p>
+</header>
+
+<div class="post-content">
+	<div class="row g-4">
+		<div class="col-md-4">
+			<h3 style="color: #a3c293; font-weight: bold;">User input:</h3>
+			<p class="fs-5"><%= @fraud_prompt.user_input %></p>
+		</div>
+	</div>
+
+	<% if @fraud_prompt.result.present? %>
+		<div class="row g-4 mt-4">
+			<div class="col-12">
+				<h3 style="color: #a3c293; font-weight: bold;">AI Analysis</h3>
+				<p><%= simple_format(@fraud_prompt.result) %></p>
+			</div>
+		</div>
+	<% end %>
+	
+	<div class="mt-4 text-center">
+		<%= link_to "Back to List", fraud_prompts_path, class: "back-link btn btn-primary" %>
+	</div>
+</div>
+

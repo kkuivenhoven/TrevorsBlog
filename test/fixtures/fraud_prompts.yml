@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  fraud_type: MyString
+  user_input: MyText
+
+two:
+  user: two
+  fraud_type: MyString
+  user_input: MyText

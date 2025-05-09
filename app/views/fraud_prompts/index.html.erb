@@ -1,0 +1,105 @@
+<style>
+.table-container {
+  background-color: #1B1F3B;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
+}
+
+.fraud-table {
+  color: #222547;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+
+  th {
+    background-color: #2A2D43;
+    color: #E6E6FA;
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  td {
+    background-color: #2A2D43;
+    color: #E6E6FA;
+    padding: 0.75rem;
+    border-top: 1px solid #1B1F3B;
+  }
+
+  tr:first-child th:first-child {
+    border-top-left-radius: 12px;
+  }
+
+  tr:first-child th:last-child {
+    border-top-right-radius: 12px;
+  }
+
+  tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+  }
+
+  tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+  }
+}
+
+.fraud-table tr:hover {
+  background-color: #1B1F3B;
+}
+
+.fraud-table th {
+  color: #a3c293;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.fraud-table td {
+  color: #E6E6FA; 
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.fraud-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+</style>
+
+<header class="container text-center my-5">
+	<h1 class="post-title">My Fraud Reports</h1>
+	<p class="lead"><%= link_to "New Fraud Report Inquiry", new_fraud_prompt_path, class: "back-link btn btn-primary" %></p>
+	<p class="lead" style="font-size: 18px; opacity: 0.75;">All fraud inquiries made by you.</p>
+</header>
+
+<div class="container my-5">
+	<table class="fraud-table table table-hover">
+
+			<thead style="background-color: #6D6875; color: #E6E6FA;">
+				<tr>
+					<th scope="col">Category</th>
+					<th scope="col">User Input</th>
+					<th scope="col">Result</th>
+					<th scope="col">Created On</th>
+					<th scope="col">View</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @fraud_prompts.each do |prompt| %>
+					<tr>
+						<td><%= prompt.category.titleize %></td>
+						<td><%= truncate(prompt.user_input, length: 50) %></td>
+						<td><%= truncate(prompt.result, length: 50) %></td>
+						<td><%= prompt.created_at.strftime("%Y-%m-%d") %></td>
+						<td><%= link_to "View", fraud_prompt_path(prompt),
+								class: "btm btn-sm"
+							 %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+

@@ -45,6 +45,9 @@ gem "thruster", require: false
 gem 'byebug'
 gem 'net-pop', github: "ruby/net-pop"
 gem 'net-protocol', '0.2.2'
+gem 'devise'
+gem 'ruby-openai'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
