@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   resources :fraud_prompts, only: [:index, :show, :new, :create]
 
   # devise_for :users
+  get '/users', to: redirect('/users/sign_in')
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:index]
-  get '/users', to: redirect('/users/sign_in')
 
 =begin
   devise_for :users, controllers: {
