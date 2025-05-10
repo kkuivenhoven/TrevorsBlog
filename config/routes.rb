@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "users/index"
   get 'decision_tree/index', to: 'decision_tree#index'
   post 'decision_tree/next_question', to: 'decision_tree#next_question', as: :decision_tree
   get 'decision_tree/:file_name', to: 'decision_tree#show', as: 'decision_tree_show'
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
 
   # devise_for :users
   devise_for :users, controllers: { registrations: 'users/registrations' }
+  resources :users, only: [:index]
 
 =begin
   devise_for :users, controllers: {
