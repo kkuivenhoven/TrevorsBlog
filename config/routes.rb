@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # devise_for :users
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:index]
+  get '/users', to: redirect('/users/sign_in')
 
 =begin
   devise_for :users, controllers: {
