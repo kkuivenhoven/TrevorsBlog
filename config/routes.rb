@@ -11,7 +11,14 @@ Rails.application.routes.draw do
 
   resources :fraud_prompts, only: [:index, :show, :new, :create]
 
-  devise_for :users
+  # devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
+=begin
+  devise_for :users, controllers: {
+	registrations: 'users/registrations'
+  }
+=end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
