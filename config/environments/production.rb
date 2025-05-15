@@ -61,7 +61,8 @@ Rails.application.configure do
 
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { 
-	host: "mail.trevorbalthrop.com", 
+	# host: "mail.trevorbalthrop.com", 
+	host: "trevorbalthrop.com", 
 	protocol: "https" 
   }
 
@@ -70,6 +71,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.us-west-1.mailertogo.net",
     port: 587,
+    domain: 'mail.trevorbalthrop.com',
     user_name: ENV["MAILER_TO_GO_USERNAME"],
     password: ENV["MAILER_TO_GO_PASSWORD"],
     authentication: 'plain',
