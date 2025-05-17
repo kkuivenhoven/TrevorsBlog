@@ -99,8 +99,6 @@ Rails.application.configure do
 	  protocol: 'https'
 	}
 
-Rails.logger.info "SMTP user: #{ENV['MAILER_TO_GO_USERNAME'].present? ? 'present' : 'missing'}"
-Rails.logger.info "SMTP password: #{ENV['MAILER_TO_GO_PASSWORD'].present? ? 'present' : 'missing'}"
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
