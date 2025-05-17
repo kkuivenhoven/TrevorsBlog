@@ -13,8 +13,8 @@ Rails.application.configure do
   config.consider_all_requests_local = false
 
   # Turn on fragment caching in view templates.
-  config.action_controller.perform_caching = true
-  config.action_mailer.perform_deliveries = true
+  # config.action_controller.perform_caching = true
+  # config.action_mailer.perform_deliveries = true
 
   # Cache assets for far-future expiry since they are all digest stamped.
   config.public_file_server.headers = { "cache-control" => "public, max-age=#{1.year.to_i}" }
@@ -58,8 +58,9 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.raise_delivery_errors = true
 
+=begin
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { 
 	host: "trevorbalthrop.com", 
@@ -77,6 +78,26 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
+=end
+	config.action_mailer.perform_caching = false
+	config.action_mailer.perform_deliveries = true
+	config.action_mailer.raise_delivery_errors = true
+
+	config.action_mailer.delivery_method = :smtp
+	config.action_mailer.smtp_settings = {
+	  address:              'smtp.us-west-1.mailertogo.net',
+	  port:                 587,
+	  domain:               'mail.trevorbalthrop.com',
+	  user_name:            ENV['SMTP_USERNAME'],
+	  password:             ENV['SMTP_PASSWORD'],
+	  authentication:       'plain',
+	  enable_starttls_auto: true
+	}
+
+	config.action_mailer.default_url_options = {
+	  host: 'trevorsblog-462aff1a1aa0.herokuapp.com',
+	  protocol: 'https'
+	}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
