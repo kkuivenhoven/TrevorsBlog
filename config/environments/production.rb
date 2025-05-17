@@ -95,7 +95,7 @@ Rails.application.configure do
 	}
 
 	config.action_mailer.default_url_options = {
-	  host: 'trevorsblog-462aff1a1aa0.herokuapp.com',
+	  host: 'www.trevorbalthrop.com',
 	  protocol: 'https'
 	}
 
