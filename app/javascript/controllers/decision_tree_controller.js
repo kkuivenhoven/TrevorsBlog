@@ -1,9 +1,9 @@
 // app/javascript/controllers/your_custom_controller.js
-import { Controller } from "stimulus";
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
-    console.log("Stimulus controller connected!");
+    console.log("Decision tree controller connected");
   }
 
   handleClick() {

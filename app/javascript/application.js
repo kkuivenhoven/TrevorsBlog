@@ -2,7 +2,3 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import * as bootstrap from "bootstrap"
-import Rails from '@rails/ujs'
-
-// Turbo.session.drive = false // Optional: Disable Turbo for specific links or forms if needed.
-Rails.start()
