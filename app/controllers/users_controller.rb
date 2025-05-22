@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_admin
+  before_action :require_admin, only: [:index]
+  before_action :set_user, only: [:edit, :update]
 
   def index
 	@users = User.all
@@ -13,15 +14,11 @@ class UsersController < ApplicationController
   end
 
   def update
-	respond_to do |format|
-		if @user.update(user_params)
-			format.html { redirect_to @user, notice: 'User was successfully updated.' }
-			format.json { render :show, status: :ok, location: @user }
-		else
-			format.html { render :edit }
-			format.json { render json: @user.errors, status: :unprocessable_entity }
-		end
-	end
+	if @user.update(user_params)
+	  redirect_to root_path, notice: "Settings updated!"
+    else
+	  render :edit
+    end
   end
 
   private
@@ -31,7 +28,8 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		params.require(:user).permit(:role, :user_name)
+		# params.require(:user).permit(:user_name, :notify_on_fraud_simulator, :notify_on_blog_post)
+		params.require(:user).permit(:notify_on_fraud_simulator, :notify_on_blog_post)
 	end
 
     def require_admin
@@ -39,5 +37,6 @@ class UsersController < ApplicationController
 			redirect_to root_path, alert: "Admins only"
 		end
     end
+
 
 end

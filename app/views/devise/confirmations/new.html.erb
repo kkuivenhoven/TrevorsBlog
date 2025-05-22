@@ -1,16 +1,85 @@
-<h2>Resend confirmation instructions</h2>
+<style>
+.form-heading {
+  color: #E6E6FA;
+  margin-bottom: 1.5rem;
+}
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+.styled-form {
+  background-color: #0A192F;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+.form-label {
+  color: #E6E6FA;
+  font-weight: 500;
+  min-width: 100px;
+}
+
+.form-control {
+  background-color: #1B1F3B;
+  border: 1px solid #a3c293;
+  color: #E6E6FA;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+.form-control::placeholder {
+  color: #B5838D;
+}
+
+.btn-primary {
+  background-color: #a3c293;
+  color: #2A2D43;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 2rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #8caa7f;
+  color: #2A2D43;
+}
+</style>
+
+<header class="container text-center my-5">
+  <h1 class="page-title">Resend Confirmation</h1>
+</header>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card p-4 shadow-sm">
+        <h3 class="card-title text-center mb-4">Resend Confirmation Instructions</h3>
+
+        <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+
+          <!-- Error Messages -->
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="mb-3">
+            <%= f.label :email, class: "form-label" %>
+            <%= f.email_field :email,
+                  autofocus: true,
+                  autocomplete: "email",
+                  value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+                  class: "form-control",
+                  placeholder: "Enter your email" %>
+          </div>
+
+          <div class="d-grid gap-2">
+            <%= f.submit "Resend Instructions", class: "btn btn-primary btn-lg" %>
+          </div>
+
+        <% end %>
+
+        <div class="text-center mt-3">
+          <%= render "devise/shared/links" %>
+        </div>
+
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
