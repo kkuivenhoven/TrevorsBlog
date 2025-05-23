@@ -1,0 +1,11 @@
+<h1>Admin Dashboard</h1>
+
+<h3>Send Blog Post Notifications</h3>
+
+<% @posts.each do |post| %>
+	<div class="mb-3">
+		<%= post[:title] %>
+		<%= button_to "Notify Subscribers", send_notification_email_path(file_name: post[:file_name]), method: :post, class: "btn btn-sm btn-primary" %>
+	</div>
+<% end %>
+

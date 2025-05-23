@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "admin/dashboard", to: 'admin#dashboard', as: :admin_dashboard
   get 'decision_tree/index', to: 'decision_tree#index'
   post 'decision_tree/next_question', to: 'decision_tree#next_question', as: :decision_tree
   get 'decision_tree/:file_name', to: 'decision_tree#show', as: 'decision_tree_show'
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
   # get '/users', to: redirect('/users/sign_in')
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:index, :show, :edit, :update]
+
+  post 'pages/:file_name/send_notification_email', to: 'posts#send_notification_email', as: 'send_notification_email'
 
 =begin
   devise_for :users, controllers: {
