@@ -40,4 +40,8 @@ class PostsController < ApplicationController
     end
   end
 
+  def send_notification_email
+	file_name = params[:file_name]
+  end
+
 end
