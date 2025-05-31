@@ -13,7 +13,7 @@
 <% @decision_trees.each do |post| %>
 	<div class="mb-3">
 		<%= format_file_title(post) %>
-		<%= button_to "Notify Subscribers", decision_tree_send_notification_email_path(file_name: post), method: :post, class: "btn btn-sm btn-primary" %>
+		<%= button_to "Notify Subscribers", decision_tree_send_notification_email_path(file_name: File.basename(post, ".json")), method: :post, class: "btn btn-sm btn-primary" %>
 	</div>
 <% end %>
 
