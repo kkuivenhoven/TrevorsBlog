@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
 
   post 'posts/:file_name/send_notification_email', to: 'posts#send_notification_email', as: 'send_notification_email'
-  post 'decision_tree/:file_name/decision_tree_send_notification_email', to: 'decision_trees#decision_tree_send_notification_email', as: 'decision_tree_send_notification_email'
+  post 'decision_tree/:file_name/decision_tree_send_notification_email', to: 'decision_tree#decision_tree_send_notification_email', as: 'decision_tree_send_notification_email'
 
 =begin
   devise_for :users, controllers: {
