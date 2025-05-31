@@ -42,6 +42,13 @@ class PostsController < ApplicationController
 
   def send_notification_email
 	file_name = params[:file_name]
+	post = Post.find_by(file_name: file_name)
+	return head :not_found unless post
+
+	User.where(notify_blog_posts: true).find_each do |user|
+		NotificationMailer.blog_post_notification(user, post).deliver_now
+	end
+
 	head :ok
   end
 
