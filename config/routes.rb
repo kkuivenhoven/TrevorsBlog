@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:index, :show, :edit, :update]
 
-  post 'pages/:file_name/send_notification_email', to: 'posts#send_notification_email', as: 'send_notification_email'
+  post 'posts/:file_name/send_notification_email', to: 'posts#send_notification_email', as: 'send_notification_email'
 
 =begin
   devise_for :users, controllers: {
