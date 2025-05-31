@@ -1,5 +1,5 @@
 class NotificationMailer < ApplicationMailer
-  default from: "noreplay@mail.trevorbalthrop.com"
+  default from: "noreply@mail.trevorbalthrop.com"
 
   def fraud_simulator_notification(user, simulator)
 	@user = user
@@ -7,10 +7,17 @@ class NotificationMailer < ApplicationMailer
 	mail(to: @user.email, subject: "New Fraud Simulator Available!")
   end
 
-  def blog_post_notification(user, post)
+  def blog_post_notification(user, file_name)
 	@user = user
-	@blog_post = post
-	mail(to: @user.email, subject: "New Blog Post Published!")
+	@blog_post = file_name
+	filename = file_name + '.json'
+	file_path = Rails.root.join('app/assets/blog_posts', filename)
+
+	if File.exist?(file_path)
+		raw_content = File.read(file_path)
+		@blog_post = JSON.parse(raw_content)
+		mail(to: @user.email, subject: "Trevor's New Blog Post!")
+	end
   end
 
 end
