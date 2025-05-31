@@ -1,1 +1,22 @@
-<h1>New Fraud Simulator: </h1>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    </head>
+    <body style="font-family: sans-serif; background-color: #f8f9fa; padding: 20px;">
+        <div style="max-width: 600px; margin: auto; background: white; border-radius: 6px; padding: 30px;">
+            <h2 style="color: #333333;">New Blog Post Published</h2>
+            <p>Hi there!</p>
+            <p>Check out my latest fraud simulator: <strong><%= format_file_title(@simulator) %></strong>
+            <p>Check it out here: 
+                <a href="<%= decision_tree_show_path((file_name: @simulator) %>" style="color: #007bff;">
+                    <%= decision_tree_show_path(@simulator) %>
+                </a>
+            </p>
+
+            <p>Thank you,</p>
+            <p>Trevor Balthrop</p>
+        </div>
+    </body>
+</html>
+
+
