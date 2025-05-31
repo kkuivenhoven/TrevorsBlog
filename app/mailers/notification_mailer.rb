@@ -9,7 +9,6 @@ class NotificationMailer < ApplicationMailer
 
   def blog_post_notification(user, file_name)
 	@user = user
-	@blog_post = file_name
 	filename = file_name + '.json'
 	file_path = Rails.root.join('app/assets/blog_posts', filename)
 
