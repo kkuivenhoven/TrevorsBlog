@@ -42,9 +42,8 @@ class PostsController < ApplicationController
 
   def send_notification_email
 	file_name = params[:file_name]
-
 	User.where(notify_blog_posts: true).find_each do |user|
-		NotificationMailer.blog_post_notification(user, post).deliver_now
+		NotificationMailer.blog_post_notification(user, file_name).deliver_now
 	end
 
 	head :ok
