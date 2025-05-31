@@ -143,4 +143,13 @@ class DecisionTreeController < ApplicationController
 	end
   end
 
+  def decision_tree_send_notification_email
+	file_name = params[:file_name]
+	User.where(notify_fraud_simulators: true).find_each do |user|
+		NotificationMailer.fraud_simulator_notification(user, file_name).deliver_now
+	end
+
+	head :ok
+  end
+
 end
