@@ -94,6 +94,14 @@ class DecisionTreeController < ApplicationController
     render plain: "Scenario Completed!"
   end
 
+  def decision_tree_send_notification_email
+	file_name = params[:file_name]
+	User.where(notify_fraud_simulators: true).find_each do |user|
+		NotificationMailer.fraud_simulator_notification(user, file_name).deliver_now
+	end
+	head :ok
+  end
+
   private
 
   # def setup_questions_from_json(file_name)
@@ -141,15 +149,6 @@ class DecisionTreeController < ApplicationController
 	else
 		nil
 	end
-  end
-
-  def decision_tree_send_notification_email
-	file_name = params[:file_name]
-	User.where(notify_fraud_simulators: true).find_each do |user|
-		NotificationMailer.fraud_simulator_notification(user, file_name).deliver_now
-	end
-
-	head :ok
   end
 
 end
