@@ -9,7 +9,7 @@
             <p>Check out my latest fraud simulator: <strong><%= format_file_title(File.basename(@simulator, ".json")) %></strong>
             <p>Check it out here: 
                 <a href="<%= Rails.application.routes.url_helpers.decision_tree_show_path(file_name: File.basename(@simulator, ".json"), host: 'www.trevorbalthrop.com') %>" style="color: #007bff;">
-                    <%= Rails.application.routes.url_helpers.decision_tree_show_path(file_name: File.basename(@simulator), host: 'www.trevorbalthrop.com') %>
+					<%= format_file_title(File.basename(@simulator, ".json")) %>
                 </a>
             </p>
             <p>Thank you,</p>
