@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   BAD_IP_RANGES = [
-	IPAddr.new('114.119.0.0/16') # Huawei Cloud Service - China - suspicious bot activity
-	, IPAddr.new('103.136.220.0/24') # HostBangla - Bangladesh - suspicious bot activity
+	IPAddr.new('114.119.0.0/16'), # Huawei Cloud Service - China - suspicious bot activity
+	IPAddr.new('103.136.220.0/24') # HostBangla - Bangladesh - suspicious bot activity
 	# Can add more CIDR ranges or specific IPs id needed
   ]
 
