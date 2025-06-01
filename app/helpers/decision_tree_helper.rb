@@ -1,5 +1,6 @@
 module DecisionTreeHelper
 
+=begin
 	def format_file_title(file)
 		file_name = File.basename(file, ".*")
 		formatted_name = file_name.tr("_", " ").titleize
@@ -10,5 +11,6 @@ module DecisionTreeHelper
 
 		formatted_name
 	end
+=end
 
 end
