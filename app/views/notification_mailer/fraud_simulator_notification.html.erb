@@ -6,13 +6,12 @@
         <div style="max-width: 600px; margin: auto; background: white; border-radius: 6px; padding: 30px;">
             <h2 style="color: #333333;">New Blog Post Published</h2>
             <p>Hi there!</p>
-            <p>Check out my latest fraud simulator: <strong><%= @simulator %></strong>
+            <p>Check out my latest fraud simulator: <strong><%= File.basename(@simulator, ".json") %></strong>
             <p>Check it out here: 
-                <a href="<%= decision_tree_show_path(file_name: @simulator) %>" style="color: #007bff;">
-                    <%= decision_tree_show_path(@simulator) %>
+                <a href="<%= Rails.application.routes.url_helpers.decision_tree_show_path(file_name: File.basename(@simulator, ".json"), host: 'www.trevorbalthrop.com') %>" style="color: #007bff;">
+                    <%= Rails.application.routes.url_helpers.decision_tree_show_path(file_name: File.basename(@simulator), host: 'www.trevorbalthrop.com') %>
                 </a>
             </p>
-
             <p>Thank you,</p>
             <p>Trevor Balthrop</p>
         </div>
