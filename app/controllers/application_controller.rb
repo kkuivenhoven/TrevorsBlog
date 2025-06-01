@@ -1,16 +1,19 @@
 class ApplicationController < ActionController::Base
-  before_action
+  require 'ipaddr'
+  before_action :block_bad_ips
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
-  BAD_IPS = [
-    '114.119.135.207',
-    '114.119.151.155',
-    # Add other suspicious IPs or IP ranges here
+  BAD_IP_RANGES = [
+	IPAddr.new('114.119.0.0/16') # Huawei Cloud Service - China - suspicious bot activity
+	, IPAddr.new('103.136.220.0/24') # HostBangla - Bangladesh - suspicious bot activity
+	# Can add more CIDR ranges or specific IPs id needed
   ]
 
   def block_bad_ips
-	if BAD_IPS.include?(request.remote_ip)
+	remote_ip = IPAddr.new(request.remote_ip)
+
+	if BAD_IP_RANGES.any? { |ip_range| ip_range.include?(remote_ip) }
 		head :forbidden
 	end
   end
