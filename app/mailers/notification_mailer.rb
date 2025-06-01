@@ -1,4 +1,5 @@
 class NotificationMailer < ApplicationMailer
+  helper :application
   default from: "noreply@mail.trevorbalthrop.com"
 
   def fraud_simulator_notification(user, simulator)
