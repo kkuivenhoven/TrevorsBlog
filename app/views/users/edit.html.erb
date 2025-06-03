@@ -113,12 +113,12 @@
 <div class="container my-5 text-light">
 	<div class="card p-5 rounded shadow" style="background-color: #0A192F; border: none;">
 		<h4>Please select your email preferences:</h4>
-		<%= form_with model: @user, data: { turbo: false }, url: user_registration_path, method: :put do |f| %>
+		<%= form_with model: @user, url: user_path(@user), method: :patch, data: { turbo: false } do |f| %>
 		  <div class="form-group-inline">
 			<label class="custom-checkbox">
 				<%= f.check_box :notify_fraud_simulators, class: "hidden-checkbox" %>
 				<span class="checkbox-style"></span>
-				Notify me of new blog posts
+				Notify me of new fraud simulators
 			</label>
 		  </div>
 
@@ -126,7 +126,7 @@
 			<label class="custom-checkbox">
 				<%= f.check_box :notify_blog_posts, class: "hidden-checkbox" %>
 				<span class="checkbox-style"></span>
-				Notify me of new fraud simulators
+				Notify me of new blog posts
 			</label>
 		  </div>
 

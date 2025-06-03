@@ -15,10 +15,12 @@ class UsersController < ApplicationController
 
   def update
 	if @user.update(user_params)
-	  redirect_to root_path, notice: "Settings updated!"
+	  flash[:notice] = "Settings successfully updated."
+	  redirect_to edit_user_path(@user), notice: "Settings updated!"
     else
-	  render :edit
-    end
+	  flash[:alert] = "There was a problem updating your settings."
+	  render :edit, status: :unprocessable_entity
+    end 
   end
 
   private
@@ -28,8 +30,7 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		# params.require(:user).permit(:user_name, :notify_on_fraud_simulator, :notify_on_blog_post)
-		params.require(:user).permit(:notify_on_fraud_simulator, :notify_on_blog_post)
+		params.require(:user).permit(:notify_fraud_simulators, :notify_blog_posts)
 	end
 
     def require_admin
@@ -37,6 +38,5 @@ class UsersController < ApplicationController
 			redirect_to root_path, alert: "Admins only"
 		end
     end
-
 
 end

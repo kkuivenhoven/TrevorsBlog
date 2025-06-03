@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :restrict_non_usa_ips
+  before_action :restrict_non_usa_ips, if: -> { Rails.env.production? }
   require 'ipaddr'
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
