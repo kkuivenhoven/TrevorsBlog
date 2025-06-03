@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   require 'ipaddr'
-  before_action :block_bad_ips
+  before_action :block_bad_ips, :restrict_non_usa_ips
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
@@ -14,6 +14,22 @@ class ApplicationController < ActionController::Base
 	remote_ip = IPAddr.new(request.remote_ip)
 
 	if BAD_IP_RANGES.any? { |ip_range| ip_range.include?(remote_ip) }
+		head :forbidden
+	end
+  end
+
+  def restrict_non_usa_ips
+	fowarded_ips = request.headers['X-Forwarded-For'];
+	user_ip = if forwarded_ips.present?
+				user_ip = forwarded_ips.split(',').first.strip
+			  else
+				user_ip = request.remote_ip
+			  end
+	
+	result = Geocoder.search(user_ip).first
+	country_code = result&.country_code
+
+	unless country_code == 'US'
 		head :forbidden
 	end
   end
