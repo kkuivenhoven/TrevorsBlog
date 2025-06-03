@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   def restrict_non_usa_ips
-	frowarded_ips = request.headers['X-Forwarded-For'];
+	forwarded_ips = request.headers['X-Forwarded-For']
 	user_ip = if forwarded_ips.present?
 				user_ip = forwarded_ips.split(',').first.strip
 			  else
