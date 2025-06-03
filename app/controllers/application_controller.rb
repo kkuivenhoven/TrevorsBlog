@@ -4,17 +4,19 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   def restrict_non_usa_ips
-	forwarded_ips = request.headers['X-Forwarded-For']
-	user_ip = if forwarded_ips.present?
-				user_ip = forwarded_ips.split(',').first.strip
-			  else
-				user_ip = request.remote_ip
-			  end
+    user_ip = if request.headers['X-Forwarded-For'].present?
+                request.headers['X-Forwarded-For'].split(',').first.strip
+              else
+                request.remote_ip
+              end
 	
-	result = Geocoder.search(user_ip).first
-	country_code = result&.country_code
+	location = Geocoder.search(user_ip).first
+	country_code = location&.country_code
 
-	unless country_code == 'US'
+	if country_code == 'US'
+		Rails.logger.info "IP #{user_ipd} from #{country_code}"
+	else
+		Rails.logger.info "Blocked IP: #{user_ip} from #{country_code}"
 		head :forbidden
 	end
   end
