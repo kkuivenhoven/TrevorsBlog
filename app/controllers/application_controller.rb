@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 	country_code = location&.country_code
 
 	if country_code == 'US'
-		Rails.logger.info "IP #{user_ipd} from #{country_code}"
+		Rails.logger.info "IP #{user_ip} from #{country_code}"
 	else
 		Rails.logger.info "Blocked IP: #{user_ip} from #{country_code}"
 		head :forbidden
