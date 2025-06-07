@@ -1,6 +1,6 @@
 class BlockBadBots
 	# Match known scrapers, CLI tools, script libraries
-	BAD_BOTS = /curl|wget|httpclient|libwww-perl|python|scrapy|go-http-client|node-fetch|axios|java/i
+	BAD_BOTS = /curl|wget|httpclient|libwww-perl|python|scrapy|go-http-client|node-fetch|axios|java|python-requests|httpie|puppeteer|headlesschrome/i
 
 	def initialize(app)
 		@app = app
