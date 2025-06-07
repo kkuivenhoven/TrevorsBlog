@@ -1,15 +1,19 @@
 <header class="container text-center my-5">
 	<h1>Fraud Simulator Cases</h1>
-	<p class="lead">Select a Decision Tree</p>
+	<p class="lead">Select a case below:</p>
 </header>
 
 <div class="container py-5">
   <div class="row g-4"> <!-- Bootstrap grid with spacing -->
     <% @json_files.each do |file| %>
+	  <% @json_data = find_matching_file(file) %>
       <div class="col-md-4">
         <div class="card p-4">
           <h3 class="card-title"><b><%= format_file_title(file) %></b></h3>
           <p class="card-description">
+			<% if @json_data != nil %>
+				<%= truncate(@json_data['excerpt'], length: 150, omission: '...') %>
+			<% end %>
           </p>
 		  <%= link_to 'Read More', decision_tree_show_path(file_name: File.basename(file, ".json")) %>
         </div>
