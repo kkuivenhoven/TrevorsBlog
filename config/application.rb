@@ -6,7 +6,7 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-require_relative '../lib/middleware/geoip_us_only'
+require_relative '../lib/middleware/geo_ip_us_only'
 
 module TrevorsBlog20
   class Application < Rails::Application
