@@ -1,11 +1,23 @@
 class DecisionTreeController < ApplicationController
   before_action :setup_questions_from_json, only: [:show, :next_question]
+  before_action :redirect_user, only: [:show, :next_question]
 
   def index
 	session.delete(:choices_log)
 	session.delete(:choices)
-	
 	@json_files = Dir.glob(Rails.root.join('app/assets/data/*.json'))
+	@json_files.each do |json_file| 
+		Dir.glob(Rails.root.join('app/assets/matching_data/*.json')).each do |file_path|
+			target_file_name = File.basename(json_file, ".*" + ".json")
+			file_content = File.read(file_path)
+			json_data = JSON.parse(file_content)
+			if target_file_name == json_data['file_name']
+				if json_data['is_visible'] == 0
+					@json_files.delete(json_file)
+				end
+			end
+		end
+	end
   end
 
   def show
@@ -148,6 +160,19 @@ class DecisionTreeController < ApplicationController
 		node_without_options
 	else
 		nil
+	end
+  end
+
+  def redirect_user
+	Dir.glob(Rails.root.join('app/assets/matching_data/*.json')).each do |file_path|
+		target_file_name = params[:file_name] + '.json'
+		file_content = File.read(file_path)
+		json_data = JSON.parse(file_content)
+		if target_file_name == json_data['file_name']
+			if json_data['is_visible'] == 0
+				redirect_to decision_tree_index_path
+			end
+		end
 	end
   end
 
