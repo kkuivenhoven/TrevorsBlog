@@ -12,11 +12,15 @@ class PostsController < ApplicationController
 		title: json_data['title'],
 		content: json_data['content'],
 		date: Date.parse(json_data['date_published']),
-		file_name: File.basename(f, '.json') # Get the file name without the extension
+		file_name: File.basename(f, '.json'), # Get the file name without the extension
+		is_visible: json_data['is_visible']
 	  }
 	end
 
-	@files = @files.sort_by { |post| post[:date] }.reverse
+	# @files = @files.sort_by { |post| post[:date] }.reverse
+	@files = @files.select { |file| file[:is_visible] == 1 }
+				   .sort_by { |file| file[:date] }
+				   .reverse
 
 	# If a search term is provided, filter the posts
 	if params[:search].present?
@@ -34,7 +38,12 @@ class PostsController < ApplicationController
     
     if File.exist?(file_path)
       raw_content = File.read(file_path)
-      @post = JSON.parse(raw_content)
+	  @raw_content = JSON.parse(raw_content)
+	  if (@raw_content['is_visible'] == 1)
+		  @post = JSON.parse(raw_content)
+	  else
+		redirect_to posts_index_path
+	  end
     else
       render file: 'public/404.html', status: :not_found
     end
