@@ -10,6 +10,9 @@ class GeoIpUsOnly
 
 		location = Geocoder.search(ip).first
 		country = location ? location.country_code : nil
+	
+		puts "[GeoIP Debug IP: #{ip}, Country: #{country}"
+		Rails.logger.info "[GeoIP Debug IP: #{ip}, Country: #{country}"
 
 		if country == 'US'
 			@app.call(env)
