@@ -1,5 +1,9 @@
 <header class="container text-center my-5">
 	<h1><%= format_file_title(@file_name) %></h1>
+	<% @json_data = find_matching_file(@file_name) %>
+	<p class="lead" style="font-size: 18px; opacity: 0.75;">
+		<%= @json_data["excerpt"] %>
+	</p>
 </header>
 
 <% if !@current_question.nil? %>
