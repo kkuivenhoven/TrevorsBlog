@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
 		Rails.logger.info "IP #{user_ip} from #{country_code}"
 	else
 		Rails.logger.info "Blocked IP: #{user_ip} from #{country_code}"
-		head :forbidden
+		# head :forbidden
+		raise ActiveRecord::RecordNotFound 
 	end
   end
 
