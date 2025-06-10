@@ -18,7 +18,8 @@ module Middleware
 			if local_ip?(ip) || country == 'US'
 				@app.call(env)
 			else
-				head :not_found
+				# head :not_found
+				return [404, { 'Content-Type' => 'text/html' }, []]
 			end
 		end
 
