@@ -1,7 +1,18 @@
+<style>
+	.equal-width-btn {
+		min-width: 200px;
+		width: 100%;
+	}
+</style>
+
 <header class="container text-center my-5">
     <h1 class="fw-bold text-uppercase">HEY THERE, I'M TREVOR</h1>
 	<p class="lead">Resourceful, Investigator, Multidisciplinary</p>
-	<%= link_to "Posts", posts_index_path, class: "btn btn-primary btn-lg" %>	
+
+	<div class="d-flex justify-content-center gap-3" style="max-width: 500px; margin: 0 auto;">
+		<%= link_to "Posts", posts_index_path, class: "btn btn-primary btn-lg equal-width-btn" %>	
+		<%= link_to "Fraud Simulators", decision_tree_index_path, class: "btn btn-primary btn-lg equal-width-btn" %>	
+	</div>
 </header>
 
 <div class="container py-5">
