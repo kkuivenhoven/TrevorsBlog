@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   get 'decision_tree/index', to: 'decision_tree#index'
   post 'decision_tree/next_question', to: 'decision_tree#next_question', as: :decision_tree
   get 'decision_tree/:file_name', to: 'decision_tree#show', as: 'decision_tree_show'
+  # get '/users/sign_up' => redirect('/users/sign_up/')
 
   get "posts/index"
+  get 'posts/new_upload', to: 'posts#new_upload'
+  post 'posts/upload', to: 'posts#upload'
+  post 'posts/:file_name/send_notification_email', to: 'posts#send_notification_email', as: 'send_notification_email'
   get 'posts/:file_name', to: 'posts#show', as: 'post'
 
   get "pages/home"
@@ -17,7 +21,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: [:index, :show, :edit, :update]
 
-  post 'posts/:file_name/send_notification_email', to: 'posts#send_notification_email', as: 'send_notification_email'
   post 'decision_tree/:file_name/decision_tree_send_notification_email', to: 'decision_tree#decision_tree_send_notification_email', as: 'decision_tree_send_notification_email'
 
 =begin

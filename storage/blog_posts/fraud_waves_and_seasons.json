@@ -1,0 +1,17 @@
+{
+	"is_visible": 1,
+	"file_name": "fraud_waves_and_seasons",
+	"date_published": "2025-03-07",
+	"title": "Fraud Waves & Seasons",
+	"excerpt": "This perspective resembles a wave, which explains why fraud often feels like it arrives in surges.",
+	"content": "Trends and patterns are inherent in most phenomena, and fraudulent activity is no exception. These elements weave together to form a broader picture that becomes increasingly clear over time. As an investigator attuned to such details, I find it nearly impossible to ignore the moments when a surge of fraud hits, triggering an urgent 'all hands on deck' response.  <br> Comparing fraudulent activity to weather patterns might sound metaphorical, but the data tells a different story. Much like the seasons with their harsh winters, cool springs, and blazing summers, fraud follows similar cycles. Yet, just as weather can surprise us with a chilly summer or a warm winter, fraudulent activity shifts in unexpected ways. The volume of fraud fluctuates constantly as perpetrators adapt their tactics to sustain their schemes. These shifts allow us to pinpoint when fraudsters pause to regroup or refine their methods.  <br> To illustrate this, let’s consider a simplified example of monthly fraud rates drawn from publicly available data. The Federal Trade Commission reported 2.6 million fraud cases in 2023. By averaging insights from multiple sources on 2023 fraud trends, I’ve created a month-by-month breakdown of these numbers. The first graph below uses this data to visualize fraud trends throughout 2023, based on the most reliable information available.  <br> img-tag <br> You’ll notice how fraudulent activity tends to slow in the summer, climb in the fall, peak during winter, and ease off in the spring. This pattern holds remarkably consistent across years and industries. Now, let’s view this data differently. If we split the year’s figures in half by month and reverse the order, the graph transforms.  <br> img-tag <br> This perspective resembles a wave, which explains why fraud often feels like it arrives in surges. Day-to-day observations may obscure these longer-term trends, but the wave-like pattern emerges clearly over time.  What’s striking is that this analysis uses only public data. Inside a company, internal fraud metrics could uncover even deeper insights, including sub-trends and outliers. Organizations can strengthen their defenses by building strategies around the seasonal nature of fraud.  <br> Understanding these cycles gives us an edge. By anticipating fraud spikes, such as those around the holiday season, we can plan investigations more effectively, allocate resources proactively, and reduce disruptions. Just as we prepare for a harsh winter, we can equip ourselves to handle predictable fraud surges, making high-risk periods more manageable for everyone involved.  <br>",
+	"images": ["fraud_rate_vs_month.png", "fraud_rate_vs_month_2.png"],
+	"sources": [
+		"https://www.ftc.gov/news-events/news/press-releases/2024/02/nationwide-fraud-losses-top-10-billion-2023-ftc-steps-efforts-protect-public",
+ 		"https://public.tableau.com/app/profile/federal.trade.commission/viz/ConsumerSentinel/Infographic",
+		"https://www.paymentsjournal.com/seasons-of-fraud-how-fraud-patterns-shift-throughout-the-year/",
+		"https://newsroom.transunion.com/digital-holiday-fraud-in-2023/"
+		]
+}
+
+
