@@ -5,7 +5,7 @@ class AdminController < ApplicationController
   def dashboard
 	# any data you want to show
     # List all available JSON files
-	@posts = Dir.glob(Rails.root.join('app/assets/blog_posts/*.json')).map do |f|
+	@posts = Dir.glob(Rails.root.join('storage', 'blog_posts', '*.json')).map do |f|
 	  # Read the file and parse the JSON
 	  file_content = File.read(f)
 	  json_data = JSON.parse(file_content)

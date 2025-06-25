@@ -6,12 +6,14 @@
 	<div class="mb-3">
 		<%= post[:title] %>
 		<%= button_to "Notify Subscribers", send_notification_email_path(file_name: post[:file_name]), method: :post, class: "btn btn-sm btn-primary" %>
+		<%= link_to "Edit Post", edit_post_path(file_name: post[:file_name]), class: "btn btn-sm btn-primary" %>
 	</div>
 <% end %>
 
 <h3>Send Decision Tree Notifications</h3>
 <% @decision_trees.each do |file| %>
 	<div class="mb-3">
+		<%= file %>
 		<%= format_file_title(file) %>
 		<%= button_to "Notify Subscribers", decision_tree_send_notification_email_path(file_name: File.basename(file, ".json")), method: :post, class: "btn btn-sm btn-primary" %>
 	</div>

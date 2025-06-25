@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_admin, only: [:new_upload, :upload]
+  before_action :require_admin, only: [:new_upload, :upload, :edit, :update]
 
   def index
     # List all available JSON files
@@ -55,7 +55,6 @@ class PostsController < ApplicationController
 	User.where(notify_blog_posts: true).find_each do |user|
 		NotificationMailer.blog_post_notification(user, file_name).deliver_now
 	end
-
 	head :ok
   end
 
@@ -65,15 +64,12 @@ class PostsController < ApplicationController
 
   def upload
 	uploaded_file = params[:json_file]
-
 	unless uploaded_file && uploaded_file.content_type == 'application/json'
 		flash[:alert] = 'Please upload a valid JSON file.'
 		return redirect_to posts_new_upload_path
 	end
-
 	filename = uploaded_file.original_filename
 	target_path = Rails.root.join('storage', 'blog_posts', filename)
-
 	begin
 		File.open(target_path, 'wb') do |file|
 			file.write(uploaded_file.read)
@@ -81,6 +77,27 @@ class PostsController < ApplicationController
 		flash[:notice] = "File uploaded successfully."
 	rescue => e
 		flash[:alert] = "Upload failed: #{e.message}"
+	end
+  end
+
+  def edit
+	@filename = params[:file_name]
+	file_path = Rails.root.join('storage', 'blog_posts', (@filename + '.json'))
+	if File.exist?(file_path)
+		@json_content = File.read(file_path)
+	else
+		redirect_to posts_index_path, alert: "File not found."
+	end
+  end
+
+  def update
+	@filename = params[:file_name]
+	file_path = Rails.root.join('storage', 'blog_posts', (@filename + '.json'))
+	begin 
+		File.write(file_path, params[:json_content])
+		redirect_to post_path(@filename), notice: "File updated successfully."
+	rescue => e
+		redirect_to edit_post_path(@filename), alert: "Failed to update file: #{e.message}"
 	end
   end
 

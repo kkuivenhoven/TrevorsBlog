@@ -6,10 +6,17 @@ Rails.application.routes.draw do
   # get '/users/sign_up' => redirect('/users/sign_up/')
 
   get "posts/index"
-  get 'posts/new_upload', to: 'posts#new_upload'
-  post 'posts/upload', to: 'posts#upload'
+  get 'posts/new_upload',      to: 'posts#new_upload'
+  post 'posts/upload',         to: 'posts#upload'
   post 'posts/:file_name/send_notification_email', to: 'posts#send_notification_email', as: 'send_notification_email'
-  get 'posts/:file_name', to: 'posts#show', as: 'post'
+
+  # get 'posts/:file_name/edit', to: 'posts#edit', as: 'edit_post'
+  # patch 'posts/:file_name',    to: 'posts#update', as: 'update_post'
+  get 'posts/edit/:file_name', to: 'posts#edit', as: 'edit_post'
+  patch 'posts/update/:file_name',    to: 'posts#update', as: 'update_post'
+
+  # Catch all route must be last
+  get 'posts/:file_name',      to: 'posts#show', as: 'post'
 
   get "pages/home"
   get "pages/about"
