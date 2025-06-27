@@ -1,0 +1,26 @@
+<!-- app/views/decision_tree/new_upload.html.erb -->
+
+<h1>Upload JSON Decision Tree Post</h1>
+
+<%= form_with url: decision_tree_upload_path, local: true, html: { multipart: true } do |form| %>
+  <div>
+    <%= form.label :json_file, 'Upload Decision Tree JSON file:' %><br>
+    <%= form.file_field :json_file, accept: 'application/json' %>
+  </div>
+
+  <div>
+    <%= form.label :json_file_info, 'Upload Description Information for the Decision Tree JSON file:' %><br>
+    <%= form.file_field :json_file_info, accept: 'application/json' %>
+  </div>
+
+  <div>
+    <%= form.submit 'Upload' %>
+  </div>
+<% end %>
+
+<% if flash[:notice] %>
+  <p style="color: green;"><%= flash[:notice] %></p>
+<% elsif flash[:alert] %>
+  <p style="color: red;"><%= flash[:alert] %></p>
+<% end %>
+~          

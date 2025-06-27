@@ -1,0 +1,124 @@
+[
+  {
+    "id": 1,
+    "question": "Your phone buzzes with a text from an unknown number, claiming to be your bank. It mentions a $600 unauthorized charge, uses your name, and urges you to click a link within 15 minutes to cancel it. Is it a scam? What do you do?",
+    "options": [
+      {
+        "text": "Click the link to cancel the transaction immediately.",
+        "next_id": "end_1",
+        "explanation": "You clicked the link, a grave mistake. Fraud experts would determine this directed you to a phishing site, likely compromising your credentials and exposing you to financial loss or identity theft.",
+        "end_id": "end_1"
+      },
+      {
+        "text": "Verify the claim by calling the bank using the number on your card.",
+        "next_id": 2,
+        "explanation": "You called the bank to verify, a prudent choice. Cybersecurity analysts would conclude this protected you by avoiding the suspicious link and confirming the message through a trusted channel."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "The bank confirms it’s a scam and advises reporting the text. It’s still on your phone. What do you do next?",
+    "options": [
+      {
+        "text": "Delete the text to avoid any mistakes.",
+        "next_id": 3,
+        "explanation": "You deleted the text, a cautious step. Fraud investigators would note this prevented accidental interaction but hindered efforts to track the smishing campaign, limiting its disruption."
+      },
+      {
+        "text": "Report the text to the FTC and send it to the bank’s fraud team.",
+        "next_id": 4,
+        "explanation": "You reported the text to the FTC and bank, a strong decision. Cybersecurity professionals would commend this for bolstering anti-fraud efforts and helping safeguard others with minimal effort."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "A day later, your sibling gets a similar text about a $600 charge, urging them to call a number. They ask for your advice. What do you suggest?",
+    "options": [
+      {
+        "text": "Tell them to call the number to sort it out quickly.",
+        "next_id": "end_2",
+        "explanation": "You advised calling the number, a dangerous error. Fraud analysts would determine this likely exposed your sibling to scammers, risking data theft or financial harm.",
+        "end_id": "end_2"
+      },
+      {
+        "text": "Advise them to ignore the text and contact their bank directly.",
+        "next_id": 5,
+        "explanation": "You told your sibling to verify with their bank, an effective recommendation. Cybersecurity experts would confirm this kept them secure by avoiding the scam and using a trusted contact method."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "After reporting, your sibling receives a similar text and asks for your guidance. The bank suggests warning family about the scam. What do you do?",
+    "options": [
+      {
+        "text": "Say nothing, assuming they’ll handle it themselves.",
+        "next_id": "end_3",
+        "explanation": "You stayed silent, an unhelpful choice. Fraud investigators would conclude this left your sibling vulnerable, potentially allowing the scam to succeed and harm their finances.",
+        "end_id": "end_3"
+      },
+      {
+        "text": "Warn your sibling to avoid the text and verify with their bank.",
+        "next_id": 5,
+        "explanation": "You warned your sibling, a responsible action. Cybersecurity analysts would commend this for raising their awareness, reducing the scam’s success and protecting their accounts."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "The bank recommends updating your online banking password and enabling two-factor authentication (2FA) to stay safe. You’re pressed for time. What do you do?",
+    "options": [
+      {
+        "text": "Put off updating your password and 2FA for a few days.",
+        "next_id": "end_4",
+        "explanation": "You delayed updating your security, a risky decision. Fraud experts would determine this left your account exposed, heightening vulnerability after a targeted smishing attempt.",
+        "end_id": "end_4"
+      },
+      {
+        "text": "Spend 10 minutes to update your password and enable 2FA now.",
+        "next_id": "end_5",
+        "explanation": "You updated your password and enabled 2FA, an exemplary choice. Cybersecurity professionals would conclude this strengthened your account, significantly reducing future smishing risks.",
+        "end_id": "end_5"
+      },
+      {
+        "text": "Update your password but skip 2FA to save time.",
+        "next_id": "end_6",
+        "explanation": "You updated your password but skipped 2FA, a partial measure. Fraud analysts would note this improved security but left gaps, offering limited protection against advanced attacks.",
+        "end_id": "end_6"
+      }
+    ]
+  },
+  {
+    "id": "end_1",
+    "question": "Scenario Completed! Clicking the link likely compromised your account.",
+    "options": []
+  },
+  {
+    "id": "end_2",
+    "question": "Scenario Completed! Advising your sibling to call exposed them to fraud.",
+    "options": []
+  },
+  {
+    "id": "end_3",
+    "question": "Scenario Completed! Your silence left your sibling at risk.",
+    "options": []
+  },
+  {
+    "id": "end_4",
+    "question": "Scenario Completed! Delaying security updates kept your account vulnerable.",
+    "options": []
+  },
+  {
+    "id": "end_5",
+    "question": "Scenario Completed! Your security updates protected your account.",
+    "options": []
+  },
+  {
+    "id": "end_6",
+    "question": "Scenario Completed! Partial updates offered limited protection.",
+    "options": []
+  }
+]
+

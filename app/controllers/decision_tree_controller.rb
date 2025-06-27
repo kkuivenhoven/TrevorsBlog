@@ -1,13 +1,14 @@
 class DecisionTreeController < ApplicationController
   before_action :setup_questions_from_json, only: [:show, :next_question]
   before_action :redirect_user, only: [:show, :next_question]
+  before_action :require_admin, only: [:new_upload, :upload, :edit, :update]
 
   def index
 	session.delete(:choices_log)
 	session.delete(:choices)
-	@json_files = Dir.glob(Rails.root.join('app/assets/data/*.json'))
+	@json_files = Dir.glob(Rails.root.join('storage', 'data', '*.json'))
 	@json_files.each do |json_file| 
-		Dir.glob(Rails.root.join('app/assets/matching_data/*.json')).each do |file_path|
+		Dir.glob(Rails.root.join('storage', 'matching_data', '*.json')).each do |file_path|
 			target_file_name = File.basename(json_file, ".*" + ".json")
 			file_content = File.read(file_path)
 			json_data = JSON.parse(file_content)
@@ -114,12 +115,66 @@ class DecisionTreeController < ApplicationController
 	head :ok
   end
 
+  def new_upload
+	# renders the upload form
+  end
+
+  def upload
+    uploaded_file = params[:json_file]
+    info_uploaded_file = params[:json_file_info]
+    unless uploaded_file && uploaded_file.content_type == 'application/json'
+        flash[:alert] = 'Please upload a valid JSON file.'
+        return redirect_to posts_new_upload_path
+    end 
+    filename = uploaded_file.original_filename
+    target_path = Rails.root.join('storage', 'data', filename)
+    info_filename = uploaded_file.original_filename
+    info_target_path = Rails.root.join('storage', 'matching_data', filename)
+    begin
+        File.open(target_path, 'wb') do |file|
+            file.write(uploaded_file.read)
+        end 
+        flash[:notice] = "File uploaded successfully."
+    rescue => e
+        flash[:alert] = "Upload failed: #{e.message}"
+    end 
+    begin
+        File.open(info_target_path, 'wb') do |file|
+            file.write(info_uploaded_file.read)
+        end 
+        flash[:notice] = "File uploaded successfully."
+    rescue => e
+        flash[:alert] = "Upload failed: #{e.message}"
+    end 
+  end
+
+  def edit
+    @filename = params[:file_name]
+    file_path = Rails.root.join('storage', 'data', (@filename + '.json'))
+    if File.exist?(file_path)
+        @json_content = File.read(file_path)
+    else
+        redirect_to posts_index_path, alert: "File not found."
+    end
+  end
+
+  def update
+    @filename = params[:file_name]
+    file_path = Rails.root.join('storage', 'data', (@filename + '.json'))
+    begin 
+        File.write(file_path, params[:json_content])
+        redirect_to post_path(@filename), notice: "File updated successfully."
+    rescue => e
+        redirect_to edit_post_path(@filename), alert: "Failed to update file: #{e.message}"
+    end 
+  end
+
   private
 
   # def setup_questions_from_json(file_name)
   def setup_questions_from_json
     file_name = params[:file_name] + '.json'
-    file_path = Rails.root.join('app/assets/data', file_name)
+    file_path = Rails.root.join('storage', 'data', file_name)
     if File.exist?(file_path)
       file_content = File.read(file_path)
       @questions = JSON.parse(file_content)
@@ -164,7 +219,7 @@ class DecisionTreeController < ApplicationController
   end
 
   def redirect_user
-	Dir.glob(Rails.root.join('app/assets/matching_data/*.json')).each do |file_path|
+	Dir.glob(Rails.root.join('storage', 'matching_data', '*.json')).each do |file_path|
 		target_file_name = params[:file_name] + '.json'
 		file_content = File.read(file_path)
 		json_data = JSON.parse(file_content)
@@ -173,6 +228,12 @@ class DecisionTreeController < ApplicationController
 				redirect_to decision_tree_index_path
 			end
 		end
+	end
+  end
+
+  def require_admin
+	unless current_user && current_user.admin?
+		redirect_to root_path, alert: "Admins only"
 	end
   end
 

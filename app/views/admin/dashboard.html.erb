@@ -16,6 +16,7 @@
 		<%= file %>
 		<%= format_file_title(file) %>
 		<%= button_to "Notify Subscribers", decision_tree_send_notification_email_path(file_name: File.basename(file, ".json")), method: :post, class: "btn btn-sm btn-primary" %>
+		<%= link_to "Edit Decision Tree", edit_decision_tree_path(file_name: File.basename(file, ".json")), class: "btn btn-sm btn-primary" %>
 	</div>
 <% end %>
 

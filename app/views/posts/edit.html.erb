@@ -1,0 +1,14 @@
+<h1>Editing <%= @filename %></h1>
+
+<%= form_with url: update_post_path(@filename), method: :patch, local: true do %>
+  <div>
+    <%= label_tag :json_content, "JSON Content" %><br>
+    <%= text_area_tag :json_content, @json_content, rows: 30, cols: 100, style: "font-family: monospace;" %>
+  </div>
+
+  <div style="margin-top: 1em;">
+    <%= submit_tag "Save Changes" %>
+  </div>
+<% end %>
+
+<%= link_to "← Back to List", posts_index_path %>

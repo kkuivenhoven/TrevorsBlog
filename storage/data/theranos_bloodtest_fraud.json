@@ -1,0 +1,179 @@
+[
+  {
+    "id": 1,
+    "question": "You are Elizabeth Holmes, CEO of Theranos, pitching to investors in 2004. Your blood-testing device is promising but cannot yet perform hundreds of tests from a finger prick. Do you exaggerate its capabilities to secure funding, or admit its limitations?",
+    "options": [
+      {
+        "text": "Exaggerate capabilities.",
+        "next_id": 2,
+        "explanation": "Exaggerating your device’s capabilities to attract investors is a risky move. As an investigator, I would note this raises ethical red flags. Misleading claims could lead to securities fraud charges if exposed, inviting SEC scrutiny. Patient safety risks amplify potential legal consequences."
+      },
+      {
+        "text": "Admit limitations.",
+        "next_id": "end",
+        "explanation": "Admitting your technology’s limitations prioritizes honesty over short-term gains. As an investigator, I would commend this ethical choice. It avoids fraud and regulatory scrutiny, though it risks financial struggles. You remain clear of legal trouble, maintaining integrity.",
+        "end_id": "end_1"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "In 2013, your exaggerated claims have raised millions, but early employee feedback highlights inconsistent test results. Do you dismiss these concerns to maintain momentum, or investigate them?",
+    "options": [
+      {
+        "text": "Dismiss concerns.",
+        "next_id": 3,
+        "explanation": "Dismissing early employee concerns prioritizes image over accuracy. As an investigator, I would flag this as a warning sign. Ignoring issues, as Holmes did, risks internal dissent and potential whistleblower leaks, setting the stage for regulatory or media scrutiny."
+      },
+      {
+        "text": "Investigate concerns.",
+        "next_id": "end",
+        "explanation": "Investigating early employee concerns shows a commitment to integrity. As an investigator, I would praise this proactive step. It reduces the risk of internal leaks and strengthens credibility. While it may slow funding, you avoid early fraud risks and maintain a cleaner record.",
+        "end_id": "end_2"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "By 2014, your board demands updates on the technology’s progress, but it still struggles with reliability. Do you mislead them about its capabilities, or disclose the issues?",
+    "options": [
+      {
+        "text": "Mislead the board.",
+        "next_id": 4,
+        "explanation": "Misleading the board about your technology’s capabilities deepens your deception. As an investigator, I would view this as a critical misstep. False assurances, as seen in Theranos’s board interactions, risk exposure if board members verify claims, potentially triggering investor scrutiny or legal action."
+      },
+      {
+        "text": "Disclose issues.",
+        "next_id": "end",
+        "explanation": "Disclosing technology issues to the board is a cautious move. As an investigator, I would see this as an ethical choice, though it may erode board confidence. It reduces fraud risks but leaves prior employee concerns unaddressed, risking whistleblower leaks that could spark investigations.",
+        "end_id": "end_3"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "In 2014, Walgreens proposes a partnership for testing centers, but your technology remains unreliable. Do you push forward with the partnership, or delay until improvements are made?",
+    "options": [
+      {
+        "text": "Push forward.",
+        "next_id": 5,
+        "explanation": "Pushing forward with Walgreens despite unreliable technology escalates your fraud. As an investigator, I would flag this as reckless. Deploying faulty tests risks patient harm and FDA scrutiny, as occurred in 2016. This increases exposure, likely leading to lawsuits and fraud charges."
+      },
+      {
+        "text": "Delay until improvements.",
+        "next_id": "end",
+        "explanation": "Delaying the Walgreens partnership shows restraint. As an investigator, I would commend this step to avoid patient harm. It may frustrate investors, but it mitigates regulatory risks. Prior misrepresentations and employee concerns still pose a whistleblower threat, potentially triggering investigations.",
+        "end_id": "end_4"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "In 2015, employees like Tyler Shultz report serious inaccuracies to regulators, becoming whistleblowers. Do you suppress these reports through legal threats, or investigate their claims?",
+    "options": [
+      {
+        "text": "Suppress whistleblowers.",
+        "next_id": 6,
+        "explanation": "Suppressing whistleblower reports with legal threats, as Holmes did, is a dangerous escalation. As an investigator, I would see this as a clear attempt to conceal fraud. It amplifies whistleblower resolve, increasing the likelihood of leaks to media or regulators, paving the way for investigations."
+      },
+      {
+        "text": "Investigate claims.",
+        "next_id": "end",
+        "explanation": "Investigating whistleblower claims demonstrates a belated commitment to accuracy. As an investigator, I would note this as a corrective action, though prior fraud remains. It reduces further leaks but cannot undo earlier misrepresentations, likely leading to SEC scrutiny and fraud charges with mitigated penalties.",
+        "end_id": "end_5"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "In 2015, a Wall Street Journal reporter, John Carreyrou, publishes articles questioning your technology’s accuracy based on whistleblower tips. Do you deny the allegations and threaten legal action, or cooperate with transparency?",
+    "options": [
+      {
+        "text": "Deny and threaten.",
+        "next_id": 7,
+        "explanation": "Denying media allegations and threatening legal action escalates your risk. As an investigator, I would flag this as a defensive error, mirroring Holmes’s 2015 response. It draws deeper media and regulatory attention, heightening the likelihood of fraud investigations and legal consequences."
+      },
+      {
+        "text": "Cooperate with transparency.",
+        "next_id": "end",
+        "explanation": "Cooperating with media inquiries mitigates some damage. As an investigator, I would view this as a partial correction, though prior fraud persists. Whistleblower tips and faulty tests still trigger FDA and SEC probes, likely leading to fraud charges, but transparency may reduce legal penalties.",
+        "end_id": "end_6"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "By late 2015, patients report inaccurate test results, raising safety concerns. Do you ignore these complaints to maintain operations, or address them publicly?",
+    "options": [
+      {
+        "text": "Ignore complaints.",
+        "next_id": 8,
+        "explanation": "Ignoring patient complaints about inaccurate results prioritizes image over safety. As an investigator, I would flag this as a grave misstep. Patient harm, as seen in Theranos’s 2015 issues, amplifies FDA and public scrutiny, strengthening the case for fraud and negligence charges."
+      },
+      {
+        "text": "Address publicly.",
+        "next_id": "end",
+        "explanation": "Addressing patient complaints publicly shows accountability, though belated. As an investigator, I would note this as a mitigating step, but prior misrepresentations and whistleblower leaks ensure scrutiny. You face likely fraud charges and lawsuits, with public response potentially softening penalties.",
+        "end_id": "end_7"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "In 2016, the FDA and SEC investigate Theranos for fraud and safety violations. Do you obstruct their inquiries to protect your company, or comply fully?",
+    "options": [
+      {
+        "text": "Obstruct inquiries.",
+        "next_id": 9,
+        "explanation": "Obstructing FDA and SEC investigations deepens your fraud. As an investigator, I would see this as a clear attempt to conceal wrongdoing, as Holmes did. Combined with whistleblower and media evidence, this ensures a strong case for fraud and conspiracy, with severe legal consequences looming."
+      },
+      {
+        "text": "Comply fully.",
+        "next_id": "end",
+        "explanation": "Complying fully with FDA and SEC investigations is pragmatic under pressure. As an investigator, I would view this as a mitigating factor, though prior fraud leaves ample evidence. Like Holmes’s 2018 charges, you face fraud convictions, but cooperation may reduce your sentence, avoiding the harshest penalties.",
+        "end_id": "end_8"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "In 2017, investors file lawsuits against Theranos for fraud. Do you fight the lawsuits to maintain your defense, or settle to limit exposure?",
+    "options": [
+      {
+        "text": "Fight lawsuits.",
+        "next_id": 10,
+        "explanation": "Fighting investor lawsuits prolongs your defense but escalates risk. As an investigator, I would flag this as a risky move. Ongoing litigation, as seen in Theranos’s 2016–2017 suits, draws more scrutiny to your fraud, strengthening the SEC’s case and increasing legal penalties."
+      },
+      {
+        "text": "Settle lawsuits.",
+        "next_id": "end",
+        "explanation": "Settling investor lawsuits limits some exposure. As an investigator, I would note this as a pragmatic choice, though prior fraud ensures consequences. Whistleblower evidence and regulatory probes still lead to fraud charges, but settling may reduce financial penalties, though conviction remains likely.",
+        "end_id": "end_9"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "In 2018, facing criminal fraud charges, you prepare for trial. Do you deny the charges and fight, or cooperate with prosecutors?",
+    "options": [
+      {
+        "text": "Deny and fight.",
+        "next_id": "end",
+        "explanation": "Denying charges and fighting in court, as Holmes did, is a bold but doomed strategy. As an investigator, I would see this as a final misstep. Overwhelming evidence from whistleblowers, media, and regulators ensures conviction, like Holmes’s 2022 guilty verdict, with significant prison time and restitution.",
+        "end_id": "end_10"
+      },
+      {
+        "text": "Cooperate with prosecutors.",
+        "next_id": "end",
+        "explanation": "Cooperating with prosecutors is a pragmatic move under pressure. As an investigator, I would view this as a mitigating factor, though your fraud guarantees conviction. Cooperation, unlike Holmes’s 2022 trial, may lead to a reduced sentence, but fraud charges and restitution remain unavoidable.",
+        "end_id": "end_11"
+      }
+    ]
+  },
+  {
+    "id": "end",
+    "question": "Scenario Completed!",
+    "options": []
+  }
+]
+

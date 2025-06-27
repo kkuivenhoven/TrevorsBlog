@@ -17,6 +17,11 @@
 			  <%= link_to "New Post", posts_new_upload_path, class: "nav-link" %>
 			</li>
 		<% end %>
+		<% if current_user && current_user.admin? %>
+			<li class="nav-item">
+			  <%= link_to "New Decision Tree", decision_tree_new_upload_path, class: "nav-link" %>
+			</li>
+		<% end %>
 
 		<li class="nav-item">
 		  <%= link_to "Fraud Simulators", decision_tree_index_path, class: "nav-link" %>

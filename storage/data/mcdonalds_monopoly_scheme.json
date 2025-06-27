@@ -1,0 +1,193 @@
+[
+  {
+    "id": 1,
+    "question": "Your name is Uncle Jerry, and you work for Simon Marketing. As Director of Security, you’re asked to oversee the distribution and security of McDonald’s Monopoly game pieces—prizes worth millions are in your hands. Do you take the job knowing the temptation ahead, or decline to avoid the risk?",
+    "options": [
+      {
+        "text": "Take the job.",
+        "next_id": 2,
+        "explanation": "Accepting the Director of Security role at Simon Marketing places you in a high-stakes position overseeing valuable game pieces. As an investigator, I’d note that this decision alone raises no red flags. Employment is not a crime. However, the role’s access to prizes, as exploited in Jacobson’s scheme, demands strict oversight. Any deviation from protocol could invite FBI scrutiny, risking your career or leading to criminal investigation."
+      },
+      {
+        "text": "Decline the job.",
+        "next_id": "end",
+        "explanation": "By declining the Director of Security role at Simon Marketing, you’ve made a prudent choice to avoid handling high-value Monopoly game pieces that could invite temptation, as seen in the 1989 fraud case. As an investigator, I see no cause for suspicion. Your decision eliminates any risk of involvement in a potential theft scheme. This keeps you clear of the kind of FBI scrutiny that later targeted Jerome Jacobson’s network, ensuring you face no legal or professional consequences.",
+        "end_id": "end_1"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "A supplier accidentally sends you tamper-proof seals that could let you secretly steal game pieces. This is a chance to break the law. Do you use them, or report the error to stay honest?",
+    "options": [
+      {
+        "text": "Use them to steal.",
+        "next_id": 3,
+        "explanation": "Exploiting faulty tamper-proof seals to steal game pieces marks a deliberate plunge into criminal activity, echoing Jacobson’s security breaches. As an investigator, I’d flag this as a pivotal misstep. Circulating stolen pieces risks exposing irregular winner patterns. While undetected for now, any redeemed prize could trigger FBI analysis, setting the stage for fraud charges and potential imprisonment."
+      },
+      {
+        "text": "Report the error.",
+        "next_id": 3.1,
+        "explanation": "Reporting faulty tamper-proof seals to Simon Marketing upholds the integrity of the game’s security. As an investigator, I’d praise this as a proactive step, preventing vulnerabilities like those Jacobson exploited. This action keeps you clear of suspicion, with no FBI interest at this stage. Staying vigilant ensures you avoid any risk of investigation or legal consequences."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "You’re at an airport with an auditor nearby, delivering game pieces you’ve already tampered with. Stealing more would be reckless. Do you sneak into the bathroom to swap winners, or keep them safe like you’re supposed to?",
+    "options": [
+      {
+        "text": "Swap winners in the bathroom.",
+        "next_id": 4,
+        "explanation": "Swapping game pieces in an airport bathroom, despite an auditor’s presence, dangerously escalates your criminal activity. As an investigator, I’d flag this as a reckless act. Tampering in such a high-risk setting invites immediate suspicion. Should a fake winner’s claim surface, as seen in Jacobson’s scheme, irregular patterns or inconsistent stories could trigger FBI scrutiny, paving the way for fraud charges and significant legal consequences."
+      },
+      {
+        "text": "Keep them safe.",
+        "next_id": "end",
+        "explanation": "Opting to keep the tampered game pieces secure at the airport, rather than swapping more under an auditor’s watch, reflects a moment of restraint after initial thefts. As an investigator, I’d see this as a calculated pause, reducing the immediate risk of detection in a high-scrutiny setting. However, the stolen pieces you’ve already distributed remain a significant liability. If any winner’s claim raises red flags, as occurred in Jacobson’s scheme, the FBI will trace inconsistencies, likely leading to fraud charges and restitution demands.",
+        "end_id": "end_2"
+      }
+    ]
+  },
+  {
+    "id": 3.1,
+    "question": "You’re at an airport with an auditor nearby, delivering untampered game pieces after reporting the seals. Do you tamper with them now despite your earlier honesty, or keep doing your job properly?",
+    "options": [
+      {
+        "text": "Tamper with them now.",
+        "next_id": 4,
+        "explanation": "Tampering with game pieces at the airport, despite your prior integrity in reporting faulty seals, marks a sudden shift to criminal behavior. As an investigator, I’d view this as a critical error. Introducing fake winners under an auditor’s watch risks swift detection. Like Jacobson’s fraudulent claims, any inconsistencies in winner backgrounds could spark FBI investigation, leading to fraud charges and potential imprisonment."
+      },
+      {
+        "text": "Keep doing your job.",
+        "next_id": "end",
+        "explanation": "Continuing to deliver untampered game pieces at the airport, after reporting faulty seals, upholds your integrity consistently. As an investigator, I’d commend this as a model of ethical conduct. Your actions strengthen the security of the Monopoly game and leave no trace of wrongdoing. With no suspicious activity to investigate, you remain clear of FBI attention and any legal or professional consequences.",
+        "end_id": "end_3"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "You’ve stolen $1 million pieces, but claiming them yourself would get you caught. Do you rope in a mobster like Gennaro Colombo to distribute them, or hide them and stop now?",
+    "options": [
+      {
+        "text": "Recruit a mobster.",
+        "next_id": 5,
+        "explanation": "Recruiting a mobster like Gennaro Colombo to distribute $1 million in stolen game pieces markedly escalates your criminal enterprise. As an investigator, I’d flag this as a severe misstep. Mob involvement, as seen in Jacobson’s network, draws intense FBI attention due to ties to organized crime. Such connections risk exposure through informant tips or financial tracking, setting the stage for fraud, conspiracy, and potential racketeering charges with heavy penalties."
+      },
+      {
+        "text": "Hide them and stop.",
+        "next_id": "end",
+        "explanation": "Hiding the stolen $1 million game pieces and ceasing further tampering demonstrates a strategic retreat from escalating your crimes. As an investigator, I’d view this as a prudent move to minimize exposure after reckless thefts, avoiding the high-risk involvement of accomplices like Jacobson’s mobster contacts. Yet, the concealed pieces pose a persistent threat. If any are redeemed, the FBI’s analysis of winner backgrounds or financial trails could uncover your role, likely resulting in fraud charges and substantial restitution.",
+        "end_id": "end_4"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Your mobster’s cashing in millions illegally from your stolen pieces. Expanding with more recruiters could spiral out of control—do you grow the scheme, or pull back while you can?",
+    "options": [
+      {
+        "text": "Grow the scheme.",
+        "next_id": 6,
+        "explanation": "Expanding the scheme by adding more recruiters to distribute stolen pieces significantly broadens your criminal network. As an investigator, I’d view this as a reckless escalation. Larger operations, like Jacobson’s, create noticeable winner clusters that trigger FBI analysis. This increased visibility invites scrutiny through wiretaps or informant leaks, paving the way for fraud and conspiracy charges with substantial prison time."
+      },
+      {
+        "text": "Pull back.",
+        "next_id": "end",
+        "explanation": "Pulling back from expanding the scheme after involving a mobster demonstrates a belated effort to contain your criminal activity. As an investigator, I’d see this as a tactical move to keep the operation smaller, reducing the visibility that a larger network, like Jacobson’s, attracted. However, the mobster’s cashing of stolen pieces creates a trail. Any talkative winner or financial irregularity could prompt FBI scrutiny, likely leading to fraud charges and significant restitution.",
+        "end_id": "end_5"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Your scheme’s stolen over $20 million by 2000—greed’s taking over from your early theft. Do you keep rigging the game, or mail a piece to a hospital to cover your tracks?",
+    "options": [
+      {
+        "text": "Keep rigging the game.",
+        "next_id": 7,
+        "explanation": "Persisting in rigging the game after stealing $20 million by 2000 amplifies your criminal exposure. As an investigator, I’d flag this as a reckless escalation. Each additional fake winner, like those in Jacobson’s scheme, heightens the risk of FBI detection through prize distribution anomalies. This trajectory invites a robust investigation, likely leading to fraud and conspiracy charges with severe prison sentences."
+      },
+      {
+        "text": "Mail a piece to a hospital.",
+        "next_id": 6.1,
+        "explanation": "Mailing a stolen game piece to a hospital to deflect suspicion is a misguided attempt to mask your crimes. As an investigator, I’d view this as a suspicious tactic. The unusual nature of a hospital win, as seen in Jacobson’s irregular claims, draws FBI scrutiny to prize patterns. This move risks accelerating investigation, potentially resulting in fraud charges and significant legal repercussions."
+      }
+    ]
+  },
+  {
+    "id": 6.1,
+    "question": "In 2001, the FBI poses as a film crew interviewing winners, including that hospital piece you mailed—you’re under surveillance. Do you keep selling pieces and risk it all, or shut it down now?",
+    "options": [
+      {
+        "text": "Keep selling pieces.",
+        "next_id": 8,
+        "explanation": "Continuing to sell stolen pieces despite the FBI’s 2001 film crew sting, which targets your hospital piece, is a dangerously defiant choice. As an investigator, I’d see this as a critical error. The hospital win’s irregularity, combined with ongoing fraud, strengthens the FBI’s case through recorded interviews and financial trails. Like Jacobson’s network, your actions ensure fraud and conspiracy charges, with imprisonment looming."
+      },
+      {
+        "text": "Shut it down now.",
+        "next_id": "end",
+        "explanation": "Shutting down the scheme as the FBI’s 2001 sting targets your hospital piece reflects a late attempt to evade capture. As an investigator, I’d note this as a cautious move to limit further exposure, but the hospital win’s oddity and your prior fake winners, like those in Jacobson’s scheme, provide ample evidence. The FBI’s focus on irregular claims ensures you face fraud charges and likely restitution, with conviction highly probable.",
+        "end_id": "end_6"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "In 2001, the FBI poses as a film crew interviewing winners from your scam—you’re under surveillance. Do you keep selling pieces and risk it all, or shut it down now?",
+    "options": [
+      {
+        "text": "Keep selling pieces.",
+        "next_id": 8,
+        "explanation": "Persisting in selling stolen game pieces during the FBI’s 2001 film crew sting is a brazenly reckless decision. As an investigator, I’d flag this as a fatal misstep. Continuing fraud under active surveillance, as Jacobson’s network did, hands the FBI a wealth of evidence through recorded interviews and financial trails. This ensures a robust case for fraud and conspiracy charges, with severe imprisonment imminent."
+      },
+      {
+        "text": "Shut it down now.",
+        "next_id": "end",
+        "explanation": "Ceasing the scheme in 2001 as the FBI’s film crew sting intensifies reflects a desperate attempt to avoid capture. As an investigator, I’d view this as a belated but tactical retreat, minimizing additional evidence from new fake winners. Yet, your prior fraudulent claims and mobster connections, mirroring Jacobson’s sprawling network, provide the FBI with robust evidence via winner interviews and financial trails. Fraud and conspiracy charges are imminent, likely carrying multi-year imprisonment and millions in restitution.",
+        "end_id": "end_7"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "The FBI delays payouts from your stolen pieces, and your recruiters panic on tapped phones—your scheme’s unraveling. Do you destroy evidence to hide, or keep going despite the danger?",
+    "options": [
+      {
+        "text": "Destroy evidence.",
+        "next_id": "end",
+        "explanation": "Destroying evidence as the FBI delays payouts and monitors your recruiters’ panicked calls is a desperate and self-incriminating act. As an investigator, I’d see this as a fatal misstep. Attempts to erase tracks, as seen in Jacobson’s collapsing network, are futile against wiretaps, bank records, and winner testimonies. The FBI’s airtight case, bolstered by intercepted communications, guarantees fraud, conspiracy, and obstruction charges, with a multi-year prison term and millions in restitution inevitable.",
+        "end_id": "end_8"
+      },
+      {
+        "text": "Keep going.",
+        "next_id": 9,
+        "explanation": "Continuing the scheme as the FBI delays payouts and taps your recruiters’ phones is an astonishingly defiant act. As an investigator, I’d view this as walking into a trap. Your persistence, like Jacobson’s refusal to stop, is fully captured through wiretaps and witness accounts. The FBI’s mounting evidence, including intercepted calls and fraudulent claims, guarantees fraud and conspiracy charges, with a lengthy prison term unavoidable."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "The FBI has proof—$24 million stolen since 1989 from your thefts. Crime doesn’t pay—do you cooperate and face the music, or flee and become a fugitive?",
+    "options": [
+      {
+        "text": "Cooperate and face the music.",
+        "next_id": "end",
+        "explanation": "Cooperating with the FBI after their evidence confirms $24 million in stolen prizes is a pragmatic choice, akin to steps taken by some in Jacobson’s network. As an investigator, I’d view this as a mitigating factor. Your confession aids in dismantling the criminal ring, reducing further harm. However, the scale of the fraud ensures severe consequences: expect fraud and conspiracy convictions, a multi-year prison sentence, and millions in restitution, reflecting the gravity of your crimes.",
+        "end_id": "end_9"
+      },
+      {
+        "text": "Flee and become a fugitive.",
+        "next_id": "end",
+        "explanation": "Fleeing as a fugitive after the FBI uncovers $24 million in thefts is a desperate and doomed decision. As an investigator, I’d see this as a critical error. Modern tracking, like that used against Jacobson’s network, includes global manhunts and financial freezes. Your offshore accounts will be seized, and evasion only delays the inevitable. Capture will bring fraud, conspiracy, and evasion charges, with a longer prison term and full restitution demanded.",
+        "end_id": "end_10"
+      }
+    ]
+  },
+  {
+    "id": "end",
+    "question": "Scenario Completed!",
+    "options": []
+  }
+]
