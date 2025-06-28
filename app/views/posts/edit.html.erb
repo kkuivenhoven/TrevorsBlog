@@ -1,14 +1,22 @@
-<h1>Editing <%= @filename %></h1>
+<header class="container text-center my-5">
+	<h1>Editing <%= @filename + '.json' %></h1>
+</header>
 
-<%= form_with url: update_post_path(@filename), method: :patch, local: true do %>
-  <div>
-    <%= label_tag :json_content, "JSON Content" %><br>
-    <%= text_area_tag :json_content, @json_content, rows: 30, cols: 100, style: "font-family: monospace;" %>
-  </div>
+<div class="post-content">
+	<%= form_with url: update_post_path(@filename), method: :patch, local: true do %>
+	  <div>
+		<%= label_tag :json_content, "JSON Content" %><br>
+		<%= text_area_tag :json_content, @json_content, rows: 30, cols: 100, style: "font-family: monospace;" %>
+	  </div>
 
-  <div style="margin-top: 1em;">
-    <%= submit_tag "Save Changes" %>
-  </div>
-<% end %>
+	  <div style="margin-top: 1em;">
+		<center>
+			<%= submit_tag "Save Changes", class: "btn btn-lg btn-primary" %>
+		</center>
+	  </div>
+	<% end %>
 
-<%= link_to "← Back to List", posts_index_path %>
+	<center>
+		<%= link_to "← Back to List", admin_dashboard_path %>
+	</center>
+</div>
