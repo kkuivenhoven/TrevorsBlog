@@ -20,7 +20,7 @@ class AdminController < ApplicationController
 	end
 
 	@posts = @posts.sort_by { |post| post[:date] }.reverse
-	@decision_trees = Dir.glob(Rails.root.join('app/assets/data/*.json'))
+	@decision_trees = Dir.glob(Rails.root.join('storage', 'data', '*.json'))
   end
 
   private

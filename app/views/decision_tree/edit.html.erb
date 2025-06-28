@@ -6,6 +6,11 @@
     <%= text_area_tag :json_content, @json_content, rows: 30, cols: 100, style: "font-family: monospace;" %>
   </div>
 
+  <div>
+    <%= label_tag :json_content_items, "Detail Content" %><br>
+    <%= text_area_tag :json_content_items, @meta_content, rows: 7, cols: 100, style: "font-family: monospace;" %>
+  </div>
+
   <div style="margin-top: 1em;">
     <%= submit_tag "Save Changes" %>
   </div>

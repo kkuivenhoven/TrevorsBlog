@@ -124,7 +124,7 @@ class DecisionTreeController < ApplicationController
     info_uploaded_file = params[:json_file_info]
     unless uploaded_file && uploaded_file.content_type == 'application/json'
         flash[:alert] = 'Please upload a valid JSON file.'
-        return redirect_to posts_new_upload_path
+        return redirect_to decision_tree_new_upload_path
     end 
     filename = uploaded_file.original_filename
     target_path = Rails.root.join('storage', 'data', filename)
@@ -134,15 +134,11 @@ class DecisionTreeController < ApplicationController
         File.open(target_path, 'wb') do |file|
             file.write(uploaded_file.read)
         end 
-        flash[:notice] = "File uploaded successfully."
-    rescue => e
-        flash[:alert] = "Upload failed: #{e.message}"
-    end 
-    begin
         File.open(info_target_path, 'wb') do |file|
             file.write(info_uploaded_file.read)
         end 
         flash[:notice] = "File uploaded successfully."
+        redirect_to decision_tree_index_path, alert: "File not found."
     rescue => e
         flash[:alert] = "Upload failed: #{e.message}"
     end 
@@ -153,19 +149,34 @@ class DecisionTreeController < ApplicationController
     file_path = Rails.root.join('storage', 'data', (@filename + '.json'))
     if File.exist?(file_path)
         @json_content = File.read(file_path)
+		search_value = (@filename + '.json')
+		folder_path = Rails.root.join('storage', 'matching_data')
+		matching_file = nil
+		json_files = Dir.glob("#{folder_path}/*.json") 
+		json_files.each do |file_path| 
+			raw_content = File.read(file_path)
+			parsed_json = JSON.parse(raw_content)
+			if parsed_json["file_name"] == search_value
+				matching_file = file_path
+				break
+			end
+		end
+		@meta_content = matching_file ? File.read(matching_file) : nil
     else
-        redirect_to posts_index_path, alert: "File not found."
+        redirect_to decision_tree_index_path, alert: "File not found."
     end
   end
 
   def update
     @filename = params[:file_name]
     file_path = Rails.root.join('storage', 'data', (@filename + '.json'))
+    matching_data_file_path = Rails.root.join('storage', 'matching_data', (@filename + 'info.json'))
     begin 
         File.write(file_path, params[:json_content])
-        redirect_to post_path(@filename), notice: "File updated successfully."
+        File.write(matching_data_file_path, params[:json_content_items])
+        redirect_to decision_tree_index_path
     rescue => e
-        redirect_to edit_post_path(@filename), alert: "Failed to update file: #{e.message}"
+        redirect_to edit_decision_tree_path(@filename), alert: "Failed to update file: #{e.message}"
     end 
   end
 
