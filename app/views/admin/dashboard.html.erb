@@ -65,6 +65,7 @@
 		<thead>
 			<tr>
 				<th>Title</th>
+				<th>View</th>
 				<th>Edit</th>
 				<th>Notify</th>
 			</tr>
@@ -73,6 +74,7 @@
 			<% @posts.each do |post| %>
 				<tr>
 					<td><%= post[:title] %></td>
+					<td><%= link_to 'View', post_path(post[:file_name]) %></td>
 					<td>
 						<%= link_to "Edit Post", edit_post_path(file_name: post[:file_name]), class: "btn btn-sm btn-primary" %>
 					</td>
@@ -91,6 +93,7 @@
 		<thead>
 			<tr>
 				<th>Title</th>
+				<th>View</th>
 				<th>Edit</th>
 				<th>Notify</th>
 			</tr>
@@ -99,6 +102,7 @@
 			<% @decision_trees.each do |file| %>
 				<tr>
 					<td><%= format_file_title(file) %></td>
+					<td><%= link_to 'View', decision_tree_show_path(file_name: File.basename(file, ".json")) %></td>
 					<td>
 						<%= link_to "Edit Decision Tree", edit_decision_tree_path(file_name: File.basename(file, ".json")), class: "btn btn-sm btn-primary" %>
 					</td>
