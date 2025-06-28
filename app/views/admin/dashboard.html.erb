@@ -1,22 +1,113 @@
-<h1>Admin Dashboard</h1>
+<style>
+.custom-table {
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: $form-background;
+  color: $text-color;
 
-<h3>Send Blog Post Notifications</h3>
+  th {
+    background-color: $header-background-color;
+    color: $text-color;
+    border: none;
+  }
 
-<% @posts.each do |post| %>
-	<div class="mb-3">
-		<%= post[:title] %>
-		<%= button_to "Notify Subscribers", send_notification_email_path(file_name: post[:file_name]), method: :post, class: "btn btn-sm btn-primary" %>
-		<%= link_to "Edit Post", edit_post_path(file_name: post[:file_name]), class: "btn btn-sm btn-primary" %>
-	</div>
-<% end %>
+  tbody tr:nth-child(odd) {
+    background-color: darken($form-background, 2%);
+  }
 
-<h3>Send Decision Tree Notifications</h3>
-<% @decision_trees.each do |file| %>
-	<div class="mb-3">
-		<%= file %>
-		<%= format_file_title(file) %>
-		<%= button_to "Notify Subscribers", decision_tree_send_notification_email_path(file_name: File.basename(file, ".json")), method: :post, class: "btn btn-sm btn-primary" %>
-		<%= link_to "Edit Decision Tree", edit_decision_tree_path(file_name: File.basename(file, ".json")), class: "btn btn-sm btn-primary" %>
-	</div>
-<% end %>
+  tbody tr:nth-child(even) {
+    background-color: darken($form-background, 5%);
+  }
 
+  td {
+    border-top: 1px solid lighten($form-background, 10%);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+/* Button styles */
+.notify-btn {
+  background-color: $primary-color;
+  color: $button-contrast-color;
+  border: none;
+  border-radius: 6px;
+  margin-right: 0.5rem;
+  font-weight: 600;
+
+  &:hover {
+    background-color: $link-hover-color;
+  }
+}
+
+.edit-btn {
+  background-color: $accent-color;
+  color: $button-contrast-color;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+
+  &:hover {
+    background-color: lighten($accent-color, 7%);
+  }
+}
+</style>
+
+<header class="container text-center my-5">
+	<h1>Admin Dashboard</h1>
+</header>
+
+<div class="post-content">
+	<h3>Blog Posts</h3>
+	<table class="table custom-table table-striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Edit</th>
+				<th>Notify</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @posts.each do |post| %>
+				<tr>
+					<td><%= post[:title] %></td>
+					<td>
+						<%= link_to "Edit Post", edit_post_path(file_name: post[:file_name]), class: "btn btn-sm btn-primary" %>
+					</td>
+					<td>
+						<%= button_to "Notify Subscribers", send_notification_email_path(file_name: post[:file_name]), method: :post, class: "btn btn-sm btn-primary" %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+
+
+	<h3>Fraud Simulators (Decision Tree)</h3>
+	<table class="table custom-table table-striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Edit</th>
+				<th>Notify</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @decision_trees.each do |file| %>
+				<tr>
+					<td><%= format_file_title(file) %></td>
+					<td>
+						<%= link_to "Edit Decision Tree", edit_decision_tree_path(file_name: File.basename(file, ".json")), class: "btn btn-sm btn-primary" %>
+					</td>
+					<td>
+						<%= button_to "Notify Subscribers", decision_tree_send_notification_email_path(file_name: File.basename(file, ".json")), method: :post, class: "btn btn-sm btn-primary" %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+</div>
