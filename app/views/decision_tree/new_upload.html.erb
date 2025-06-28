@@ -1,26 +1,60 @@
-<!-- app/views/decision_tree/new_upload.html.erb -->
+<style>
+.custom-file-upload {
+  width: 100%;
+  max-width: 600px; // or whatever fits your layout
+  background-color: $button-contrast-color;
+  color: $text-color;
+  border: 1px solid $primary-color;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
 
-<h1>Upload JSON Decision Tree Post</h1>
+  &::file-selector-button {
+    background-color: $primary-color;
+    color: $button-contrast-color;
+    border: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
 
-<%= form_with url: decision_tree_upload_path, local: true, html: { multipart: true } do |form| %>
-  <div>
-    <%= form.label :json_file, 'Upload Decision Tree JSON file:' %><br>
-    <%= form.file_field :json_file, accept: 'application/json' %>
-  </div>
+    &:hover {
+      background-color: $link-hover-color;
+    }   
+  }
 
-  <div>
-    <%= form.label :json_file_info, 'Upload Description Information for the Decision Tree JSON file:' %><br>
-    <%= form.file_field :json_file_info, accept: 'application/json' %>
-  </div>
+  &:hover {
+    border-color: $link-hover-color;
+  }
+}
+</style>
 
-  <div>
-    <%= form.submit 'Upload' %>
-  </div>
-<% end %>
+<header class="container text-center my-5">
+	<h1>Upload JSON Decision Tree Post</h1>
+</header>
 
-<% if flash[:notice] %>
-  <p style="color: green;"><%= flash[:notice] %></p>
-<% elsif flash[:alert] %>
-  <p style="color: red;"><%= flash[:alert] %></p>
-<% end %>
-~          
+<div class="post-content">
+	<%= form_with url: decision_tree_upload_path, local: true, html: { multipart: true } do |form| %>
+	  <div>
+		<%= form.label :json_file, 'Upload Decision Tree JSON file:' %><br>
+		<%= form.file_field :json_file, accept: 'application/json', class: 'form-control custom-file-upload' %>
+	  </div>
+
+	  <div>
+		<%= form.label :json_file_info, 'Upload Description Information for the Decision Tree JSON file:' %><br>
+		<%= form.file_field :json_file_info, accept: 'application/json', class: 'form-control custom-file-upload' %>
+	  </div>
+
+	  <div>
+		<%= form.submit 'Upload', class: "btn btn-lg btn-primary" %>
+	  </div>
+	<% end %>
+
+	<% if flash[:notice] %>
+	  <p style="color: green;"><%= flash[:notice] %></p>
+	<% elsif flash[:alert] %>
+	  <p style="color: red;"><%= flash[:alert] %></p>
+	<% end %>
+</div>          
