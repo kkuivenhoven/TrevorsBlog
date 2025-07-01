@@ -79,3 +79,5 @@ group :production do
 	gem 'pg', group: :production # PostgreSQL for production
 	gem 'rails_12factor', group: :production # Helps with logging & asset handling
 end
+
+gem "rspec-rails", "~> 8.0"

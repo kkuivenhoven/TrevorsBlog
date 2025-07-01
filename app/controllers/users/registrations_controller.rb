@@ -11,9 +11,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+	if params[:nickname].present?
+		Rails.logger.info "Honeypost triggered: bot attempt blocked." if params[:nickname].present?
+		# Bot detected
+		head :ok and return
+	end
+
+    super
+  end
 
   # GET /resource/edit
   # def edit
