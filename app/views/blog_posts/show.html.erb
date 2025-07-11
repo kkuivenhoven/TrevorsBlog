@@ -52,38 +52,17 @@
     <% end %>
   <% end %>
 
-<% if sources.present? %>
-  <div class="blog-sources">
-    <h3>Sources</h3>
-    <ul>
-      <% sources.each do |source| %>
-        <li>
-          <a href="<%= source.source_url %>" target="_blank" rel="noopener noreferrer"><%= source.source_url %></a>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+	<% if sources.count > 0 %>
+	  <div class="blog-sources">
+		<h3>Sources</h3>
+		<ul>
+		  <% sources.each do |source| %>
+			<li>
+			  <a href="<%= source.source_url %>" target="_blank" rel="noopener noreferrer"><%= source.source_url %></a>
+			</li>
+		  <% end %>
+		</ul>
+	  </div>
+	<% end %>
 </div>
 
-<!--p><strong>Content:</strong> <= simple_format(@blog_post.content) %></p>
-
-< if @blog_post.blog_post_images.any? %>
-  <h3>Images</h3>
-  <ul>
-    < @blog_post.blog_post_images.each do |img| %>
-      <li><= link_to img.image_url, img.image_url, target: "_blank" %></li>
-    < end %>
-  </ul>
-< end %>
-
-< if @blog_post.blog_post_sources.any? %>
-  <h3>Sources</h3>
-  <ul>
-    < @blog_post.blog_post_sources.each do |src| %>
-      <li><= link_to src.source_url, src.source_url, target: "_blank" %></li>
-    < end %>
-  </ul>
-< end %>
-
-<= link_to 'Back', blog_posts_path %-->
