@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_19_022222) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_11_231335) do
+  create_table "blog_post_images", force: :cascade do |t|
+    t.integer "blog_post_id", null: false
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_post_id"], name: "index_blog_post_images_on_blog_post_id"
+  end
+
+  create_table "blog_post_sources", force: :cascade do |t|
+    t.integer "blog_post_id", null: false
+    t.string "source_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_post_id"], name: "index_blog_post_sources_on_blog_post_id"
+  end
+
+  create_table "blog_posts", force: :cascade do |t|
+    t.boolean "is_visible"
+    t.datetime "date_published"
+    t.string "title"
+    t.text "excerpt"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "file_name"
+  end
+
   create_table "fraud_prompts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "category"
@@ -43,5 +70,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_19_022222) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "blog_post_images", "blog_posts"
+  add_foreign_key "blog_post_sources", "blog_posts"
   add_foreign_key "fraud_prompts", "users"
 end

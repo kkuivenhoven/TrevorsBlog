@@ -1,0 +1,67 @@
+<%= form_with(model: blog_post, local: true) do |form| %>
+  <% if blog_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blog_post.errors.count, "error") %> prevented this blog post from saving:</h2>
+      <ul>
+        <% blog_post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Basic BlogPost fields -->
+  <div>
+    <%= form.label :date_published %><br>
+    <%= form.datetime_select :date_published %>
+  </div>
+
+  <div>
+    <%= form.label :is_visible %>
+    <%= form.check_box :is_visible %>
+  </div>
+
+  <div>
+    <%= form.label :file_name %><br>
+    <%= form.text_field :file_name %>
+  </div>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, size: 100, style: "font-family: monospace;" %>
+  </div>
+
+  <div>
+    <%= form.label :excerpt %><br>
+    <%= form.text_area :excerpt, rows: 3, cols: 100, style:" font-family: monospace;" %>
+  </div>
+
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :content, rows: 15, cols: 100, style: "font-family: monospace;" %>
+  </div>
+
+  <!-- Images Section -->
+  <h3>Images</h3>
+  <div id="images">
+    <%= form.fields_for :blog_post_images do |image_form| %>
+      <%= render 'image_fields', f: image_form %>
+    <% end %>
+    <%= link_to_add_association 'Add Image', form, :blog_post_images, partial: 'image_fields' %>
+  </div>
+
+  <!-- Sources Section -->
+  <h3>Sources</h3>
+  <div id="sources">
+    <%= form.fields_for :blog_post_sources do |source_form| %>
+      <%= render 'source_fields', f: source_form %>
+    <% end %>
+    <%= link_to_add_association 'Add Source', form, :blog_post_sources, partial: 'source_fields' %>
+  </div>
+
+  <div>
+	<center>
+		<%= form.submit "Save Changes", class: "btn btn-lg btn-primary" %>
+	</center>
+  </div>
+<% end %>

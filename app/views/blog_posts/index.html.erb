@@ -1,0 +1,24 @@
+<header class="container text-center my-5">
+	<h1>All Blog Posts</h1>
+
+	<% if current_user && current_user.admin? %>
+		<%= link_to 'New Blog Post', new_blog_post_path, class: 'btn btn-primary' %>
+	<% end %>
+</header>
+
+<div class="container py-5">
+  <div class="row g-4"> <!-- Bootstrap grid with spacing -->
+    <% @blog_posts.each do |blog_post| %>
+      <div class="col-md-4">
+        <div class="card p-4">
+          <h3 class="card-title"><b><%= blog_post.title %></b></h3>
+          <p class="card-description">
+            <%= truncate(blog_post.content, length: 150, omission: '...') %>
+          </p>
+          <%= link_to 'Read More', blog_post_path(blog_post.id), class: 'card-link' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

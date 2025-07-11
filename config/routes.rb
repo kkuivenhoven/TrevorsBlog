@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   # Catch all route must be last
   get 'posts/:file_name',      to: 'posts#show', as: 'post'
 
+  resources :blog_posts
+
   get "pages/home"
   get "pages/about"
 

@@ -1,0 +1,89 @@
+<style>
+	h5 {
+		font-weight: bold;
+	}
+</style>
+
+<header class="container text-center my-5">
+	<h1 class="post-title">
+		<b><%= @blog_post.title %></b>
+	</h1>
+
+	<p class="lead">
+		<% day = @blog_post.date_published.day %>
+		<%= "#{@blog_post.date_published.strftime("%B")} #{day}#{ordinal_suffix(day)}, #{@blog_post.date_published.year}".html_safe %>
+	</p>
+
+	<p class="lead" style="font-size: 18px; opacity: 0.75;">
+		<%= @blog_post.excerpt %>
+	</p>
+
+	<p class="lead" style="font-size: 18px; opacity: 0.75;">
+		<% if current_user && current_user.admin? %>
+				<%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
+		<% end %>
+		<%= link_to 'Back', blog_posts_path %>
+	</p>
+
+</header>
+
+<div class="post-content">
+    <% content = @blog_post.content %>
+    <% images = @blog_post.blog_post_images %>
+    <% sources = @blog_post.blog_post_sources %>
+    <% image_index = 0 %>
+
+  <% content.split("<br>").each_with_index do |segment, index| %>
+    <%# If the segment is "img-tag", insert an image %>
+    <% if segment.strip == "img-tag" && image_index < images.length %>
+      <img src="<%= asset_path(@blog_post.file_name + "/" + images[image_index].image_url) %>" alt="Fraud Image" class="post-image">
+      <% image_index += 1 %>
+    <% else %>
+      <% clean_segment = segment.gsub(/<br\s*\/?>/, '') %>
+      <% if clean_segment.include?("<ul>") %>
+        <%= raw(clean_segment) %>
+      <% elsif clean_segment.include?("<h5>") %>
+        <%= raw(clean_segment) %>
+      <% else %>
+        <p style="text-indent: 20px;">
+          <%= raw(clean_segment) %>
+        </p> <%# Otherwise, treat as text %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+<% if sources.present? %>
+  <div class="blog-sources">
+    <h3>Sources</h3>
+    <ul>
+      <% sources.each do |source| %>
+        <li>
+          <a href="<%= source.source_url %>" target="_blank" rel="noopener noreferrer"><%= source.source_url %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+</div>
+
+<!--p><strong>Content:</strong> <= simple_format(@blog_post.content) %></p>
+
+< if @blog_post.blog_post_images.any? %>
+  <h3>Images</h3>
+  <ul>
+    < @blog_post.blog_post_images.each do |img| %>
+      <li><= link_to img.image_url, img.image_url, target: "_blank" %></li>
+    < end %>
+  </ul>
+< end %>
+
+< if @blog_post.blog_post_sources.any? %>
+  <h3>Sources</h3>
+  <ul>
+    < @blog_post.blog_post_sources.each do |src| %>
+      <li><= link_to src.source_url, src.source_url, target: "_blank" %></li>
+    < end %>
+  </ul>
+< end %>
+
+<= link_to 'Back', blog_posts_path %-->
