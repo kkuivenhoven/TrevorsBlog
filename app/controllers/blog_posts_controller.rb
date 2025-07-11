@@ -3,6 +3,14 @@ class BlogPostsController < ApplicationController
 
   def index
     @blog_posts = BlogPost.all.order(date_published: :desc)
+
+	# If a search term is provided, filter the posts
+	if params[:search].present?
+		search_term = params[:search].downcase
+		@blog_posts = @blog_posts.select do |post|
+			post[:title].downcase.include?(search_term) || post[:content].downcase.include?(search_term)
+		end
+	end
   end
 
   def show
@@ -15,10 +23,6 @@ class BlogPostsController < ApplicationController
   end
 
   def edit
-=begin
-    @blog_post.blog_post_images.build if @blog_post.blog_post_images.empty?
-    @blog_post.blog_post_sources.build if @blog_post.blog_post_sources.empty?
-=end
 	  @blog_post = BlogPost.find(params[:id])
   end
 

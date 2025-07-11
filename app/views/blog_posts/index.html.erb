@@ -1,9 +1,20 @@
 <header class="container text-center my-5">
-	<h1>All Blog Posts</h1>
+	<h1>Blog Posts</h1>
 
 	<% if current_user && current_user.admin? %>
 		<%= link_to 'New Blog Post', new_blog_post_path, class: 'btn btn-primary' %>
 	<% end %>
+
+    <center>
+        <%= form_with(url: blog_posts_path, method: "get", local: true, id: 'search_form') do %>
+            <div class="search-container">
+                  <%= label_tag :search, "Search Posts", class: "search-label" %>
+                  <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "search-input", id: "search_input" %>
+                  <%= submit_tag "Search", class: "search-button btn btn-primary " %>
+                  <%= button_tag 'Clear', type: 'button', id: "clear_button", class: "btn btn-primary clear-button" %>
+            </div>
+        <% end %>
+    </center>
 </header>
 
 <div class="container py-5">
