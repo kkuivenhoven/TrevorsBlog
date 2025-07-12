@@ -24,7 +24,7 @@
         <div class="card p-4">
           <h3 class="card-title"><b><%= blog_post.title %></b></h3>
           <p class="card-description">
-            <%= truncate(blog_post.content, length: 150, omission: '...') %>
+            <%= truncate(blog_post.excerpt, length: 150, omission: '...') %>
           </p>
           <%= link_to 'Read More', blog_post_path(blog_post.id), class: 'card-link' %>
         </div>
