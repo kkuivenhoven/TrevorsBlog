@@ -2,7 +2,7 @@ class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @blog_posts = BlogPost.all.order(date_published: :desc)
+    @blog_posts = BlogPost.where(is_visible: true).order(date_published: :desc)
 
 	# If a search term is provided, filter the posts
 	if params[:search].present?
