@@ -12,6 +12,13 @@
         <li class="nav-item">
           <%= link_to "Blog Posts", blog_posts_path, class: "nav-link" %>
         </li>
+
+		<% unless Rails.env.production? %>
+			<li class="nav-item">
+			  <%= link_to "Simulators", fraud_simulators_index_path, class: "nav-link" %>
+			</li>
+		<% end %>
+
 		<% if current_user && current_user.admin? %>
 			<li class="nav-item">
 			  <%= link_to "New Post", new_blog_post_path, class: "nav-link" %>

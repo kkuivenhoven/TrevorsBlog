@@ -1,0 +1,2 @@
+class FraudSimulator < ApplicationRecord
+end

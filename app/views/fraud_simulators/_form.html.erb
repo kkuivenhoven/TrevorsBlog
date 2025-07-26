@@ -1,0 +1,36 @@
+<%= form_with(model: fraud_simulator, local: true) do |form| %>
+  <% if fraud_simulator.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(fraud_simulator.errors.count, "error") %> prohibited this record from being saved:</h4>
+      <ul>
+        <% fraud_simulator.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :excerpt %><br>
+    <%= form.text_field :excerpt, class: "form-control" %>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <%= form.label :is_visible %><br>
+    <%= form.check_box :is_visible %>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <%= form.label :data, "Decision Tree JSON" %><br>
+    <%= form.text_area :data, rows: 20, class: "form-control json-input", style: "font-family: monospace;" %>
+  </div>
+
+  <div style="margin-top: 15px;">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,8 +1,21 @@
 Rails.application.routes.draw do
+  get "index/show"
+  get "index/new"
+  get "index/edit"
+  get "fraud_simulators/index"
+  get "fraud_simulators/show"
+  get "fraud_simulators/new"
+  get "fraud_simulators/edit"
+  get "fraud_simulators/create"
+  get "fraud_simulators/update"
+  get "fraud_simulators/destroy"
+  post 'fraud_simulators/next_question', to: 'fraud_simulators#next_question', as: :fraud_simulators_next_question
+
   get "admin/dashboard", to: 'admin#dashboard', as: :admin_dashboard
 
   get 'decision_tree/index', to: 'decision_tree#index'
   post 'decision_tree/next_question', to: 'decision_tree#next_question', as: :decision_tree
+
   get 'decision_tree/new_upload',      to: 'decision_tree#new_upload'
   post 'decision_tree/upload',         to: 'decision_tree#upload'
   get 'decision_tree/:file_name', to: 'decision_tree#show', as: 'decision_tree_show'
@@ -23,6 +36,7 @@ Rails.application.routes.draw do
   get 'posts/:file_name',      to: 'posts#show', as: 'post'
 
   resources :blog_posts
+  resources :fraud_simulators
 
   get "pages/home"
   get "pages/about"
