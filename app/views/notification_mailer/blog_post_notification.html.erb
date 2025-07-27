@@ -10,7 +10,7 @@
 			<p><%= @blog_post.excerpt %></p>
 			<p>Check it out here: 
 				<a href="<%= blog_post_url(@blog_post.id) %>" style="color: #007bff;">
-					<%= blog_post_url(@blog_post.id) %>
+					<%= @blog_post.title %>
 				</a>
 			</p>
 
