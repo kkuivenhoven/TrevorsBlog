@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get "index/show"
-  get "index/new"
-  get "index/edit"
-
 =begin
   get "fraud_simulators/index"
   get "fraud_simulators/show"
@@ -16,6 +12,7 @@ Rails.application.routes.draw do
 
   get "admin/dashboard", to: 'admin#dashboard', as: :admin_dashboard
 
+=begin
   get 'decision_tree/index', to: 'decision_tree#index'
   post 'decision_tree/next_question', to: 'decision_tree#next_question', as: :decision_tree
 
@@ -24,6 +21,7 @@ Rails.application.routes.draw do
   get 'decision_tree/:file_name', to: 'decision_tree#show', as: 'decision_tree_show'
   get 'decision_tree/edit/:file_name', to: 'decision_tree#edit', as: 'edit_decision_tree'
   patch 'decision_tree/update/:file_name',    to: 'decision_tree#update', as: 'update_decision_tree'
+=end
 
 =begin
   get "posts/index"
