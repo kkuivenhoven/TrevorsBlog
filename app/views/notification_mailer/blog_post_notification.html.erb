@@ -6,11 +6,11 @@
 		<div style="max-width: 600px; margin: auto; background: white; border-radius: 6px; padding: 30px;">
 			<h2 style="color: #333333;">New Blog Post Published</h2>
 			<p>Hi there!</p>
-			<p>Check out my latest post: <strong><%= @blog_post['title'] %></strong>
-			<p><%= @blog_post['excerpt'] %></p>
+			<p>Check out my latest post: <strong><%= @blog_post.title %></strong>
+			<p><%= @blog_post.excerpt %></p>
 			<p>Check it out here: 
-				<a href="<%= post_url(@blog_post['file_name']) %>" style="color: #007bff;">
-					<%= post_url(@blog_post['file_name']) %>
+				<a href="<%= blog_post_url(@blog_post.id) %>" style="color: #007bff;">
+					<%= blog_post_url(@blog_post.id) %>
 				</a>
 			</p>
 

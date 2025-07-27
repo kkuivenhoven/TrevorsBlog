@@ -73,13 +73,13 @@
 		<tbody>
 			<% @posts.each do |post| %>
 				<tr>
-					<td><%= post[:title] %></td>
-					<td><%= link_to 'View', post_path(post[:file_name]) %></td>
+					<td><%= post.title %></td>
+					<td><%= link_to 'View', blog_post_path(post.id) %></td>
 					<td>
-						<%= link_to "Edit Post", edit_post_path(file_name: post[:file_name]), class: "btn btn-sm btn-primary" %>
+						<%= link_to "Edit Post", edit_blog_post_path(post.id), class: "btn btn-sm btn-primary" %>
 					</td>
 					<td>
-						<%= button_to "Notify Subscribers", send_notification_email_path(file_name: post[:file_name]), method: :post, class: "btn btn-sm btn-primary" %>
+						<%= button_to "Notify Subscribers", blog_post_send_notification_email_path(post.id), method: :post, class: "btn btn-sm btn-primary" %>
 					</td>
 				</tr>
 			<% end %>
@@ -99,15 +99,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @decision_trees.each do |file| %>
+			<% @decision_trees.each do |simulator| %>
 				<tr>
-					<td><%= format_file_title(file) %></td>
-					<td><%= link_to 'View', decision_tree_show_path(file_name: File.basename(file, ".json")) %></td>
+					<td><%= simulator.title %></td>
+					<td><%= link_to 'View', fraud_simulators_path(simulator.id) %></td>
 					<td>
-						<%= link_to "Edit Decision Tree", edit_decision_tree_path(file_name: File.basename(file, ".json")), class: "btn btn-sm btn-primary" %>
+						<%= link_to "Edit Simulator", edit_fraud_simulator_path(simulator.id), class: "btn btn-sm btn-primary" %>
 					</td>
 					<td>
-						<%= button_to "Notify Subscribers", decision_tree_send_notification_email_path(file_name: File.basename(file, ".json")), method: :post, class: "btn btn-sm btn-primary" %>
+						<%= button_to "Notify Subscribers", fraud_simulators_send_notification_email_path(simulator.id), method: :post, class: "btn btn-sm btn-primary" %>
 					</td>
 				</tr>
 			<% end %>

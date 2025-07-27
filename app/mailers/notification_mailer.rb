@@ -8,8 +8,11 @@ class NotificationMailer < ApplicationMailer
 	mail(to: @user.email, subject: "New Fraud Simulator Available!")
   end
 
-  def blog_post_notification(user, file_name)
+  def blog_post_notification(user, id)
 	@user = user
+	@blog_post = BlogPost.find(id)
+	mail(to: @user.email, subject: "Trevor's New Blog Post!")
+=begin
 	filename = file_name + '.json'
 	file_path = Rails.root.join('app/assets/blog_posts', filename)
 
@@ -18,6 +21,7 @@ class NotificationMailer < ApplicationMailer
 		@blog_post = JSON.parse(raw_content)
 		mail(to: @user.email, subject: "Trevor's New Blog Post!")
 	end
+=end
   end
 
 end

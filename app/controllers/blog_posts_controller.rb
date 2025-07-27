@@ -49,6 +49,13 @@ class BlogPostsController < ApplicationController
     redirect_to blog_posts_url, notice: 'Blog post was successfully deleted.'
   end
 
+  def send_notification_email
+	User.where(notify_blog_posts: true).find_each do |user|
+		NotificationMailer.blog_post_notification(user, params[:id]).deliver_now
+	end
+	head :ok
+  end
+
   private
 
   def set_blog_post

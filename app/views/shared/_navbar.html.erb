@@ -15,20 +15,20 @@
 
 		<% unless Rails.env.production? %>
 			<li class="nav-item">
-			  <%= link_to "Simulators", fraud_simulators_index_path, class: "nav-link" %>
+			  <%= link_to "Simulators", fraud_simulators_path, class: "nav-link" %>
 			</li>
 		<% end %>
 
-		<% if current_user && current_user.admin? %>
+		<!--% if current_user && current_user.admin? %>
 			<li class="nav-item">
-			  <%= link_to "New Post", new_blog_post_path, class: "nav-link" %>
+			  <= link_to "New Post", new_blog_post_path, class: "nav-link" %>
 			</li>
-		<% end %>
-		<% if current_user && current_user.admin? %>
+		< end %>
+		< if current_user && current_user.admin? %>
 			<li class="nav-item">
-			  <%= link_to "New Decision Tree", decision_tree_new_upload_path, class: "nav-link" %>
+			  <= link_to "New Decision Tree", decision_tree_new_upload_path, class: "nav-link" %>
 			</li>
-		<% end %>
+		< end %-->
 
 		<li class="nav-item">
 		  <%= link_to "Fraud Simulators", decision_tree_index_path, class: "nav-link" %>

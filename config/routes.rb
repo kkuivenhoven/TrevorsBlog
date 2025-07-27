@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get "index/show"
   get "index/new"
   get "index/edit"
+
+=begin
   get "fraud_simulators/index"
   get "fraud_simulators/show"
   get "fraud_simulators/new"
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   get "fraud_simulators/create"
   get "fraud_simulators/update"
   get "fraud_simulators/destroy"
+=end
   post 'fraud_simulators/next_question', to: 'fraud_simulators#next_question', as: :fraud_simulators_next_question
 
   get "admin/dashboard", to: 'admin#dashboard', as: :admin_dashboard
@@ -22,6 +25,7 @@ Rails.application.routes.draw do
   get 'decision_tree/edit/:file_name', to: 'decision_tree#edit', as: 'edit_decision_tree'
   patch 'decision_tree/update/:file_name',    to: 'decision_tree#update', as: 'update_decision_tree'
 
+=begin
   get "posts/index"
   get 'posts/new_upload',      to: 'posts#new_upload'
   post 'posts/upload',         to: 'posts#upload'
@@ -34,7 +38,10 @@ Rails.application.routes.draw do
 
   # Catch all route must be last
   get 'posts/:file_name',      to: 'posts#show', as: 'post'
+=end
 
+  post 'blog_posts/:id/send_notification_email', to: 'blog_posts#send_notification_email', as: 'blog_post_send_notification_email'
+  post 'fraud_simulators/:id/send_notification_email', to: 'fraud_simulators#send_notification_email', as: 'fraud_simulators_send_notification_email'
   resources :blog_posts
   resources :fraud_simulators
 
