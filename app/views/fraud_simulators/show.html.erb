@@ -3,6 +3,13 @@
     <p class="lead" style="font-size: 18px; opacity: 0.75;">
         <%= @fraud_simulator.excerpt %>
     </p>
+
+    <p class="lead" style="font-size: 18px; opacity: 0.75;">
+        <% if current_user && current_user.admin? %>
+			<%= link_to 'Edit', edit_fraud_simulator_path(@fraud_simulator) %> |
+        <% end %>
+        <%= link_to 'Back', fraud_simulators_path %>
+    </p> 
 </header>
 
 <% if !@current_question.nil? %>

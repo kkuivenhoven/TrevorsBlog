@@ -1,6 +1,11 @@
 
 <header class="container text-center my-5">
     <h1>Fraud Simulator Cases</h1>
+
+    <% if current_user && current_user.admin? %>
+        <%= link_to 'New Fraud Simulator', new_fraud_simulator_path, class: 'btn btn-primary' %>
+    <% end %>
+
     <p class="lead">Select a case below.</p>
     <p class-"lead" style="font-size: 14px;">
         Choose a real-life fraud case and test your decision-making in interactive scam simulations.
