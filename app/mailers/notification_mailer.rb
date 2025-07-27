@@ -2,7 +2,7 @@ class NotificationMailer < ApplicationMailer
   helper :application
   default from: "noreply@mail.trevorbalthrop.com"
 
-  def fraud_simulator_notification(user, simulator)
+  def fraud_simulator_notification(user, id)
 	@user = user
 	@simulator = FraudSimulator.find(id)
 	mail(to: @user.email, subject: "New Fraud Simulator Available!")
