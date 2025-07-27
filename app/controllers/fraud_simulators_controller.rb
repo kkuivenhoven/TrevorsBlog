@@ -145,7 +145,7 @@ class FraudSimulatorsController < ApplicationController
     return nil
   end  
 
-  def fraud_simulators_notification_email
+  def send_notification_email
 	fraud_simulator_id = params[:id]
 	User.where(notify_fraud_simulators: true).find_each do |user|
 		NotificationMailer.fraud_simulator_notification(user, fraud_simulator_id).deliver_now
