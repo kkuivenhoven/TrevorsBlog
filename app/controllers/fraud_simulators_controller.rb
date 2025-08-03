@@ -2,6 +2,7 @@ class FraudSimulatorsController < ApplicationController
   before_action :set_fraud_simulator, only: [:show, :edit, :update, :destroy]
   before_action :set_fraud_simulator, only: [:edit, :update, :destroy, :setup_questions_from_json]
   before_action :setup_questions_from_json, only: [:show, :next_question]
+  before_action :require_admin, only: [:edit, :update, :create, :new]
 
   def index
     @fraud_simulators = FraudSimulator.all
@@ -155,47 +156,54 @@ class FraudSimulatorsController < ApplicationController
 
   private
 
-  def set_fraud_simulator
-    @fraud_simulator = FraudSimulator.find(params[:id])
-  end
+	  def set_fraud_simulator
+		@fraud_simulator = FraudSimulator.find(params[:id])
+	  end
 
-  def fraud_simulator_params
-    params.require(:fraud_simulator).permit(:excerpt, :is_visible, :data, :title)
-  end
- 
-  def find_question_by_id(id)
-    @questions.find { |q| q['id'] == id }
-  end
+	  def fraud_simulator_params
+		params.require(:fraud_simulator).permit(:excerpt, :is_visible, :data, :title)
+	  end
+	 
+	  def find_question_by_id(id)
+		@questions.find { |q| q['id'] == id }
+	  end
 
-  def find_question_by_end_id(end_id)
-    @questions.each do |question|
-        options = question['options']
-        # next unless is a guard clause which means # "skip to the next 
-        # iteration unless options is truthy (not nil or false)"
-        next unless options && options.any?
-        options.each do |option|
-            if option.has_key?('end_id') && option['end_id'] == end_id
-                return option
-            end
-        end
-    end
-    return nil
-  end 
-    
-  def find_option_by_next_id(tmp_question, target_next_id)
-    tmp_question['options'].find { |option| option['next_id'] == target_next_id }
-  end
-  
-  def find_root_node_by_end_id(end_id)
-    node = @questions.find do |node|
-        node["options"].any? { |option| option["end_id"] == end_id }
-    end
-    if node
-        node_without_options = node.reject { |key, _| key == "options" }
-        node_without_options
-    else
-        nil
-    end
-  end
+	  def find_question_by_end_id(end_id)
+		@questions.each do |question|
+			options = question['options']
+			# next unless is a guard clause which means # "skip to the next 
+			# iteration unless options is truthy (not nil or false)"
+			next unless options && options.any?
+			options.each do |option|
+				if option.has_key?('end_id') && option['end_id'] == end_id
+					return option
+				end
+			end
+		end
+		return nil
+	  end 
+		
+	  def find_option_by_next_id(tmp_question, target_next_id)
+		tmp_question['options'].find { |option| option['next_id'] == target_next_id }
+	  end
+	  
+	  def find_root_node_by_end_id(end_id)
+		node = @questions.find do |node|
+			node["options"].any? { |option| option["end_id"] == end_id }
+		end
+		if node
+			node_without_options = node.reject { |key, _| key == "options" }
+			node_without_options
+		else
+			nil
+		end
+	  end
+
+      def require_admin
+		unless current_user && current_user.admin?
+			redirect_to root_path, alert: "Admins only"
+		end 
+	  end 
+
 
 end
