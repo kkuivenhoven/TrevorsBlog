@@ -1,0 +1,32 @@
+<%= form_with(model: @prompt, local: true) do |form| %>
+  <% if @prompt.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@prompt.errors.count, "error") %> prohibited this prompt from being saved:</h2>
+      <ul>
+        <% @prompt.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <%= form.label :description %><br>
+    <%= form.text_field :description, class: "form-control" %>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <%= form.label :system_message %><br>
+    <%= form.text_area :system_message, rows: 20, class: "form-control json-input", style: "font-family: monospace;" %>
+    <!--%= form.text_field :system_message %-->
+  </div>
+
+  <div style="margin-top: 15px;">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

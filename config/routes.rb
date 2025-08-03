@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
-=begin
-  get "fraud_simulators/index"
-  get "fraud_simulators/show"
-  get "fraud_simulators/new"
-  get "fraud_simulators/edit"
-  get "fraud_simulators/create"
-  get "fraud_simulators/update"
-  get "fraud_simulators/destroy"
-=end
+  get "prompts/index"
+  get "prompts/show"
+  get "prompts/new"
+  get "prompts/edit"
   post 'fraud_simulators/next_question', to: 'fraud_simulators#next_question', as: :fraud_simulators_next_question
 
   get "admin/dashboard", to: 'admin#dashboard', as: :admin_dashboard
@@ -22,7 +17,6 @@ Rails.application.routes.draw do
   get 'decision_tree/edit/:file_name', to: 'decision_tree#edit', as: 'edit_decision_tree'
   patch 'decision_tree/update/:file_name',    to: 'decision_tree#update', as: 'update_decision_tree'
 =end
-
 =begin
   get "posts/index"
   get 'posts/new_upload',      to: 'posts#new_upload'
@@ -47,6 +41,7 @@ Rails.application.routes.draw do
   get "pages/about"
 
   resources :fraud_prompts, only: [:index, :show, :new, :create]
+  resources :prompts
 
   # get '/users/sign_up' => redirect('/users/sign_up/')
   # devise_for :users

@@ -24,6 +24,12 @@
 					</li>
 				<% end %>
 
+				<% if current_user && current_user.admin? %>
+					<li class="nav-item">
+					  <%= link_to "Prompts", prompts_path, class: "nav-link" %>
+					</li>
+				<% end %>
+
 				<%= link_to "Email Preferences", edit_user_path(current_user), class: "nav-link" %>
 				<% unless Rails.env.production? %>
 					<%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>

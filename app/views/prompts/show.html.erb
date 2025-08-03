@@ -1,0 +1,19 @@
+
+
+<header class="container text-center my-5">
+	<%= @prompt.title %>
+
+	<p class="lead" style="font-size: 18px; opacity: 0.75;">
+		<%= @prompt.description %>
+	</p>
+
+	<p class="lead" style="font-size: 18px; opacity: 0.75;">
+		<%= link_to 'Edit', edit_prompt_path(@prompt) %> |
+		<%= link_to 'Back', prompts_path %>
+	</p>
+</header>
+
+<div class="post-content">
+	<p><strong>System Message:</strong> <br><%= @prompt.system_message %></p>
+</div>
+

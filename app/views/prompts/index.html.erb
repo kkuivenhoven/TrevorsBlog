@@ -1,0 +1,30 @@
+<header class="container text-center my-5">
+	<h1>Prompts</h1>
+
+	<% if current_user && current_user.admin? %>
+		<%= link_to 'New Prompt', new_prompt_path %>
+	<% end %>
+</header>
+
+<div class="container">
+	<table class="table custom-table table-striped">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Edit</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @prompts.each do |prompt| %>
+				<tr>
+					<td><%= prompt.title %></td>
+					<td><%= prompt.description %></td>
+					<td><%= link_to 'Edit', edit_prompt_path(prompt) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+
