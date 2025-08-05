@@ -15,6 +15,7 @@ class FraudPromptsController < ApplicationController
 		@prompts = Prompt.all
 	end
 
+	# create method
 	def create
 		prompt_id = params[:fraud_prompt][:prompt_id]
 		@prompt = Prompt.find(prompt_id)
