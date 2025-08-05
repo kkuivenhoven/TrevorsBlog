@@ -20,16 +20,31 @@
 <div class="container py-5">
   <div class="row g-4"> <!-- Bootstrap grid with spacing -->
     <% @blog_posts.each do |blog_post| %>
-      <div class="col-md-4">
-        <div class="card p-4">
-          <h3 class="card-title"><b><%= blog_post.title %></b></h3>
-          <p class="card-description">
+      <div class="col-md-4 d-flex">
+        <div class="card p-4 w-100 d-flex flex-column">
+          <h3 class="card-title fw-bold"><b><%= blog_post.title %></b></h3>
+          <p class="card-description flex-grow-1">
             <%= truncate(blog_post.excerpt, length: 150, omission: '...') %>
           </p>
-          <%= link_to 'Read More', blog_post_path(blog_post.id), class: 'card-link' %>
+          <%= link_to 'Read More', blog_post_path(blog_post.id), class: 'card-link mt-auto' %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
 
+<!--div class="container py-5">
+  <div class="row g-4"> 
+    < @blog_posts.each do |blog_post| %>
+      <div class="col-md-4">
+        <div class="card p-4">
+          <h3 class="card-title"><b><= blog_post.title %></b></h3>
+          <p class="card-description">
+            <= truncate(blog_post.excerpt, length: 150, omission: '...') %>
+          </p>
+          <= link_to 'Read More', blog_post_path(blog_post.id), class: 'card-link' %>
+        </div>
+      </div>
+    < end %>
+  </div>
+</div-->
