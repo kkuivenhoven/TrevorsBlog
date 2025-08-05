@@ -1,6 +1,9 @@
 hospital:
   name: "Hospital Fraud"
-  prompt: "You are a healthcare fraud detection expert. Identify any fraud in the following scenario."
+  prompt: "
+
+
+You are a healthcare fraud detection expert. Identify any fraud in the following scenario."
 
 phishing:
   name: "Phishing Fraud"
@@ -8,4 +11,7 @@ phishing:
 
 financial:
   name: "Financial Fraud"
-  prompt: "You are a financial fraud analyst. Review this situation and look for potential fraudulent behavior."
+  prompt: "
+		Please scan www.financiallaws.com , www.chaselaws.com, www.FTC.com
+		common fraud scenarios that happen at banks: 
+		Please take these into consideartion as you analyze this end users request.  You are a financial fraud analyst. Review this situation and look for potential fraudulent behavior."

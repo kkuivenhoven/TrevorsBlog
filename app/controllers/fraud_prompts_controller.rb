@@ -7,15 +7,19 @@ class FraudPromptsController < ApplicationController
 
 	def show
 		@fraud_prompt = FraudPrompt.find(params[:id])
+		@prompt = Prompt.find(@fraud_prompt.prompt_id)
 	end
 
 	def new
 		@fraud_prompt = FraudPrompt.new
+		@prompts = Prompt.all
 	end
 
 	def create
+		prompt_id = params[:fraud_prompt][:prompt_id]
+		@prompt = Prompt.find(prompt_id)
+		system_prompt = @prompt.system_message
 		@fraud_prompt = current_user.fraud_prompts.build(fraud_prompt_params)
-		system_prompt = FraudPromptConfig::CONFIG[params["fraud_prompt"]["category"]]["prompt"]
 		user_input = params["fraud_prompt"]["user_input"]
 		begin
 			client = OpenAI::Client.new(api_key: ENV["OPENAI_API_KEY"])
@@ -29,6 +33,7 @@ class FraudPromptsController < ApplicationController
 					temperature: 0.2
 				}
 			)
+			@fraud_prompt.prompt_id = prompt_id
 			@fraud_prompt.result = response["choices"].first["message"]["content"]
 			if @fraud_prompt.save
 				redirect_to fraud_prompt_path(@fraud_prompt)
@@ -46,7 +51,7 @@ class FraudPromptsController < ApplicationController
 	private 
 
 	def fraud_prompt_params
-		params.require(:fraud_prompt).permit(:category, :user_input)
+		params.require(:fraud_prompt).permit(:user_input, :prompt_id)
 	end
 
 end

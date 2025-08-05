@@ -87,7 +87,7 @@
 			<tbody>
 				<% @fraud_prompts.each do |prompt| %>
 					<tr>
-						<td><%= prompt.category.titleize %></td>
+						<td><%= getTitleForPrompt(prompt.prompt_id) %></td>
 						<td><%= truncate(prompt.user_input, length: 50) %></td>
 						<td><%= truncate(prompt.result, length: 50) %></td>
 						<td><%= prompt.created_at.strftime("%Y-%m-%d") %></td>

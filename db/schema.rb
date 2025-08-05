@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_02_162835) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_05_003507) do
   create_table "blog_post_images", force: :cascade do |t|
     t.integer "blog_post_id", null: false
     t.string "image_url"
@@ -45,6 +45,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_02_162835) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "result"
+    t.integer "prompt_id"
+    t.index ["prompt_id"], name: "index_fraud_prompts_on_prompt_id"
     t.index ["user_id"], name: "index_fraud_prompts_on_user_id"
   end
 
@@ -89,5 +91,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_02_162835) do
 
   add_foreign_key "blog_post_images", "blog_posts"
   add_foreign_key "blog_post_sources", "blog_posts"
+  add_foreign_key "fraud_prompts", "prompts"
   add_foreign_key "fraud_prompts", "users"
 end

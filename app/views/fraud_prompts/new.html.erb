@@ -78,10 +78,25 @@
 	<div class="card p-5 rounded shadow" style="background-color: #0A192F; border: none;">
 
 	<%= form_with model: @fraud_prompt, data: { turbo: false }, html: { class: "needs-validation" } do |f| %>
-		<div class="mb-4">
-			<%= f.label :category, class: "form-label", style: "color: #E6E6FA;" %>
-			<%= f.select :category, FraudPromptConfig::CONFIG.keys, prompt: "Select category", class: "form-select rounded",  style: "background-color: #1B1F3B; border: 1px solid #a3c293; color: #E6E6FA;" %>
-		</div>
+
+
+<div class="mb-4">
+  <label class="form-label">Select a Prompt</label>
+
+  <% Prompt.all.each do |prompt| %>
+    <div class="p-3 mb-3 rounded" style="border: 1px solid #a3c293; background-color: #1B1F3B;">
+      <div class="form-check">
+        <%= f.radio_button :prompt_id, prompt.id, class: "form-check-input", id: "prompt_#{prompt.id}" %>
+        <%= label_tag "prompt_#{prompt.id}", prompt.title, class: "form-check-label", style: "color: #E6E6FA; font-weight: bold;" %>
+      </div>
+      <div style="font-size: 0.875rem; color: #A9ADC1; margin-left: 1.5rem; margin-top: 0.25rem;">
+        <%= prompt.description %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
 
 		<div class="mb-4">
 			<%= f.label :user_input, "Describe the situation", class: "form-label" %>
