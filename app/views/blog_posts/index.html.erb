@@ -1,3 +1,12 @@
+<style>
+.card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Show 4 lines, adjust as needed */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>
 <header class="container text-center my-5">
 	<h1>Blog Posts</h1>
 
@@ -23,8 +32,10 @@
       <div class="col-md-4 d-flex">
         <div class="card p-4 w-100 d-flex flex-column">
           <h3 class="card-title fw-bold"><b><%= blog_post.title %></b></h3>
-          <p class="card-description flex-grow-1">
-            <%= truncate(blog_post.excerpt, length: 150, omission: '...') %>
+          <!--p class="card-description flex-grow-1"-->
+          <p class="card-description">
+            <!--%= truncate(blog_post.excerpt, length: 150, omission: '...') %-->
+            <%= blog_post.excerpt %>
           </p>
           <%= link_to 'Read More', blog_post_path(blog_post.id), class: 'card-link mt-auto' %>
         </div>
