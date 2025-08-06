@@ -24,6 +24,7 @@ class FraudPromptsController < ApplicationController
 		system_prompt = @prompt.system_message
 		@fraud_prompt = current_user.fraud_prompts.build(fraud_prompt_params)
 		user_input = params["fraud_prompt"]["user_input"]
+		Rails.logger.info "Before begin in FraudPrompt::create method"
 		begin
 			client = OpenAI::Client.new(api_key: ENV["OPENAI_API_KEY"])
 			response = client.chat(
