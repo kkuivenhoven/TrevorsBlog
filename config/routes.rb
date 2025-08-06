@@ -40,7 +40,8 @@ Rails.application.routes.draw do
   get "pages/home"
   get "pages/about"
 
-  resources :fraud_prompts, only: [:index, :show, :new, :create]
+  # resources :fraud_prompts, only: [:index, :show, :new, :create]
+  resources :fraud_prompts
   resources :prompts
 
   # get '/users/sign_up' => redirect('/users/sign_up/')
