@@ -39,6 +39,7 @@ class FraudPromptsController < ApplicationController
 			)
 			@fraud_prompt.prompt_id = prompt_id
 			@fraud_prompt.result = response["choices"].first["message"]["content"]
+			Rails.logger.info " BEFORE THE @FRAUD PROMPT SAVE"
 			if @fraud_prompt.save
 				Rails.logger.info "fraud prompt should've saevd in def create"
 				redirect_to fraud_prompt_path(@fraud_prompt)
