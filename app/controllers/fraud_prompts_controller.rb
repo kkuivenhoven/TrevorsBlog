@@ -45,13 +45,14 @@ class FraudPromptsController < ApplicationController
 				redirect_to fraud_prompt_path(@fraud_prompt)
 			else
 				Rails.logger.info "fraud prompt DID NOT save"
-				render :new
+				render :new, status: :unprocessable_entity
 			end
 		rescue OpenAI::Error => e
 			flash[:error] = "There was an error with the OpenAI API: #{e.message}"
-			render :new
+			render :new, status: :unprocessable_entity
 		rescue => e
 			flash[:error] = "An error occurred: #{e.message}"
+			render :new, status: :unprocessable_entity
 		end
 	end
 
