@@ -13,10 +13,12 @@ class FraudPromptsController < ApplicationController
 	def new
 		@fraud_prompt = FraudPrompt.new
 		@prompts = Prompt.all
+		Rails.logger.info "Hit the FraudPrompt::new method"
 	end
 
 	# create method
 	def create
+		Rails.logger.info "Hit the FraudPrompt::create method"
 		prompt_id = params[:fraud_prompt][:prompt_id]
 		@prompt = Prompt.find(prompt_id)
 		system_prompt = @prompt.system_message
