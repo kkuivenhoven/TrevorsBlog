@@ -13,18 +13,15 @@ class FraudPromptsController < ApplicationController
 	def new
 		@fraud_prompt = FraudPrompt.new
 		@prompts = Prompt.all
-		Rails.logger.info "Hit the FraudPrompt::new method"
 	end
 
 	# create method
 	def create
-		Rails.logger.info "Hit the FraudPrompt::create method"
 		prompt_id = params[:fraud_prompt][:prompt_id]
 		@prompt = Prompt.find(prompt_id)
 		system_prompt = @prompt.system_message
 		@fraud_prompt = current_user.fraud_prompts.build(fraud_prompt_params)
 		user_input = params["fraud_prompt"]["user_input"]
-		Rails.logger.info "Before begin in FraudPrompt::create method"
 		begin
 			client = OpenAI::Client.new(api_key: ENV["OPENAI_API_KEY"])
 			response = client.chat(
@@ -39,12 +36,9 @@ class FraudPromptsController < ApplicationController
 			)
 			@fraud_prompt.prompt_id = prompt_id
 			@fraud_prompt.result = response["choices"].first["message"]["content"]
-			Rails.logger.info " BEFORE THE @FRAUD PROMPT SAVE"
 			if @fraud_prompt.save
-				Rails.logger.info "fraud prompt should've saevd in def create"
 				redirect_to fraud_prompt_path(@fraud_prompt)
 			else
-				Rails.logger.info "fraud prompt DID NOT save"
 				render :new, status: :unprocessable_entity
 			end
 		rescue OpenAI::Error => e
