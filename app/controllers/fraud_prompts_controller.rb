@@ -39,8 +39,10 @@ class FraudPromptsController < ApplicationController
 			@fraud_prompt.prompt_id = prompt_id
 			@fraud_prompt.result = response["choices"].first["message"]["content"]
 			if @fraud_prompt.save
+				Rails.logger.info "fraud prompt should've saevd in def create"
 				redirect_to fraud_prompt_path(@fraud_prompt)
 			else
+				Rails.logger.info "fraud prompt DID NOT save"
 				render :new
 			end
 		rescue OpenAI::Error => e
