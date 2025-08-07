@@ -5,10 +5,14 @@ class FraudSimulatorsController < ApplicationController
   before_action :require_admin, only: [:edit, :update, :create, :new]
 
   def index
-    @fraud_simulators = FraudSimulator.all
+    @fraud_simulators = FraudSimulator.where(is_visible: true)
   end
 
   def show
+	if !@fraud_simulator.visible
+		redirect_to fraud_simulators_path
+	end
+
     @current_question = find_question_by_id(1)
   end
 

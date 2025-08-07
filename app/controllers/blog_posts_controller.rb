@@ -14,6 +14,9 @@ class BlogPostsController < ApplicationController
   end
 
   def show
+	if @blog_post.visible == false
+		redirect_to blog_post_path
+	end
   end
 
   def new
