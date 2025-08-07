@@ -1,5 +1,6 @@
 class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:edit, :update, :create, :new]
 
   def index
     @blog_posts = BlogPost.where(is_visible: true).order(date_published: :desc)
@@ -77,4 +78,11 @@ class BlogPostsController < ApplicationController
       blog_post_sources_attributes: [:id, :source_url, :_destroy]
     )
   end
+
+      def require_admin
+		unless current_user && current_user.admin?
+			redirect_to root_path, alert: "Admins only"
+		end 
+	  end 
+
 end
