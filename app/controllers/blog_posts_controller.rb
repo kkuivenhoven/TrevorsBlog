@@ -1,6 +1,7 @@
 class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, only: [:edit, :update, :create, :new]
+  before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
+  before_action :require_admin, only: [:edit, :update, :create, :new, :destroy]
 
   def index
     @blog_posts = BlogPost.where(is_visible: true).order(date_published: :desc)

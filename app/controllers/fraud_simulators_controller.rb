@@ -1,8 +1,9 @@
 class FraudSimulatorsController < ApplicationController
   before_action :set_fraud_simulator, only: [:show, :edit, :update, :destroy]
-  before_action :set_fraud_simulator, only: [:edit, :update, :destroy, :setup_questions_from_json]
+  # before_action :set_fraud_simulator, only: [:show, :edit, :update, :destroy, :setup_questions_from_json]
   before_action :setup_questions_from_json, only: [:show, :next_question]
-  before_action :require_admin, only: [:edit, :update, :create, :new]
+  before_action :authenticate_user!, only: [:edit, :update, :create, :destroy]
+  before_action :require_admin, only: [:edit, :update, :create, :new, :destroy]
 
   def index
     @fraud_simulators = FraudSimulator.where(is_visible: true)
