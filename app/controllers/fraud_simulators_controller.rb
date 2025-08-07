@@ -9,7 +9,7 @@ class FraudSimulatorsController < ApplicationController
   end
 
   def show
-	if !@fraud_simulator.visible
+	if !@fraud_simulator.is_visible
 		redirect_to fraud_simulators_path
 	end
 
