@@ -2,7 +2,7 @@ class FraudPromptsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index 
-		@fraud_prompts = current_user.fraud_prompts
+		@fraud_prompts = current_user.fraud_prompts.order(created_at: :desc)
 	end
 
 	def show
