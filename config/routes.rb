@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "prompt_for_trainings/index"
+  get "prompt_for_trainings/new"
+  get "prompt_for_trainings/edit"
+  get "prompt_for_trainings/show"
   get "prompts/index"
   get "prompts/show"
   get "prompts/new"
@@ -6,6 +10,8 @@ Rails.application.routes.draw do
   post 'fraud_simulators/next_question', to: 'fraud_simulators#next_question', as: :fraud_simulators_next_question
 
   get "admin/dashboard", to: 'admin#dashboard', as: :admin_dashboard
+  # resources :prompts_for_training, only: [:index, :new, :edit, :show, :create, :update]
+  resources :prompt_for_trainings
 
 =begin
   get 'decision_tree/index', to: 'decision_tree#index'
@@ -39,8 +45,15 @@ Rails.application.routes.draw do
 
   get "pages/home"
   get "pages/about"
+  get "pages/terms_of_service"
+  get "pages/privacy_policy"
 
   # resources :fraud_prompts, only: [:index, :show, :new, :create]
+  resources :fraud_prompts do
+    collection do
+    	post :categorize
+    end
+  end
   resources :fraud_prompts
   resources :prompts
 
