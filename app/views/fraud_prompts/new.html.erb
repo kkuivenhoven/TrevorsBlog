@@ -1,3 +1,34 @@
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+	  const form = document.querySelector("form");
+	  const analyzeButton = document.getElementById("analyze-btn");
+	  const resultDiv = document.getElementById("categorize_result");
+	  console.log("testing...");
+
+	  analyzeButton.addEventListener("click", (event) => {
+		event.preventDefault(); // stop the form POST
+		console.log("Analyze clicked, running service...");
+	    const userInputField = document.getElementById("fraud_prompt_user_input");
+	    console.log("userInputField..." + userInputField.value);
+		// your fetch() call here
+
+		fetch("/fraud_prompts/categorize", {
+		  method: "POST",
+		  headers: {
+			"Content-Type": "application/json",
+			"X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content
+		  },
+		  body: JSON.stringify({ user_input: userInputField.value })
+		})
+		  .then(res => res.json())
+		  .then(data => {
+			resultDiv.textContent = data.result;
+		  });
+
+	  });
+	});
+</script>
+
 <style>
 	.card {
 	  background-color: #0A192F;
@@ -74,23 +105,23 @@
 	<h1 class="post-title">Report Fraud</h1>
 </header>
 
+<!-- On keystroke for the cosine similarity?
+	or do we want to analyze and then let the end user know that 
+	their situation sounds more like "blah blah blah fraud"?
+	Or should we have a "Categorize for me" button
+	-->
+
 <div class="container my-5 text-light">
 	<div class="card p-5 rounded shadow" style="background-color: #0A192F; border: none;">
 
 	<%= form_with model: @fraud_prompt, data: { turbo: false }, html: { class: "needs-validation" } do |f| %>
-		<div class="mb-4">
-		  <label class="form-label">Select a Prompt</label>
-		  <% Prompt.all.each do |prompt| %>
-			<div class="p-3 mb-3 rounded" style="border: 1px solid #a3c293; background-color: #1B1F3B;">
-			  <div class="form-check">
-				<%= f.radio_button :prompt_id, prompt.id, class: "form-check-input", id: "prompt_#{prompt.id}" %>
-				<%= label_tag "prompt_#{prompt.id}", prompt.title, class: "form-check-label", style: "color: #E6E6FA; font-weight: bold;" %>
-			  </div>
-			  <div style="font-size: 0.875rem; color: #A9ADC1; margin-left: 1.5rem; margin-top: 0.25rem;">
-				<%= prompt.description %>
-			  </div>
-			</div>
-		  <% end %>
+		<div class="mb-3">
+		  <%= f.label :prompt_id, "Select a Prompt", style: "color: #E6E6FA; font-weight: bold;" %>
+		  <%= f.select :prompt_id, 
+				Prompt.all.order(created_at: :desc).map { |p| [ "#{p.title} – #{p.description}", p.id ] },
+				{ prompt: "Select a prompt" },
+				{ class: "form-select", style: "background-color: #1B1F3B; color: #E6E6FA; border: 1px solid #a3c293;" } %>
+		</div>
 
 		  <div class="mb-4">
 			<%= f.label :user_input, "Describe the situation", class: "form-label" %>
@@ -98,10 +129,20 @@
 		  </div>
 
 		  <div class="text-center">
-			<%= f.submit "Analyze", class: "btn btn-lg px-5", style: "background-color: #a3c293; color: #2A2D43;" %>
+			<%= button_tag "Categorize", type: "button", class: "btn btn-lg px-5", id: "categorize_btn", style: "background-color: #a3c293; color: #2A2D43;" %>
+			<div id="categorize_result" class="mt-3 text-info"></div>
+
 		  </div>
 	<% end %>
 
+	<% unless Rails.env.production? %>
+		<button type="button" id="analyze-btn" class="btn btn-lg px-5" style="background-color: #a3c293; color: #2A2D43;">
+		  Analyze
+		</button>
+	<% end %>
+
+    <div id="categorize_result" class="mt-3 text-info"></div>
+
 	</div>
 </div>
-			
+		
