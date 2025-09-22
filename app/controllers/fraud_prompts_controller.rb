@@ -1,5 +1,22 @@
 class FraudPromptsController < ApplicationController
 	before_action :authenticate_user!
+	protect_from_forgery with: :null_session # for JS POST
+
+	def categorize
+		# input = params[:user_input]
+		user_input = params[:user_input]
+		service = TfidfService.new
+		result = service.cosine_similarity(user_input)
+		prompt = Prompt.find_by(id: result)
+		# render json: { result: result }
+		render json: { result: prompt.title }
+		#############################################
+		### NEED TOOOO EXCLUDE STOP WORDS OKAY!!!!!###
+		##############################################
+		# best_match = 
+		# compute cosine similarity
+		# render json
+	end
 
 	def index 
 		@fraud_prompts = current_user.fraud_prompts.order(created_at: :desc)
@@ -13,6 +30,7 @@ class FraudPromptsController < ApplicationController
 	def new
 		@fraud_prompt = FraudPrompt.new
 		@prompts = Prompt.all
+		@prompts.order(Arel.sql("CASE WHEN title = 'Not Sure' THEN 0 ELSE 1 END"), :title, :description)
 	end
 
 	# create method
