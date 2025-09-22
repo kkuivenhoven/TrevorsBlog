@@ -30,7 +30,7 @@ class FraudPromptsController < ApplicationController
 	def new
 		@fraud_prompt = FraudPrompt.new
 		@prompts = Prompt.all
-		@prompts.order(Arel.sql("CASE WHEN title = 'Not Sure' THEN 0 ELSE 1 END"), :title, :description)
+		@prompts.order(Arel.sql("CASE WHEN title = 'Not Sure Expert' THEN 0 ELSE 1 END"), :title, :description)
 	end
 
 	# create method
