@@ -118,7 +118,7 @@
 		<div class="mb-3">
 		  <%= f.label :prompt_id, "Select a Prompt", style: "color: #E6E6FA; font-weight: bold;" %>
 		  <%= f.select :prompt_id, 
-				Prompt.all.order(created_at: :desc).map { |p| [ "#{p.title} – #{p.description}", p.id ] },
+				Prompt.all.order(Arel.sql("CASE WHEN title = 'Not Sure Expert' THEN 0 ELSE 1 END")).map { |p| [ "#{p.title} – #{p.description}", p.id ] },
 				{ prompt: "Select a prompt" },
 				{ class: "form-select", style: "background-color: #1B1F3B; color: #E6E6FA; border: 1px solid #a3c293;" } %>
 		</div>
