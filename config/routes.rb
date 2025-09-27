@@ -49,11 +49,14 @@ Rails.application.routes.draw do
   get "pages/privacy_policy"
 
   # resources :fraud_prompts, only: [:index, :show, :new, :create]
+=begin
   resources :fraud_prompts do
     collection do
     	post :categorize
     end
   end
+=end
+  post "fraud_prompts/categorize", to: "fraud_prompts#categorize"
   resources :fraud_prompts
   resources :prompts
 

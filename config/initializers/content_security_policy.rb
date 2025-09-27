@@ -22,4 +22,12 @@
 #
 #   # Report violations without enforcing the policy.
 #   # config.content_security_policy_report_only = true
-# end
+=begin
+	Rails.application.config.content_security_policy do |policy|
+	  policy.script_src :self, :https, 'https://www.google.com/recaptcha/', 'https://www.gstatic.com/recaptcha/'
+	  policy.frame_src :self, :https, 'https://www.google.com/recaptcha/', 'https://recaptcha.google.com/recaptcha/'
+	  policy.connect_src :self, :https, 'https://www.google.com/recaptcha/', 'https://www.gstatic.com/recaptcha/'
+	end
+
+end
+=end

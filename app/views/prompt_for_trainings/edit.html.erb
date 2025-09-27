@@ -1,0 +1,107 @@
+ <style>
+    .card {
+      background-color: #0A192F;
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }   
+
+    label {
+      color: #E6E6FA;
+    }   
+
+    .form-control,
+    .form-select {
+      background-color: #1B1F3B;
+      border: 1px solid #a3c293;
+      color: #E6E6FA;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+    }   
+
+    .form-control::placeholder,
+    .form-select::placeholder {
+      color: #B5838D;
+    }   
+
+    .btn-primary,
+    .btn {
+      background-color: #a3c293;
+      color: #2A2D43;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.75rem 2rem;
+      transition: background-color 0.3s ease;
+    }   
+
+    .btn:hover {
+      background-color: #8caa7f;
+      color: #2A2D43;
+    }   
+
+    select, .form-select {
+      appearance: none;
+      background-color: #1B1F3B;
+      border: 1px solid #a3c293;
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      color: #E6E6FA;
+      font-size: 1rem;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%23a3c293' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
+      box-shadow: inset 0 0 0 1px #1B1F3B, 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }   
+
+    select:focus, .form-select:focus {
+      outline: none;
+      border-color: #8caa7f;
+      box-shadow: 0 0 0 2px #8caa7f;
+    }   
+
+    option {
+      background-color: #1B1F3B;
+      color: #E6E6FA;
+      padding: 0.5rem;
+      font-family: 'Helvetica Neue', sans-serif;
+    }   
+</style>
+
+<header class="container text-center my-5">
+	<h1 class="post-title">Edit Prompt for Training</h1>
+	<%= link_to 'Prompt For Training Index', prompt_for_trainings_path, class: 'btn btn-primary' %>
+</header>
+
+<div class="container my-5 text-light">
+	<div class="card p-5 rounded shadow" style="background-color: #0A192F; border: none;">
+	<%= form_with(model: @prompt_for_training, local: true) do |form| %>
+
+	   <label class="form-label">Select a Prompt</label>
+	   <% Prompt.all.each do |prompt| %>
+		  <div class="p-3 mb-3 rounded" style="border: 1px solid #a3c293; background-color: #1B1F3B;">
+			  <div class="form-check">
+				<%= form.radio_button :prompt_id, prompt.id, class: "form-check-input", id: "prompt_#{prompt.id}" %>
+				<%= label_tag "prompt_#{prompt.id}", prompt.title, class: "form-check-label", style: "color: #E6E6FA; font-weight: bold;" %>
+			  </div>
+			  <div style="font-size: 0.875rem; color: #A9ADC1; margin-left: 1.5rem; margin-top: 0.25rem;">
+				<%= prompt.description %>
+			  </div>
+		  </div>
+		<% end %>
+
+		<div class="mb-4">
+			<%= form.label :prompt_text %><br>
+			<%= form.text_area :prompt_text, class: "form-control rounded", rows: 15, cols: 100, style: "background-color: #1B1F3B; border: 1px solid #a3c293; color: #E6E6FA; font-family: monospace;" %>
+		</div>
+
+		<div class="text-center">
+			<%= form.submit "Save Changes", class: "btn btn-lg btn-primary" %>
+		</div>
+
+	<% end %>
+	</div>
+</div>
+

@@ -1,0 +1,12 @@
+<header class="container text-center my-5">
+	<h1>PromptForTrainings#show</h1>
+	<p>Find me in app/views/prompt_for_trainings/show.html.erb</p>
+	<%= link_to 'Prompt For Training Index', prompt_for_trainings_path, class: 'btn btn-primary' %>
+</header>
+
+<div class="post-content">
+	<%= @prompt_for_training.prompt_id %>
+	<br>
+	<%= @prompt_for_training.prompt_text %>
+</div>
+
