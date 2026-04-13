@@ -21,4 +21,4 @@ This is a full-stack web development project that helps educate users on fraud s
 * File Management: the blogs, decision trees and user data are all stored in a PostgreSQL database.
 
 ## 5. Learning & Evolution:
-* Deterministic: the project (TF-IDF and Decision tree) follows an exact set of rules (If A, then B). The TF-IDF is traditional AI, NLP specifically.
+* This project (TF-IDF and Decision tree) is deterministic and follows an exact set of rules (If A, then B). The TF-IDF is traditional AI, NLP specifically. This was my "First Generation" AI project that provided the foundational understanding of feature weighting and data structures required for me to evolve these concepts into building Neural Network architectures.
