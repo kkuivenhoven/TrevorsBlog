@@ -22,7 +22,7 @@ class AdminController < ApplicationController
 	@posts = @posts.sort_by { |post| post[:date] }.reverse
 	@decision_trees = Dir.glob(Rails.root.join('storage', 'data', '*.json'))
 =end
-	@posts = BlogPost.all
+	@posts = BlogPost.all.order(created_at: :asc)
 	@decision_trees = FraudSimulator.all
   end
 
