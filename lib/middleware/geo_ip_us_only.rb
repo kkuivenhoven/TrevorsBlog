@@ -15,7 +15,7 @@ module Middleware
 			puts "[GeoIP Debug IP: #{ip}, Country: #{country}"
 			Rails.logger.info "[GeoIP Debug IP: #{ip}, Country: #{country}"
 
-			if local_ip?(ip) || country == 'US'
+			if local_ip?(ip) || country.nil? || country == 'US'
 				@app.call(env)
 			else
 				# head :not_found
